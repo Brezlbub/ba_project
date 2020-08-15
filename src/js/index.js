@@ -5,11 +5,15 @@ ChromeExtensionURUT.App = (function() {
 
   var that = {},
     navigationController,
-    contentStorage;
+    currentState,
+    views;
 
   function init() {
+    chrome.storage.local.get(['state'], function(result){
+      currentState = result.state;
+      console.log(result.state);
+    });
     initNavigation();
-    initContentStorage();
     initViews();
   }
 
@@ -19,15 +23,9 @@ ChromeExtensionURUT.App = (function() {
       navigationController.addEventListener("onStateChanged", updateViews);
   }
 
-  function initContentStorage(){
-    contentStorage = ChromeExtensionURUT.ContentStorage().init();
-    let contentObjects = [];
-    contentObjects = contentStorage.getContentObjects();
-    console.log(contentObjects);
-  }
-
   function initViews() {
-
+    views = ChromeExtensionURUT.Views().init();
+    loadSavedViews();
   }
 
   /*************************** public functions *******************************/
@@ -35,8 +33,11 @@ ChromeExtensionURUT.App = (function() {
 
   /*************************** event functions ********************************/
   function updateViews(event) {
-    navigationView.updateView(event);
-    framesStorage.updateStorage(event);
+    views.updateViews(event);
+  }
+
+  function loadSavedViews(){
+    views.loadSavedViews(currentState);
   }
 
   that.init = init;

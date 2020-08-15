@@ -12,6 +12,10 @@ html {
   height: 20%;
 }
 
+#headline {
+  color: white;
+}
+
 .flex {
   display: flex;
 }
@@ -24,12 +28,8 @@ html {
 }
 
 .button {
-  background-color: #4CAF50; /* Green */
-  border: none;
-  color: white;
+  color: black;
   text-align: center;
-  text-decoration: none;
-  display: inline-block;
   font-size: 16px;
   margin: 4px 2px;
   transition-duration: 0.4s;

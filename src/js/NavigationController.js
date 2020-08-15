@@ -10,11 +10,11 @@ ChromeExtensionURUT.NavigationController = function() {
 
   /*************************** public functions *******************************/
   function init() {
-    console.log("navigation running");
     stepBackButton = document.getElementById("step-back");
     stepNextButton = document.getElementById("step-next");
     stepBackButton.addEventListener("click", stepBack);
     stepNextButton.addEventListener("click", stepNext);
+    currentState = getCurrentState();
     return that;
   }
 
@@ -22,41 +22,31 @@ ChromeExtensionURUT.NavigationController = function() {
   function getCurrentState() {
     chrome.storage.local.get(['state'], function(result){
       currentState = result.state;
-      //manipulate view elsewhere
-      //countText.innerHTML = currentStep;
     });
     return currentState;
   }
 
-  function setStep1() {
-    currentStep++;
-  }
 
   /*************************** event functions ********************************/
   function stepBack () {
-    currentStep--;
-    chrome.storage.local.set({state: currentStep}, function() {
-            countText.innerHTML = currentStep;
+    currentState--;
+    chrome.storage.local.set({state: currentState}, function() {
+            dispatchStateChangeEvent();
           });
-          getCurrentHeadline();
   }
 
   function stepNext () {
-    currentStep++;
-    chrome.storage.local.set({state: currentStep}, function() {
-            countText.innerHTML = currentStep;
+    currentState++;
+    chrome.storage.local.set({state: currentState}, function() {
+            dispatchStateChangeEvent();
           });
-          getCurrentHeadline();
   }
 
   /*************************** private functions ******************************/
-  function dispatchStateChangeEvent(isNext) {
+  function dispatchStateChangeEvent() {
     let changeStateEvent = new Event("onStateChanged");
-    changeStepsEvent.dataArray = dataArray;
-    changeStepsEvent.isNext = isNext;
-    changeStepsEvent.currentStep = currentStep;
+    changeStateEvent.currentState = currentState;
     that.dispatchEvent(changeStateEvent);
-    dataArray = [];
   }
 
   that.init = init;

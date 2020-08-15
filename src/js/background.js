@@ -1,3 +1,4 @@
+
 chrome.storage.local.set({state: 0});
 
 /*chrome.browserAction.onClicked.addListener(buttonClicked);
