@@ -1,0 +1,36 @@
+{
+  "name": "BA Julian Sänze Evaluation URUT",
+  "description": "Prototyp unmoderierter Remote Usability-Test",
+  "version": "1.0",
+  "manifest_version": 2,
+  "content_scripts": [{
+    "matches": ["https://www.alte-maelzerei.de/*",
+    "https://github.com/*"],
+    "js": ["content.js"]
+  }],
+  "icons": {
+    "16": "src/img/UT_icon_16.png",
+    "32": "src/img/UT_icon_32.png",
+    "48": "src/img/UT_icon_48.png",
+    "128": "src/img/UT_icon_128.png"
+  },
+  "background": {
+    "scripts": ["src/js/background.js"]
+  },
+  "browser_action": {
+    "default_icon": {
+      "16": "src/img/UT_icon_16.png",
+      "32": "src/img/UT_icon_32.png",
+      "48": "src/img/UT_icon_48.png",
+      "128": "src/img/UT_icon_128.png"
+    },
+    "default_popup": "index.html",
+    "default_title": "Öffne den Test"
+  },
+  "permissions": [
+    "tabs",
+    "storage",
+    "identity",
+    "activeTab"
+  ]
+}
