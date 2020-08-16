@@ -9,6 +9,8 @@ ChromeExtensionURUT.Views = function() {
     contentStorage,
     headline,
     content,
+    interactiveSection,
+    commentSection,
     countText,
     contentObjects = [];
 
@@ -19,7 +21,8 @@ ChromeExtensionURUT.Views = function() {
     headline = document.getElementById("headline");
     content = document.getElementById("content");
     countText = document.getElementById("countText");
-    countText = document.getElementById("interactive-section");
+    interactiveSection = document.getElementById("interactive-section");
+    commentSection = document.getElementById("comment-section");
     initContentStorage();
     return that;
   }
@@ -44,6 +47,20 @@ ChromeExtensionURUT.Views = function() {
     countText.innerHTML = currentState + "/" + contentObjects.length;
     headline.innerHTML = contentObjects[currentState].title;
     content.innerHTML = contentObjects[currentState].content;
+
+    if(contentObjects[currentState].isTask == 0){
+      hideElement(interactiveSection);
+    }else{
+      showElement(interactiveSection);
+    }
+  }
+
+  function hideElement(el){
+    el.classList.add("hidden");
+  }
+
+  function showElement(el){
+    el.classList.remove("hidden");
   }
 
   that.init = init;

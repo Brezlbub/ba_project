@@ -1,5 +1,8 @@
 
 chrome.storage.local.set({state: 0});
+chrome.storage.local.set({taskRunning: 0});
+chrome.storage.local.set({startTime: 0});
+chrome.storage.local.set({timeDifference: 0});
 
 /*chrome.browserAction.onClicked.addListener(buttonClicked);
 

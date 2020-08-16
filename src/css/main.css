@@ -160,3 +160,7 @@ h3 {
   height: 100%;
   margin: 8px 8px 0px;
 }
+
+.hidden {
+  display: none;
+}
