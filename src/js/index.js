@@ -5,11 +5,13 @@ ChromeExtensionURUT.App = (function() {
 
   var that = {},
     navigationController,
+    timeController,
     currentState,
+    taskRunning,
     views;
 
   function init() {
-    initNavigation();
+    initController();
     initViews();
     initSavedState();
   }
@@ -20,11 +22,19 @@ ChromeExtensionURUT.App = (function() {
       currentState = result.state;
       views.loadSavedViews(currentState);
     });
+    chrome.storage.local.get['taskRunning'], function(result){
+      taskRunning = result.taskRunning;
+      if(taskRunning == 1){
+        views.load
+      }
+    };
   }
 
-  function initNavigation() {
+  function initController() {
       navigationController = ChromeExtensionURUT.NavigationController().init();
       navigationController.addEventListener("onStateChanged", updateViews);
+      timeController = ChromeExtensionURUT.TimeController().init();
+      timeController.addEventListener("onDataSaved", saveTaskData);
   }
 
   function initViews() {
@@ -34,6 +44,11 @@ ChromeExtensionURUT.App = (function() {
   /*************************** event functions ********************************/
   function updateViews(event) {
     views.updateViews(event);
+  }
+
+  function saveTaskData(event){
+    let passedSeconds = event.taskTimeInSeconds;
+    console.log(passedSeconds);
   }
 
   that.init = init;
