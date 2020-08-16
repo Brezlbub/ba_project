@@ -27,12 +27,12 @@ ChromeExtensionURUT.ContentStorage = function() {
     sz1task4 = {id: 8, title: "Task 4", content: "Für etwaige Rückfragen suchen Sie sich noch die Adresse und die Telefonnummer des Statt Theaters heraus."};
 
     szenario2 = {id: 9, title: "Hintergrundszenario 2", content: "Ihnen hat der Besuch im Statt Theater einfach sehr gut gefallen. Sie wissen das das Statt Theater ein kleiner Verein ist, weshalb Sie das Statt Theater Kollektiv gerne finanziell unterstützen wollen."};
-    sz2task1 = {id: 10, title: "Task 1", content: "Verschaffen Sie sich einen Überblick, welche Möglichkeiten Sie hierbei haben."};
-    sz2task2 = {id: 11, title: "Task2", content: "Weil Sie als Unterstützer des Vereins gerne über alle News informiert sein wollen, entschließen Sie sich dazu den Newsletter zu abonnieren."};
+    sz2task1 = {id: 10, title: "Task 5", content: "Verschaffen Sie sich einen Überblick, welche Möglichkeiten Sie hierbei haben."};
+    sz2task2 = {id: 11, title: "Task 6", content: "Weil Sie als Unterstützer des Vereins gerne über alle News informiert sein wollen, entschließen Sie sich dazu den Newsletter zu abonnieren."};
 
-    abschluss1 = {id: 12, title: "Beschreiben Sie kurz was Ihnen nach der Bearbeitung der Aufgaben besonders an der Seite aufgefallen ist. Was …", content: "-	… fanden Sie schlecht?"};
-    abschluss2 = {id: 13, title: "Beschreiben Sie kurz was Ihnen nach der Bearbeitung der Aufgaben besonders an der Seite aufgefallen ist. Was …", content: "-	… fanden Sie gut?"};
-    abschluss3 = {id: 14, title: "Beschreiben Sie kurz was Ihnen nach der Bearbeitung der Aufgaben besonders an der Seite aufgefallen ist. Was …", content: "-	… würden Sie verbessern?"};
+    abschluss1 = {id: 12, title: "Beschreibung 1", content: "Beschreiben Sie kurz was Ihnen nach der Bearbeitung der Aufgaben besonders an der Seite aufgefallen ist. Was… fanden Sie schlecht?"};
+    abschluss2 = {id: 13, title: "Beschreibung 2", content: "Beschreiben Sie kurz was Ihnen nach der Bearbeitung der Aufgaben besonders an der Seite aufgefallen ist. Was… fanden Sie gut?"};
+    abschluss3 = {id: 14, title: "Beschreibung 3", content: "Beschreiben Sie kurz was Ihnen nach der Bearbeitung der Aufgaben besonders an der Seite aufgefallen ist. Was… würden Sie verbessern?"};
 
     contentObjects = [];
     contentObjects.push(introduction);

@@ -19,6 +19,7 @@ ChromeExtensionURUT.Views = function() {
     headline = document.getElementById("headline");
     content = document.getElementById("content");
     countText = document.getElementById("countText");
+    countText = document.getElementById("interactive-section");
     initContentStorage();
     return that;
   }
