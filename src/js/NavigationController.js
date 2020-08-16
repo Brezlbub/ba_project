@@ -50,6 +50,5 @@ ChromeExtensionURUT.NavigationController = function() {
   }
 
   that.init = init;
-  that.getCurrentState = getCurrentState;
   return that;
 };

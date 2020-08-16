@@ -8,6 +8,7 @@ ChromeExtensionURUT.Views = function() {
     stepNextButton,
     contentStorage,
     headline,
+    content,
     countText,
     contentObjects = [];
 
@@ -16,6 +17,7 @@ ChromeExtensionURUT.Views = function() {
     stepBackButton = document.getElementById("step-back");
     stepNextButton = document.getElementById("step-next");
     headline = document.getElementById("headline");
+    content = document.getElementById("content");
     countText = document.getElementById("countText");
     initContentStorage();
     return that;
@@ -26,21 +28,22 @@ ChromeExtensionURUT.Views = function() {
     contentObjects = contentStorage.getContentObjects();
   }
 
+  //updates views when buttons were clicked and state changed
   function updateViews(event) {
-    let currentState = event.currentState;
-    countText.innerHTML = currentState;
-    headline.innerHTML = contentObjects[currentState].title;
+    fillElements(event.currentState);
   }
 
-  function loadSavedViews(state){
-    console.log(state);
-    //countText.innerHTML = state;
-    //headline.innerHTML = contentObjects[state].title;
+  //loads last state and corresponding views
+  function loadSavedViews(currentState){
+    fillElements(currentState);
   }
-
 
   /*************************** private functions ******************************/
-
+  function fillElements(currentState){
+    countText.innerHTML = currentState + "/" + contentObjects.length;
+    headline.innerHTML = contentObjects[currentState].title;
+    content.innerHTML = contentObjects[currentState].content;
+  }
 
   that.init = init;
   that.loadSavedViews = loadSavedViews;

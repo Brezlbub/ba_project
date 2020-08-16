@@ -10,18 +10,38 @@
 </head>
 
 <body>
+  <div id="main-content">
 
-<header>
-  <div id="navigation" class="flex">
-    <div id="countText"></div>
-    <div id="step-back" class="button button-disabled"><i class="fa fa-angle-left"></i></div>
-    <div id="step-next" class="button button-disabled"><i class="fa fa-angle-right"></i></div>
+    <header class="flex">
+      <div id="headline"></div>
+      <div id="navigation" class="flex">
+        <div id="step-back" class="button button-disabled"><i class="fa fa-angle-left"></i></div>
+        <div id="countText"></div>
+        <div id="step-next" class="button button-disabled"><i class="fa fa-angle-right"></i></div>
+      </div>
+    </header>
 
+    <div id="content"></div>
   </div>
-</header>
 
-
-<div id="headline"></div>
+  <div id="interactive-section">
+    <div id="comment-section">
+      <h3>Kommentiere deine Gedanken</h3>
+      <div id="comment-box" class="flex">
+        <textarea type="text" id="comment" name="commentBox"></textarea>
+        <div id="submit-comment-button" class="button button-disabled"><i class="fa fa-check"></i></div>
+      </div>
+    </div>
+    <h3>Starte oder Stoppe die Task</h3>
+    <div id="timer-box" class="flex">
+      <div id="start-task" class="button button-disabled">
+        <p>START</p>
+      </div>
+      <div id="stop-task" class="button button-disabled">
+        <p>STOP</p>
+      </div>
+    </div>
+  </div>
 
 </body>
 <script type="application/javascript" src="src/js/NavigationController.js"></script>

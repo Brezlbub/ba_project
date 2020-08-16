@@ -1,52 +1,160 @@
+html {
+  width: 350px;
+  height: 350px;
+}
+
 body {
+  margin: 0;
+  background-color: #383838;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  height: 50px;
+  width: 100%;
+  font-size: 15px;
   background-color: #383838;
 }
 
-html {
-  width: 320px;
-  height: 320px;
+h3 {
+  color: #ccc;
 }
 
-#navigation {
-  width: 100%;
-  height: 20%;
-}
-
-#headline {
-  color: white;
-}
-
+/****************************** Classes ***************************************/
 .flex {
   display: flex;
+  align-items: center;
 }
 
-.flex > div {
-  background-color: #f1f1f1;
-  margin: 10px;
-  padding: 20px;
-  font-size: 30px;
-}
-
+/***  Buttons ***/
 .button {
-  color: black;
-  text-align: center;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
+  color: white;
+  transition-duration: 0.5s;
   cursor: pointer;
+  text-align: center;
+}
+
+.button i, .button p {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 20px;
 }
 
 .button:hover {
-  background-color: #4CAF50; /* Green */
+  background-color: #383838;
   color: white;
 }
 
+#step-back, #step-next {
+  display: table;
+  width: 35%;
+  height: 100%;
+}
 
-.headline {
-  font-size: 16px;
-  color: white;
+#start-task, #stop-task {
+  display: table;
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  background-color: #aaa;
+}
+
+#start-task:hover, #stop-task:hover {
+  background-color: #ccc;
+}
+
+#start-task {
+  margin-right: 5px;
+}
+
+#stop-task {
+  margin-left: 5px;
+}
+
+#step-back:active, #step-next:active {
+  background-color: #ccc;
+  transition-duration: 0.1s;
+}
+
+#submit-comment-button {
+  background-color: #2d862d;
+  display: table;
+  width: 17%;
+  height: 100%;
+  margin-right: 8px;
+}
+
+#submit-comment-button:hover {
+  background-color: #40bf40;
+}
+
+#submit-comment-button:active {
+  background-color: #9fdf9f;
+  transition-duration: 0.1s;
 }
 
 .hidden {
   display: none;
+}
+
+/****************************** ID'S ******************************************/
+#main-content {
+  flex: 1 0 auto;
+}
+
+#timer-box {
+  height: 40px;
+}
+
+#interactive-section{
+  flex-shrink: 0;
+}
+
+/* margin*/
+#content, #timer-box, h3{
+  margin: 8px;
+}
+
+#comment-section {
+  border-top: 2px solid #aaa;
+}
+
+#headline, #content, #countText {
+  color: white;
+}
+
+#navigation {
+  width: 50%;
+  height: 100%;
+  background-color: #aaa;
+}
+
+#headline {
+  margin-left: 8px;
+  width: 50%;
+  font-size: 15px;
+  color: white;
+}
+
+#content {
+  text-align: justify;
+  font-size: 14px;
+}
+
+#countText {
+  width: 30%;
+  text-align: center;
+}
+
+#comment-box {
+  height: 50px;
+  margin-bottom: 16px;
+}
+
+#comment {
+  width: 83%;
+  height: 100%;
+  margin: 8px;
 }
