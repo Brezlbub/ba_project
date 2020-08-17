@@ -14,20 +14,22 @@ ChromeExtensionURUT.NavigationController = function() {
     stepNextButton = document.getElementById("step-next");
     stepBackButton.addEventListener("click", stepBack);
     stepNextButton.addEventListener("click", stepNext);
-    currentState = getCurrentState();
+    chrome.storage.local.get(['state'], function(result){
+      currentState = result.state;
+      for(var i = 0; i <= ChromeExtensionURUT.Config.stepBackDisableArray.length; i++){
+        if(currentState == ChromeExtensionURUT.Config.stepBackDisableArray[i]){
+          console.log(ChromeExtensionURUT.Config.stepBackDisableArray[i]);
+          disableStepBackButton();
+        }
+      }
+    });
     return that;
   }
 
-//gets state saved in local storage and sets the current state
-  function getCurrentState() {
-    chrome.storage.local.get(['state'], function(result){
-      currentState = result.state;
-    });
-    return currentState;
-  }
+  //gets state saved in local storage and sets the current state
 
 
-  /*************************** event functions ********************************/
+/*************************** event functions ********************************/
   function stepBack () {
     currentState--;
     chrome.storage.local.set({state: currentState}, function() {
@@ -49,6 +51,15 @@ ChromeExtensionURUT.NavigationController = function() {
     that.dispatchEvent(changeStateEvent);
   }
 
+  function disableStepBackButton(){
+    stepBackButton.disabled = true;
+  }
+
+  function enableStepBackButton(){
+    stepBackButton.disabled = true;
+  }
+
+  that.disableStepBackButton = disableStepBackButton;
   that.init = init;
   return that;
 };

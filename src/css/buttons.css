@@ -1,0 +1,79 @@
+/***  Buttons ***/
+button {
+  color: white;
+  transition-duration: 0.5s;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+}
+
+button i{
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 20px;
+}
+
+button:active {
+  outline: none;
+  border: none;
+}
+
+button:focus {
+  outline: 0;
+  border: none;
+}
+
+#step-back, #step-next {
+  width: 35%;
+  height: 100%;
+  background-color: #aaa;
+}
+
+#step-back:hover, #step-next:hover {
+  background-color: #ccc;
+}
+
+#start-task, #stop-task {
+  width: 50%;
+  height: 100%;
+  background-color: #383838;
+}
+
+#start-task:hover, #stop-task:hover {
+  background-color: #ccc;
+}
+
+#start-task:active, #stop-task:active {
+  background-color: #eee;
+  transition-duration: 0.1s;
+}
+
+#start-task {
+  margin-right: 5px;
+}
+
+#stop-task {
+  margin-left: 5px;
+}
+
+#step-back:active, #step-next:active {
+  background-color: #eee;
+  transition-duration: 0.1s;
+}
+
+#submit-comment-button {
+  background-color: #2d862d;
+  width: 17%;
+  height: 100%;
+  margin-right: 8px;
+  margin-bottom: -8px;
+}
+
+#submit-comment-button:hover {
+  background-color: #40bf40;
+}
+
+#submit-comment-button:active {
+  background-color: #9fdf9f;
+  transition-duration: 0.1s;
+}

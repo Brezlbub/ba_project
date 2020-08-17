@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -7,6 +6,7 @@
   <title>Start</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="src/css/main.css">
+  <link rel="stylesheet" href="src/css/buttons.css">
 </head>
 
 <body>
@@ -14,9 +14,9 @@
     <header class="flex">
       <div id="headline"></div>
       <div id="navigation" class="flex">
-        <div id="step-back" class="button button-disabled"><i class="fa fa-angle-left"></i></div>
+        <button id="step-back"><i class="fa fa-angle-left"></i></button>
         <div id="countText"></div>
-        <div id="step-next" class="button button-disabled"><i class="fa fa-angle-right"></i></div>
+        <button id="step-next"><i class="fa fa-angle-right"></i></button>
       </div>
     </header>
 
@@ -28,17 +28,13 @@
       <h3>Kommentiere Probleme und Gedanken</h3>
       <div id="comment-box" class="flex">
         <textarea type="text" id="comment" name="commentBox"></textarea>
-        <div id="submit-comment-button" class="button button-disabled"><i class="fa fa-check"></i></div>
+        <button id="submit-comment-button"><i class="fa fa-check"></i></button>
       </div>
     </div>
     <h3>Starte oder Stoppe die Task</h3>
     <div id="timer-box" class="flex">
-      <div id="start-task" class="button button-disabled">
-        <p>START</p>
-      </div>
-      <div id="stop-task" class="button button-disabled">
-        <p>STOP</p>
-      </div>
+      <button id="start-task"><p>START</p></button>
+      <button id="stop-task"><p>STOP</p></button>
     </div>
   </div>
 
