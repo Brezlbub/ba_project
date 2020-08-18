@@ -10,11 +10,16 @@ ChromeExtensionURUT.Views = function() {
     stopTaskButton,
     taskRunningText,
     taskFinishedSection,
+    taskFailureSection,
+    taskFinishedBox,
     contentStorage,
+    timerSection,
+    startStopText,
     headline,
     content,
     interactiveSection,
     commentSection,
+    proceedText,
     countText,
     contentObjects = [];
 
@@ -25,12 +30,17 @@ ChromeExtensionURUT.Views = function() {
     startTaskButton = document.getElementById("start-task");
     stopTaskButton = document.getElementById("stop-task");
     taskRunningText = document.getElementById("task-running-text");
-    taskFinishedSection = document.getElementById("task-finished-text");
+    taskFinishedSection = document.getElementById("task-finished-section");
+    taskFailureSection = document.getElementById("task-failure-section");
     headline = document.getElementById("headline");
     content = document.getElementById("content");
     countText = document.getElementById("countText");
     interactiveSection = document.getElementById("interactive-section");
     commentSection = document.getElementById("comment-section");
+    timerSection = document.getElementById("timer-section");
+    startStopText = document.getElementById("start-stop-text");
+    taskFinishedBox = document.getElementById("task-finished-box");
+    proceedText = document.getElementById("proceed-text");
     initContentStorage();
     return that;
   }
@@ -51,42 +61,55 @@ ChromeExtensionURUT.Views = function() {
     fillElements(currentState);
   }
 
-  function loadSavedRunningState(taskRunning){
-    if(taskRunning == 1){
-      startTaskButton.classList.add("hidden");
-      taskRunningText.classList.remove("hidden");
-      stopTaskButton.disabled = false;
-      stepNextButton.disabled = true;
-      commentSection.classList.remove("hidden");
-    }else if(taskRunning == 2){
-      stepNextButton.disabled = false;
-      stepNextButton.classList.add("blinking");
-      interactiveSection.classList.add("hidden");
-      taskFinishedSection.classList.remove("hidden");
+  function loadSavedTaskState(taskRunning){
+    manageTaskRunning(taskRunning);
+  }
+
+  function updateTaskState(event){
+    manageTaskRunning(event.taskRunning);
+  }
+
+  function manageTaskRunning(taskState){
+    if(taskState == ChromeExtensionURUT.Config.taskNotStarted){
+      showElement(timerSection);
+      console.log("task state: " + taskState);
+      startStopText.innerHTML = ChromeExtensionURUT.Config.startTaskText;
+    }else if(taskState == ChromeExtensionURUT.Config.taskIsRunning){
+      startStopText.innerHTML = ChromeExtensionURUT.Config.stopTaskText;
+      showElement(taskRunningText);
+      showElement(commentSection);
+      hideElement(startTaskButton);
+      enableElement(stopTaskButton);
+      disableElement(startTaskButton);
+      console.log("task state: " + taskState);
+    }else if(taskState == ChromeExtensionURUT.Config.taskIsFinished){
+      showElement(taskFinishedSection);
+      hideElement(interactiveSection);
+      console.log("task state: " + taskState);
+    }else if(taskState == ChromeExtensionURUT.Config.taskSuccess){
+      enableElement(stepNextButton);
+      blinkElement(stepNextButton);
+      hideElement(taskFinishedBox);
+      showElement(proceedText);
+      console.log("task state: " + taskState);
+    }else if(taskState == ChromeExtensionURUT.Config.taskFailed){
+      hideElement(taskFinishedBox);
+      showElement(taskFailureSection);
+      console.log("task state: " + taskState);
+    }else if(taskState == ChromeExtensionURUT.Config.taskFailureCommentSubmitted){
+      showElement(proceedText);
+      enableElement(stepNextButton);
+      hideElement(taskFailureSection);
+      console.log("task state: " + taskState);
     }
   }
 
-  function manageTaskRunning(event){
-    if(event.taskRunning == 1){
-      taskRunningText.classList.remove("hidden");
-      startTaskButton.classList.add("hidden");
-      stopTaskButton.disabled = false;
-      startTaskButton.disabled = true;
-      commentSection.classList.remove("hidden");
-    }else if(event.taskRunning == 2){
-      stepNextButton.disabled = false;
-      stepNextButton.classList.add("blinking");
-      interactiveSection.classList.add("hidden");
-      taskFinishedSection.classList.remove("hidden");
-    }
-  }
+
 
   function setNavigationButtonsDisabledState(currentState) {
     if (contentObjects[currentState].stepBack == 0){
-      //disable stepBackButton
       stepBackButton.disabled = true;
     }else{
-      //enable stepBackButton
       stepBackButton.disabled = false;
     }
     if(contentObjects[currentState].stepNext == 0){
@@ -117,10 +140,22 @@ ChromeExtensionURUT.Views = function() {
     el.classList.remove("hidden");
   }
 
+  function disableElement(el){
+    el.disabled = true;
+  }
+
+  function enableElement(el){
+    el.disabled = false;
+  }
+
+  function blinkElement(el){
+    el.classList.add("blinking");
+  }
+
   that.init = init;
   that.loadSavedViews = loadSavedViews;
-  that.loadSavedRunningState = loadSavedRunningState;
-  that.manageTaskRunning = manageTaskRunning;
+  that.loadSavedTaskState = loadSavedTaskState;
+  that.updateTaskState = updateTaskState;
   that.updateViews = updateViews;
   return that;
 };

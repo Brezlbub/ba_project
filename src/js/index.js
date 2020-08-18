@@ -24,7 +24,7 @@ ChromeExtensionURUT.App = (function() {
     });
     chrome.storage.sync.get(['taskRunning'], function(result){
       taskRunning = result.taskRunning;
-      views.loadSavedRunningState(taskRunning);
+      views.loadSavedTaskState(taskRunning);
     });
   }
 
@@ -33,7 +33,7 @@ ChromeExtensionURUT.App = (function() {
       navigationController.addEventListener("onStateChanged", updateViews);
       taskController = ChromeExtensionURUT.TaskController().init();
       taskController.addEventListener("onDataSaved", saveTaskData);
-      taskController.addEventListener("onTaskRunning", manageTaskRunning)
+      taskController.addEventListener("onTaskRunning", updateTaskState);
   }
 
   function initViews() {
@@ -45,8 +45,8 @@ ChromeExtensionURUT.App = (function() {
     views.updateViews(event);
   }
 
-  function manageTaskRunning(event){
-    views.manageTaskRunning(event);
+  function updateTaskState(event){
+    views.updateTaskState(event);
   }
 
   function saveTaskData(event){

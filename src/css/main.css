@@ -95,6 +95,11 @@ h3 {
   font-size: 20px;
 }
 
+#proceed-text{
+  color: white;
+  font-size: 20px;
+}
+
 .hidden {
   display: none;
 }

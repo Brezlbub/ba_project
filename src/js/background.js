@@ -1,6 +1,6 @@
 
 chrome.storage.sync.set({state: 0});
-//task not running = 0, task running = 1, task finished = 2
+//task not running = 0, task running = 1, task finished = 2, task failed 3
 chrome.storage.sync.set({taskRunning: 0});
 chrome.storage.sync.set({startTime: 0});
 chrome.storage.sync.set({timeDifference: 0});

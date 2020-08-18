@@ -6,6 +6,9 @@ ChromeExtensionURUT.TaskController = function() {
   var that = new EventTarget(),
     startTaskButton,
     stopTaskButton,
+    taskSuccessButton,
+    taskFailedButton,
+    submitFailureCommentButton,
     passedSeconds,
     taskRunning,
     startTime;
@@ -14,8 +17,14 @@ ChromeExtensionURUT.TaskController = function() {
   function init() {
     startTaskButton = document.getElementById("start-task");
     stopTaskButton = document.getElementById("stop-task");
+    taskSuccessButton = document.getElementById("task-success");
+    taskFailedButton = document.getElementById("task-failed");
+    submitFailureCommentButton = document.getElementById("submit-failure-comment-button");
     startTaskButton.addEventListener("click", startTaskCounter);
     stopTaskButton.addEventListener("click", stopTaskCounter);
+    taskSuccessButton.addEventListener("click", taskSucceeded);
+    taskFailedButton.addEventListener("click", taskFailed);
+    submitFailureCommentButton.addEventListener("click", submitFailureComment);
     return that;
   }
 
@@ -23,8 +32,8 @@ ChromeExtensionURUT.TaskController = function() {
   function startTaskCounter(){
     let currentTimeSeconds = Math.floor(Date.now() / 1000);
     chrome.storage.sync.set({startTime: currentTimeSeconds});
-    chrome.storage.sync.set({taskRunning: 1}, function(){
-      taskRunning = 1;
+    chrome.storage.sync.set({taskRunning: ChromeExtensionURUT.Config.taskIsRunning}, function(){
+      taskRunning = ChromeExtensionURUT.Config.taskIsRunning;
       dispatchTaskRunningEvent();
       console.log("taskRunning");
     });
@@ -40,10 +49,31 @@ ChromeExtensionURUT.TaskController = function() {
         dispatchSaveDataEvent();
         console.log("passedSeconds" + passedSeconds);
       });
-      chrome.storage.sync.set({taskRunning: 2}, function(){
-        taskRunning = 2;
+      chrome.storage.sync.set({taskRunning: ChromeExtensionURUT.Config.taskIsFinished}, function(){
+        taskRunning = ChromeExtensionURUT.Config.taskIsFinished;
         dispatchTaskRunningEvent();
       });
+    });
+  }
+
+  function taskSucceeded() {
+    chrome.storage.sync.set({taskRunning: ChromeExtensionURUT.Config.taskSuccess}, function(){
+      taskRunning = ChromeExtensionURUT.Config.taskSuccess;
+      dispatchTaskRunningEvent();
+    });
+  }
+
+  function taskFailed(){
+    chrome.storage.sync.set({taskRunning: ChromeExtensionURUT.Config.taskFailed}, function(){
+      taskRunning = ChromeExtensionURUT.Config.taskFailed;
+      dispatchTaskRunningEvent();
+    });
+  }
+
+  function submitFailureComment(){
+    chrome.storage.sync.set({taskRunning: ChromeExtensionURUT.Config.taskFailureCommentSubmitted}, function(){
+      taskRunning = ChromeExtensionURUT.Config.taskFailureCommentSubmitted;
+      dispatchTaskRunningEvent();
     });
   }
 

@@ -10,6 +10,7 @@
 </head>
 
 <body>
+
   <div id="main-content">
     <header class="flex">
       <div id="headline"></div>
@@ -21,6 +22,27 @@
     </header>
 
     <div id="content"></div>
+  </div>
+
+  <div id="interactive-section">
+
+    <div id="comment-section" class="hidden">
+      <h3>Kommentiere Probleme und Gedanken</h3>
+      <div id="comment-box" class="flex">
+        <textarea type="text" id="comment" name="commentBox"></textarea>
+        <button id="submit-comment-button"><i class="fa fa-check"></i></button>
+      </div>
+    </div>
+
+    <div id="timer-section" class="hidden">
+      <h3 id="start-stop-text"></h3>
+      <div id="timer-box" class="flex">
+        <div id="task-running-text" class="hidden blinking"><center><p>TASK LÄUFT...</p></center></div>
+        <button id="start-task" class="blinking"><p>START</p></button>
+        <button id="stop-task" disabled><p>STOP</p></button>
+      </div>
+    </div>
+
   </div>
 
   <div id="task-finished-section" class="hidden">
@@ -43,21 +65,8 @@
 
   </div>
 
-  <div id="interactive-section">
-    <div id="comment-section" class="hidden">
-      <h3>Kommentiere Probleme und Gedanken</h3>
-      <div id="comment-box" class="flex">
-        <textarea type="text" id="comment" name="commentBox"></textarea>
-        <button id="submit-comment-button"><i class="fa fa-check"></i></button>
-      </div>
-    </div>
-    <h3>Starte oder Stoppe die Task</h3>
-    <div id="timer-box" class="flex">
-      <div id="task-running-text" class="hidden blinking"><center><p>TASK LÄUFT...</p></center></div>
-      <button id="start-task" class="blinking"><p>START</p></button>
-      <button id="stop-task" disabled><p>STOP</p></button>
-    </div>
-  </div>
+  <div id="proceed-text" class="hidden"><center><p>Drücke oben rechts auf 'Weiter'.</p></center></div>
+
 
 </body>
 <script type="application/javascript" src="src/js/NavigationController.js"></script>
