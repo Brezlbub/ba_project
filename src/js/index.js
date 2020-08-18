@@ -13,7 +13,6 @@ ChromeExtensionURUT.App = (function() {
   function init() {
     initController();
     initViews();
-    initSavedState();
   }
 
   /*************************** init functions *********************************/
@@ -38,6 +37,7 @@ ChromeExtensionURUT.App = (function() {
 
   function initViews() {
     views = ChromeExtensionURUT.Views().init();
+    initSavedState();
   }
 
   /*************************** event functions ********************************/

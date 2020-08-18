@@ -29,18 +29,18 @@ ChromeExtensionURUT.Views = function() {
     stepNextButton = document.getElementById("step-next");
     startTaskButton = document.getElementById("start-task");
     stopTaskButton = document.getElementById("stop-task");
-    taskRunningText = document.getElementById("task-running-text");
-    taskFinishedSection = document.getElementById("task-finished-section");
-    taskFailureSection = document.getElementById("task-failure-section");
     headline = document.getElementById("headline");
     content = document.getElementById("content");
     countText = document.getElementById("countText");
-    interactiveSection = document.getElementById("interactive-section");
-    commentSection = document.getElementById("comment-section");
-    timerSection = document.getElementById("timer-section");
-    startStopText = document.getElementById("start-stop-text");
-    taskFinishedBox = document.getElementById("task-finished-box");
     proceedText = document.getElementById("proceed-text");
+    startStopText = document.getElementById("start-stop-text");
+    taskRunningText = document.getElementById("task-running-text");
+    timerSection = document.getElementById("timer-section");
+    commentSection = document.getElementById("comment-section");
+    taskFinishedBox = document.getElementById("task-finished-box");
+    interactiveSection = document.getElementById("interactive-section");
+    taskFailureSection = document.getElementById("task-failure-section");
+    taskFinishedSection = document.getElementById("task-finished-section");
     initContentStorage();
     return that;
   }
@@ -57,7 +57,9 @@ ChromeExtensionURUT.Views = function() {
     resetViews();
   }
 
-  //loads last state and corresponding views
+  //if popup window gets closed, all data not stored in chrome.storage get lost
+  //taskIsRunning stores the last state of which the programme was running
+  //loads last saved state and corresponding views
   function loadSavedViews(currentState){
     fillElements(currentState);
   }
@@ -70,6 +72,8 @@ ChromeExtensionURUT.Views = function() {
     manageTaskRunning(event.taskRunning);
   }
 
+  //shows, hides, enables oder disables or sets contents of elements according to
+  // current state of taskIsRunning
   function manageTaskRunning(taskState, currentState){
     if(taskState == ChromeExtensionURUT.Config.taskNotStarted){
       resetViews();
@@ -115,6 +119,7 @@ ChromeExtensionURUT.Views = function() {
     }
   }
 
+  //sets all views back to default before task started
   function resetViews(){
     showElement(startTaskButton);
     enableElement(startTaskButton);
@@ -125,6 +130,7 @@ ChromeExtensionURUT.Views = function() {
     disableElement(stopTaskButton);
     hideElement(taskFailureSection);
     hideElement(taskFinishedSection);
+    showElement(taskFinishedBox);
     startStopText.innerHTML = ChromeExtensionURUT.Config.startTaskText;
   }
 
