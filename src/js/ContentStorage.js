@@ -25,7 +25,7 @@ ChromeExtensionURUT.ContentStorage = function() {
     sz1task2 = {id: 6, stepBack: 0, stepNext: 0, isTask: 1, title: "Task 2", content: "Sie wollen gerne im April eine Veranstaltung besuchen. Informieren Sie sich über die Künstler und deren Programm. Interessiert Sie eine der Veranstaltungen?"};
     sz1task3 = {id: 7, stepBack: 0, stepNext: 0, isTask: 1, title: "Task 3", content: "Sie wollen gerne zu der Veranstaltung des Impro Theaters Chamäleon am 21.04.2019 gehen. Finden Sie heraus was ein Ticket kostet und bestellen Sie eines."};
     sz1task4 = {id: 8, stepBack: 0, stepNext: 0, isTask: 1, title: "Task 4", content: "Für etwaige Rückfragen suchen Sie sich noch die Adresse und die Telefonnummer des Statt Theaters heraus."};
-1
+
     szenario2 = {id: 9, stepBack: 0, stepNext: 1, isTask: 0, title: "Hintergrundszenario 2", content: "Ihnen hat der Besuch im Statt Theater einfach sehr gut gefallen. Sie wissen das das Statt Theater ein kleiner Verein ist, weshalb Sie das Statt Theater Kollektiv gerne finanziell unterstützen wollen."};
     sz2task1 = {id: 10, stepBack: 0, stepNext: 0, isTask: 1, title: "Task 5", content: "Verschaffen Sie sich einen Überblick, welche Möglichkeiten Sie hierbei haben."};
     sz2task2 = {id: 11, stepBack: 0, stepNext: 0, isTask: 1, title: "Task 6", content: "Weil Sie als Unterstützer des Vereins gerne über alle News informiert sein wollen, entschließen Sie sich dazu den Newsletter zu abonnieren."};

@@ -54,6 +54,7 @@ ChromeExtensionURUT.Views = function() {
   function updateViews(event) {
     fillElements(event.currentState);
     setNavigationButtonsDisabledState(event.currentState);
+    resetViews();
   }
 
   //loads last state and corresponding views
@@ -61,23 +62,29 @@ ChromeExtensionURUT.Views = function() {
     fillElements(currentState);
   }
 
-  function loadSavedTaskState(taskRunning){
-    manageTaskRunning(taskRunning);
+  function loadSavedTaskState(taskRunning, currentState){
+    manageTaskRunning(taskRunning, currentState);
   }
 
   function updateTaskState(event){
     manageTaskRunning(event.taskRunning);
   }
 
-  function manageTaskRunning(taskState){
+  function manageTaskRunning(taskState, currentState){
     if(taskState == ChromeExtensionURUT.Config.taskNotStarted){
-      showElement(timerSection);
+      resetViews();
+      if(contentObjects[currentState].isTask == 1){
+        disableElement(stepNextButton);
+      }else{
+        enableElement(stepNextButton);
+      }
       console.log("task state: " + taskState);
       startStopText.innerHTML = ChromeExtensionURUT.Config.startTaskText;
     }else if(taskState == ChromeExtensionURUT.Config.taskIsRunning){
       startStopText.innerHTML = ChromeExtensionURUT.Config.stopTaskText;
       showElement(taskRunningText);
       showElement(commentSection);
+      showElement(timerSection);
       hideElement(startTaskButton);
       enableElement(stopTaskButton);
       disableElement(startTaskButton);
@@ -95,16 +102,31 @@ ChromeExtensionURUT.Views = function() {
     }else if(taskState == ChromeExtensionURUT.Config.taskFailed){
       hideElement(taskFinishedBox);
       showElement(taskFailureSection);
+      showElement(taskFinishedSection);
       console.log("task state: " + taskState);
     }else if(taskState == ChromeExtensionURUT.Config.taskFailureCommentSubmitted){
       showElement(proceedText);
+      hideElement(taskRunningText);
+      hideElement(commentSection);
       enableElement(stepNextButton);
       hideElement(taskFailureSection);
+      hideElement(taskFinishedSection);
       console.log("task state: " + taskState);
     }
   }
 
-
+  function resetViews(){
+    showElement(startTaskButton);
+    enableElement(startTaskButton);
+    hideElement(taskRunningText);
+    showElement(timerSection);
+    hideElement(proceedText);
+    hideElement(commentSection);
+    disableElement(stopTaskButton);
+    hideElement(taskFailureSection);
+    hideElement(taskFinishedSection);
+    startStopText.innerHTML = ChromeExtensionURUT.Config.startTaskText;
+  }
 
   function setNavigationButtonsDisabledState(currentState) {
     if (contentObjects[currentState].stepBack == 0){
