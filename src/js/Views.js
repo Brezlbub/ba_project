@@ -9,6 +9,7 @@ ChromeExtensionURUT.Views = function() {
     startTaskButton,
     stopTaskButton,
     taskRunningText,
+    taskFinishedSection,
     contentStorage,
     headline,
     content,
@@ -24,6 +25,7 @@ ChromeExtensionURUT.Views = function() {
     startTaskButton = document.getElementById("start-task");
     stopTaskButton = document.getElementById("stop-task");
     taskRunningText = document.getElementById("task-running-text");
+    taskFinishedSection = document.getElementById("task-finished-text");
     headline = document.getElementById("headline");
     content = document.getElementById("content");
     countText = document.getElementById("countText");
@@ -51,20 +53,32 @@ ChromeExtensionURUT.Views = function() {
 
   function loadSavedRunningState(taskRunning){
     if(taskRunning == 1){
-      stopTaskButton.disabled = false;
       startTaskButton.classList.add("hidden");
       taskRunningText.classList.remove("hidden");
-      startTaskButton.disabled = true;
+      stopTaskButton.disabled = false;
       stepNextButton.disabled = true;
+      commentSection.classList.remove("hidden");
+    }else if(taskRunning == 2){
+      stepNextButton.disabled = false;
+      stepNextButton.classList.add("blinking");
+      interactiveSection.classList.add("hidden");
+      taskFinishedSection.classList.remove("hidden");
     }
   }
 
   function manageTaskRunning(event){
-    console.log("is event running?" + event.taskRunning);
-    startTaskButton.classList.add("hidden");
-    taskRunningText.classList.remove("hidden");
-    stopTaskButton.disabled = false;
-    startTaskButton.disabled = true;
+    if(event.taskRunning == 1){
+      taskRunningText.classList.remove("hidden");
+      startTaskButton.classList.add("hidden");
+      stopTaskButton.disabled = false;
+      startTaskButton.disabled = true;
+      commentSection.classList.remove("hidden");
+    }else if(event.taskRunning == 2){
+      stepNextButton.disabled = false;
+      stepNextButton.classList.add("blinking");
+      interactiveSection.classList.add("hidden");
+      taskFinishedSection.classList.remove("hidden");
+    }
   }
 
   function setNavigationButtonsDisabledState(currentState) {

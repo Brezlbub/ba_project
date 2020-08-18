@@ -1,6 +1,6 @@
 var ChromeExtensionURUT = ChromeExtensionURUT || {};
 
-ChromeExtensionURUT.TimeController = function() {
+ChromeExtensionURUT.TaskController = function() {
   "use strict";
 
   var that = new EventTarget(),
@@ -39,6 +39,10 @@ ChromeExtensionURUT.TimeController = function() {
       chrome.storage.sync.set({timeDifference: passedSeconds}, function(){
         dispatchSaveDataEvent();
         console.log("passedSeconds" + passedSeconds);
+      });
+      chrome.storage.sync.set({taskRunning: 2}, function(){
+        taskRunning = 2;
+        dispatchTaskRunningEvent();
       });
     });
   }

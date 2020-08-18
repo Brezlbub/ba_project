@@ -5,7 +5,7 @@ ChromeExtensionURUT.App = (function() {
 
   var that = {},
     navigationController,
-    timeController,
+    taskController,
     currentState,
     taskRunning,
     views;
@@ -31,9 +31,9 @@ ChromeExtensionURUT.App = (function() {
   function initController() {
       navigationController = ChromeExtensionURUT.NavigationController().init();
       navigationController.addEventListener("onStateChanged", updateViews);
-      timeController = ChromeExtensionURUT.TimeController().init();
-      timeController.addEventListener("onDataSaved", saveTaskData);
-      timeController.addEventListener("onTaskRunning", manageTaskRunning)
+      taskController = ChromeExtensionURUT.TaskController().init();
+      taskController.addEventListener("onDataSaved", saveTaskData);
+      taskController.addEventListener("onTaskRunning", manageTaskRunning)
   }
 
   function initViews() {
@@ -46,7 +46,7 @@ ChromeExtensionURUT.App = (function() {
   }
 
   function manageTaskRunning(event){
-    views.manageTaskRunning(event.taskRunning);
+    views.manageTaskRunning(event);
   }
 
   function saveTaskData(event){

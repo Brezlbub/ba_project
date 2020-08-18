@@ -23,6 +23,26 @@
     <div id="content"></div>
   </div>
 
+  <div id="task-finished-section" class="hidden">
+
+    <div id="task-finished-box">
+      <h3>Wurde die Task erfolgreich beendet?</h3>
+      <div id="task-finished-answer-box" class="flex">
+        <button id="task-success"><p>JA</p></button>
+        <button id="task-failed"><p>NEIN</p></button>
+      </div>
+    </div>
+
+    <div id="task-failure-section" class="hidden">
+      <h3>Warum wurde die Task nicht erfolgreich beendet?</h3>
+      <div id="task-failure-box" class="flex">
+        <textarea type="text" id="failure-comment" name="commentBox"></textarea>
+        <button id="submit-failure-comment-button"><i class="fa fa-check"></i></button>
+      </div>
+    </div>
+
+  </div>
+
   <div id="interactive-section">
     <div id="comment-section" class="hidden">
       <h3>Kommentiere Probleme und Gedanken</h3>
@@ -34,14 +54,14 @@
     <h3>Starte oder Stoppe die Task</h3>
     <div id="timer-box" class="flex">
       <div id="task-running-text" class="hidden blinking"><center><p>TASK LÄUFT...</p></center></div>
-      <button id="start-task"><p>START</p></button>
+      <button id="start-task" class="blinking"><p>START</p></button>
       <button id="stop-task" disabled><p>STOP</p></button>
     </div>
   </div>
 
 </body>
 <script type="application/javascript" src="src/js/NavigationController.js"></script>
-<script type="application/javascript" src="src/js/TimeController.js"></script>
+<script type="application/javascript" src="src/js/TaskController.js"></script>
 <script type="application/javascript" src="src/js/Config.js"></script>
 <script type="application/javascript" src="src/js/Views.js"></script>
 <script type="application/javascript" src="src/js/ContentStorage.js"></script>

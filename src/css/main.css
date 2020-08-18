@@ -33,17 +33,17 @@ h3 {
   flex: 1 0 auto;
 }
 
-#timer-box {
+#timer-box, #task-finished-answer-box{
   height: 40px;
 }
 
-#interactive-section{
+#interactive-section, #task-finished-section{
   flex-shrink: 0;
   background-color: #aaa;
 }
 
 /* margin*/
-#content, #timer-box, h3{
+#content, #timer-box, #task-finished-answer-box, h3{
   margin: 8px;
 }
 
@@ -78,15 +78,21 @@ h3 {
   text-align: center;
 }
 
-#comment-box {
+#comment-box, #task-failure-box{
   height: 50px;
   margin-bottom: 16px;
 }
 
-#comment {
+#comment, #failure-comment {
   width: 83%;
   height: 100%;
   margin: 8px 8px 0px;
+}
+
+#task-finished-text{
+  width: 100%;
+  color: white;
+  font-size: 20px;
 }
 
 .hidden {

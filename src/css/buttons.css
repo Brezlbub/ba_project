@@ -7,10 +7,14 @@ button{
   border: none;
 }
 
-button i, #task-running-text p{
+button i{
   display: table-cell;
   vertical-align: middle;
   font-size: 20px;
+}
+
+#task-running-text p {
+  font-size: 16px;
 }
 
 button:active {
@@ -31,7 +35,7 @@ button:disabled {
   background-color: #ccc;
 }
 
-#step-back, #step-next {
+#step-back, #step-next{
   width: 35%;
   height: 100%;
   background-color: #aaa;
@@ -41,27 +45,27 @@ button:disabled {
   background-color: #ccc;
 }
 
-#start-task, #stop-task{
+#start-task, #stop-task, #task-success, #task-failed{
   width: 50%;
   height: 100%;
   background-color: #383838;
 }
 
 
-#start-task:hover, #stop-task:hover {
+#start-task:hover, #stop-task:hover, #task-success:hover, #task-failed:hover {
   background-color: #ccc;
 }
 
-#start-task:active, #stop-task:active {
+#start-task:active, #stop-task:active, #task-success:active, #task-failed:active {
   background-color: #eee;
   transition-duration: 0.1s;
 }
 
-#start-task {
+#start-task, #task-success {
   margin-right: 5px;
 }
 
-#stop-task {
+#stop-task, #task-failed {
   margin-left: 5px;
 }
 
@@ -70,7 +74,7 @@ button:disabled {
   transition-duration: 0.1s;
 }
 
-#submit-comment-button {
+#submit-comment-button, #submit-failure-comment-button {
   background-color: #2d862d;
   width: 17%;
   height: 100%;
@@ -78,11 +82,11 @@ button:disabled {
   margin-bottom: -8px;
 }
 
-#submit-comment-button:hover {
+#submit-comment-button:hover, #submit-failure-comment-button:hover {
   background-color: #40bf40;
 }
 
-#submit-comment-button:active {
+#submit-comment-button:active, #submit-failure-comment-button:active {
   background-color: #9fdf9f;
   transition-duration: 0.1s;
 }
@@ -95,11 +99,11 @@ button:disabled {
 
 /*https://html-online.com/articles/blinking-text-css-animation/*/
 .blinking{
-    animation:blinkingText 2s infinite;
+  animation:blinkingText 2s infinite;
 }
 
 @keyframes blinkingText{
-    0%{     color: #000;    }
+    0%{     color: white;    }
     50%{    color: transparent; }
-    100%{   color: #000;    }
+    100%{   color: white;    }
 }
