@@ -4,8 +4,7 @@
   "version": "1.0",
   "manifest_version": 2,
   "content_scripts": [{
-    "matches": ["https://www.statt-theater.de/*",
-    "https://github.com/*"],
+    "matches": ["https://www.statt-theater.de/*"],
     "js": ["content.js"]
   }],
   "icons": {

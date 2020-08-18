@@ -6,6 +6,9 @@ ChromeExtensionURUT.Views = function() {
   var that = new EventTarget(),
     stepBackButton,
     stepNextButton,
+    startTaskButton,
+    stopTaskButton,
+    taskRunningText,
     contentStorage,
     headline,
     content,
@@ -18,6 +21,9 @@ ChromeExtensionURUT.Views = function() {
   function init() {
     stepBackButton = document.getElementById("step-back");
     stepNextButton = document.getElementById("step-next");
+    startTaskButton = document.getElementById("start-task");
+    stopTaskButton = document.getElementById("stop-task");
+    taskRunningText = document.getElementById("task-running-text");
     headline = document.getElementById("headline");
     content = document.getElementById("content");
     countText = document.getElementById("countText");
@@ -35,11 +41,45 @@ ChromeExtensionURUT.Views = function() {
   //updates views when buttons were clicked and state changed
   function updateViews(event) {
     fillElements(event.currentState);
+    setNavigationButtonsDisabledState(event.currentState);
   }
 
   //loads last state and corresponding views
   function loadSavedViews(currentState){
     fillElements(currentState);
+  }
+
+  function loadSavedRunningState(taskRunning){
+    if(taskRunning == 1){
+      stopTaskButton.disabled = false;
+      startTaskButton.classList.add("hidden");
+      taskRunningText.classList.remove("hidden");
+      startTaskButton.disabled = true;
+      stepNextButton.disabled = true;
+    }
+  }
+
+  function manageTaskRunning(event){
+    console.log("is event running?" + event.taskRunning);
+    startTaskButton.classList.add("hidden");
+    taskRunningText.classList.remove("hidden");
+    stopTaskButton.disabled = false;
+    startTaskButton.disabled = true;
+  }
+
+  function setNavigationButtonsDisabledState(currentState) {
+    if (contentObjects[currentState].stepBack == 0){
+      //disable stepBackButton
+      stepBackButton.disabled = true;
+    }else{
+      //enable stepBackButton
+      stepBackButton.disabled = false;
+    }
+    if(contentObjects[currentState].stepNext == 0){
+      stepNextButton.disabled = true;
+    }else{
+      stepNextButton.disabled = false;
+    }
   }
 
   /*************************** private functions ******************************/
@@ -65,6 +105,8 @@ ChromeExtensionURUT.Views = function() {
 
   that.init = init;
   that.loadSavedViews = loadSavedViews;
+  that.loadSavedRunningState = loadSavedRunningState;
+  that.manageTaskRunning = manageTaskRunning;
   that.updateViews = updateViews;
   return that;
 };

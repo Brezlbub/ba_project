@@ -1,10 +1,12 @@
 
-chrome.storage.local.set({state: 0});
-chrome.storage.local.set({taskRunning: 0});
-chrome.storage.local.set({startTime: 0});
-chrome.storage.local.set({timeDifference: 0});
+chrome.storage.sync.set({state: 0});
+chrome.storage.sync.set({taskRunning: 0});
+chrome.storage.sync.set({startTime: 0});
+chrome.storage.sync.set({timeDifference: 0});
+//inititally set true = 1
+chrome.storage.sync.set({stopButtonDisableState: 1});
 
-//https://stackoverflow.com/questions/13359421/chrome-extension-get-current-tab-from-popup
+//sync
 /*chrome.tabs.query({
     active: true,
     lastFocusedWindow: true

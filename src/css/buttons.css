@@ -1,5 +1,5 @@
 /***  Buttons ***/
-button {
+button{
   color: white;
   transition-duration: 0.5s;
   cursor: pointer;
@@ -7,7 +7,7 @@ button {
   border: none;
 }
 
-button i{
+button i, #task-running-text p{
   display: table-cell;
   vertical-align: middle;
   font-size: 20px;
@@ -23,6 +23,14 @@ button:focus {
   border: none;
 }
 
+button:disabled {
+  color: transparent;
+}
+
+#stop-task:disabled {
+  background-color: #ccc;
+}
+
 #step-back, #step-next {
   width: 35%;
   height: 100%;
@@ -33,11 +41,12 @@ button:focus {
   background-color: #ccc;
 }
 
-#start-task, #stop-task {
+#start-task, #stop-task{
   width: 50%;
   height: 100%;
   background-color: #383838;
 }
+
 
 #start-task:hover, #stop-task:hover {
   background-color: #ccc;
@@ -76,4 +85,21 @@ button:focus {
 #submit-comment-button:active {
   background-color: #9fdf9f;
   transition-duration: 0.1s;
+}
+
+#task-running-text {
+  width: 50%;
+  color: white;
+  background-color: transparent;
+}
+
+/*https://html-online.com/articles/blinking-text-css-animation/*/
+.blinking{
+    animation:blinkingText 2s infinite;
+}
+
+@keyframes blinkingText{
+    0%{     color: #000;    }
+    50%{    color: transparent; }
+    100%{   color: #000;    }
 }

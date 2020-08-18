@@ -14,7 +14,7 @@
     <header class="flex">
       <div id="headline"></div>
       <div id="navigation" class="flex">
-        <button id="step-back"><i class="fa fa-angle-left"></i></button>
+        <button id="step-back" disabled><i class="fa fa-angle-left"></i></button>
         <div id="countText"></div>
         <button id="step-next"><i class="fa fa-angle-right"></i></button>
       </div>
@@ -24,7 +24,7 @@
   </div>
 
   <div id="interactive-section">
-    <div id="comment-section">
+    <div id="comment-section" class="hidden">
       <h3>Kommentiere Probleme und Gedanken</h3>
       <div id="comment-box" class="flex">
         <textarea type="text" id="comment" name="commentBox"></textarea>
@@ -33,8 +33,9 @@
     </div>
     <h3>Starte oder Stoppe die Task</h3>
     <div id="timer-box" class="flex">
+      <div id="task-running-text" class="hidden blinking"><center><p>TASK LÄUFT...</p></center></div>
       <button id="start-task"><p>START</p></button>
-      <button id="stop-task"><p>STOP</p></button>
+      <button id="stop-task" disabled><p>STOP</p></button>
     </div>
   </div>
 

@@ -6,7 +6,8 @@ ChromeExtensionURUT.NavigationController = function() {
   var that = new EventTarget(),
     stepBackButton,
     stepNextButton,
-    currentState;
+    currentState,
+    stepBackDisableArray;
 
   /*************************** public functions *******************************/
   function init() {
@@ -14,14 +15,8 @@ ChromeExtensionURUT.NavigationController = function() {
     stepNextButton = document.getElementById("step-next");
     stepBackButton.addEventListener("click", stepBack);
     stepNextButton.addEventListener("click", stepNext);
-    chrome.storage.local.get(['state'], function(result){
+    chrome.storage.sync.get(['state'], function(result){
       currentState = result.state;
-      for(var i = 0; i <= ChromeExtensionURUT.Config.stepBackDisableArray.length; i++){
-        if(currentState == ChromeExtensionURUT.Config.stepBackDisableArray[i]){
-          console.log(ChromeExtensionURUT.Config.stepBackDisableArray[i]);
-          disableStepBackButton();
-        }
-      }
     });
     return that;
   }
@@ -32,14 +27,14 @@ ChromeExtensionURUT.NavigationController = function() {
 /*************************** event functions ********************************/
   function stepBack () {
     currentState--;
-    chrome.storage.local.set({state: currentState}, function() {
+    chrome.storage.sync.set({state: currentState}, function() {
             dispatchStateChangeEvent();
           });
   }
 
   function stepNext () {
     currentState++;
-    chrome.storage.local.set({state: currentState}, function() {
+    chrome.storage.sync.set({state: currentState}, function() {
             dispatchStateChangeEvent();
           });
   }
@@ -51,15 +46,6 @@ ChromeExtensionURUT.NavigationController = function() {
     that.dispatchEvent(changeStateEvent);
   }
 
-  function disableStepBackButton(){
-    stepBackButton.disabled = true;
-  }
-
-  function enableStepBackButton(){
-    stepBackButton.disabled = true;
-  }
-
-  that.disableStepBackButton = disableStepBackButton;
   that.init = init;
   return that;
 };
