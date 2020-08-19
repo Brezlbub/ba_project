@@ -43,14 +43,31 @@ ChromeExtensionURUT.PreSurveyController = function() {
     setOnClickListeners();
     setInputListeners();
     loadSavedPreSurveyStates();
-    getSavedInputs(ageInput);
+    getSavedInputs();
     return that;
   }
 
   function getSavedInputs(){
     chrome.storage.sync.get(['ageInput'], function(result){
         ageInput.value = result.ageInput;
-        console.log(result.ageInput);
+      });
+    chrome.storage.sync.get(['educationInput'], function(result){
+        educationInput.value = result.educationInput;
+      });
+    chrome.storage.sync.get(['professionInput'], function(result){
+        professionInput.value = result.professionInput;
+      });
+    chrome.storage.sync.get(['question1input'], function(result){
+        question1input.value = result.question1input;
+      });
+    chrome.storage.sync.get(['question2input'], function(result){
+        question2input.value = result.question2input;
+      });
+    chrome.storage.sync.get(['question3input'], function(result){
+        question3input.value = result.question3input;
+      });
+    chrome.storage.sync.get(['question4input'], function(result){
+        question4input.value = result.question4input;
       });
   }
 
@@ -199,27 +216,27 @@ ChromeExtensionURUT.PreSurveyController = function() {
   }
 
   function educationInputEntered(){
-
+    chrome.storage.sync.set({educationInput: educationInput.value});
   }
 
   function professionInputEntered(){
-
+    chrome.storage.sync.set({professionInput: professionInput.value});
   }
 
   function question1inputEntered(){
-
+    chrome.storage.sync.set({question1input: question1input.value});
   }
 
   function question2inputEntered(){
-
+    chrome.storage.sync.set({question2input: question2input.value});
   }
 
   function question3inputEntered(){
-
+    chrome.storage.sync.set({question3input: question3input.value});
   }
 
   function question4inputEntered(){
-
+    chrome.storage.sync.set({question4input: question4input.value});
   }
 
   that.init = init;
