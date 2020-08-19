@@ -20,6 +20,7 @@ ChromeExtensionURUT.Views = function() {
     content,
     interactiveSection,
     commentSection,
+    pleaseInsertText,
     proceedText,
     countText,
     contentObjects = [];
@@ -37,6 +38,7 @@ ChromeExtensionURUT.Views = function() {
     proceedText = document.getElementById("proceed-text");
     startStopText = document.getElementById("start-stop-text");
     taskRunningText = document.getElementById("task-running-text");
+    pleaseInsertText = document.getElementById("please-insert-text");
     timerSection = document.getElementById("timer-section");
     commentSection = document.getElementById("comment-section");
     taskFinishedBox = document.getElementById("task-finished-box");
@@ -177,6 +179,15 @@ ChromeExtensionURUT.Views = function() {
     }
   }
 
+  function updatePreSurveyViews(event){
+    if(event.isCorrect == true){
+      enableElement(stepNextButton);
+      showElement(stepNextButton);
+    }else{
+      showElement(pleaseInsertText);
+    }
+  }
+
   function hideElement(el){
     el.classList.add("hidden");
   }
@@ -199,6 +210,7 @@ ChromeExtensionURUT.Views = function() {
 
   that.init = init;
   that.loadSavedViews = loadSavedViews;
+  that.updatePreSurveyViews = updatePreSurveyViews;
   that.loadSavedTaskState = loadSavedTaskState;
   that.updateTaskState = updateTaskState;
   that.updateViews = updateViews;

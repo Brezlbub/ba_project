@@ -45,18 +45,18 @@ button:disabled {
   background-color: #ccc;
 }
 
-#start-task, #stop-task, #task-success, #task-failed{
+#start-task, #stop-task, #task-success, #task-failed {
   width: 50%;
   height: 100%;
   background-color: #383838;
 }
 
 
-#start-task:hover, #stop-task:hover, #task-success:hover, #task-failed:hover {
+#start-task:hover, #stop-task:hover, #task-success:hover, #task-failed:hover, #finish-vorabfragebogen-button:hover {
   background-color: #ccc;
 }
 
-#start-task:active, #stop-task:active, #task-success:active, #task-failed:active {
+#start-task:active, #stop-task:active, #task-success:active, #task-failed:active, #finish-vorabfragebogen-button:active {
   background-color: #eee;
   transition-duration: 0.1s;
 }
@@ -95,6 +95,10 @@ button:disabled {
   width: 50%;
   color: white;
   background-color: transparent;
+}
+
+#finish-vorabfragebogen-button p{
+  color: black;
 }
 
 /*https://html-online.com/articles/blinking-text-css-animation/*/

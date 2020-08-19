@@ -35,6 +35,7 @@ ChromeExtensionURUT.App = (function() {
       taskController.addEventListener("onDataSaved", saveTaskData);
       taskController.addEventListener("onTaskRunning", updateTaskState);
       presurveyController = ChromeExtensionURUT.PreSurveyController().init();
+      presurveyController.addEventListener("onCorrectInputs", updatePreSurveyViews);
   }
 
   function initViews() {
@@ -45,6 +46,10 @@ ChromeExtensionURUT.App = (function() {
   /*************************** event functions ********************************/
   function updateViews(event) {
     views.updateViews(event);
+  }
+
+  function updatePreSurveyViews(event){
+    views.updatePreSurveyViews(event);
   }
 
   function updateTaskState(event){

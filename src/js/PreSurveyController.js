@@ -4,6 +4,7 @@ ChromeExtensionURUT.PreSurveyController = function() {
   "use strict";
 
   var that = new EventTarget(),
+    finishButton,
     genderButtons,
     pcLaptopWorkButtons,
     pcLaptopPrivateButtons,
@@ -32,6 +33,7 @@ ChromeExtensionURUT.PreSurveyController = function() {
     radioInternetUsageButtons = document.getElementsByClassName("radioInternetUsageButtons");
     radioVeranstaltungsportaleButtons = document.getElementsByClassName("radioVeranstaltungsportaleButtons");
     radioSingleVeranstaltungsportaleButtons = document.getElementsByClassName("radioSingleVeranstaltungsportaleButtons");
+    finishButton = document.getElementById("finish-vorabfragebogen-button");
 
     ageInput = document.getElementById("age-input");
     educationInput = document.getElementById("education-input");
@@ -40,12 +42,15 @@ ChromeExtensionURUT.PreSurveyController = function() {
     question2input = document.getElementById("question-2");
     question3input = document.getElementById("question-3");
     question4input = document.getElementById("question-4");
+
     setOnClickListeners();
     setInputListeners();
     loadSavedPreSurveyStates();
     getSavedInputs();
     return that;
   }
+
+
 
   function getSavedInputs(){
     chrome.storage.sync.get(['ageInput'], function(result){
@@ -129,6 +134,7 @@ ChromeExtensionURUT.PreSurveyController = function() {
   }
 
   function setOnClickListeners(){
+    finishButton.addEventListener('click', checkForCorrectInputs);
     for(var i = 0; i < genderButtons.length; i++){
       genderButtons[i].addEventListener('click', genderButtonClicked);
     }
@@ -155,6 +161,34 @@ ChromeExtensionURUT.PreSurveyController = function() {
     }
     for(var i = 0; i < radioSingleVeranstaltungsportaleButtons.length; i++){
       radioSingleVeranstaltungsportaleButtons[i].addEventListener('click', radioSingleVeranstaltungsportaleButtonsClicked);
+    }
+  }
+
+  function checkForCorrectInputs(){
+    if( (ageInput.value != "") && (educationInput.value != "") && (professionInput.value != "") &&
+        (question1input.value != "") && (question2input.value != "") &&(question3input.value != "") &&
+        (question4input.value != "") && wasButtonPressed(genderButtons) && wasButtonPressed(pcLaptopPrivateButtons) &&
+          wasButtonPressed(pcLaptopWorkButtons) && (wasButtonPressed(smartphoneWorkButtons) && wasButtonPressed(smartphonePrivateButtons) &&
+          wasButtonPressed(radioKnowledgeButtons) && wasButtonPressed(radioVeranstaltungsportaleButtons) && wasButtonPressed(radioSingleVeranstaltungsportaleButtons))){
+            dispatchOnCorrectInputsEvent(true);
+    }else{
+      dispatchOnCorrectInputsEvent(false);
+    }
+  }
+
+  function dispatchOnCorrectInputsEvent(isCorrect){
+    let onCorrectInputsEvent = new Event("onCorrectInputs");
+    onCorrectInputsEvent.isCorrect = isCorrect;
+    that.dispatchEvent(onCorrectInputsEvent);
+  }
+
+  function wasButtonPressed(array){
+    for(var i = 0; i < array.length; i++){
+      if(array[i].checked == true){
+        return true;
+      }else{
+        return false;
+    }
     }
   }
 
