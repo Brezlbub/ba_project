@@ -5,7 +5,7 @@ ChromeExtensionURUT.ContentStorage = function() {
 
   //objects for content
   var that = {},
-  introduction, explanation, demographic,
+  introduction, explanation, presurvey,
   szenario, task1, task2, task3, task4, task5, task6,
   abschluss1, abschluss2, abschluss3,
   contentObjects;
@@ -17,9 +17,9 @@ ChromeExtensionURUT.ContentStorage = function() {
     introduction = {id: 1, stepBack: 0, stepNext: 1, isTask: 0, title: "Einführung", content: "Guten Tag, mein Name ist (Name) und ich werde Sie heute durch den Usability-Test führen. </br> Herzlichen Dank, dass Sie sich Zeit für diesen Test nehmen. Sie helfen uns damit sehr. Bevor wir beginnen, habe ich ein paar Informationen für Sie, die ich Ihnen vorlese, damit ich nichts vergesse. Lassen Sie mich kurz den Zweck des Tests erklären: Im Rahmen einer Seminararbeit der Universität Regensburg bitten wir Personen eine Website zu benutzen, die wir gerade verbessern wollen, damit wir Stärken und Schwächen erkennen können."};
 
     explanation = {id: 2, stepBack: 1, stepNext: 1, isTask: 0, title: "Erklärung", content: "Hier wird die Anwendung erklärt"};
-    demographic = {id: 3, stepBack: 0, stepNext: 1, isTask: 0, title: "Demographischer Fragebogen", content: ""};
+    presurvey = {id: 3, stepBack: 0, stepNext: 0, isTask: 0, title: "Vorabfragebogen", content: ""};
 
-    szenario = {id: 4, stepBack: 0, stepNext: 1, isTask: 0, title: "Hintergrundszenario 1", content: "Sie wollen sich mal wieder kulturell bereichern. Ihnen wurde das Statt Theater empfohlen, da diese eine Vielzahl unterschiedlicher Veranstaltungen bieten soll. Sie wollen sich nun auf deren Webseite über die anstehenden Events etc. informieren."};
+    szenario = {id: 4, stepBack: 0, stepNext: 1, isTask: 0, title: "Hintergrundszenario", content: "Sie wollen sich mal wieder kulturell bereichern. Ihnen wurde das Statt Theater empfohlen, da diese eine Vielzahl unterschiedlicher Veranstaltungen bieten soll. Sie wollen sich nun auf deren Webseite über die anstehenden Events etc. informieren."};
     task1 = {id: 5, stepBack: 0, stepNext: 0, isTask: 1, title: "Task 1", content: "Schauen Sie sich zunächst auf der Seite um und beschreiben Sie ihren ersten Eindruck. "};
     task2 = {id: 6, stepBack: 0, stepNext: 0, isTask: 1, title: "Task 2", content: "Sie wollen gerne im April eine Veranstaltung besuchen. Informieren Sie sich über die Künstler und deren Programm. Interessiert Sie eine der Veranstaltungen?"};
     task3 = {id: 7, stepBack: 0, stepNext: 0, isTask: 1, title: "Task 3", content: "Sie wollen gerne zu der Veranstaltung des Impro Theaters Chamäleon am 21.04.2019 gehen. Finden Sie heraus was ein Ticket kostet und bestellen Sie eines."};
@@ -35,7 +35,7 @@ ChromeExtensionURUT.ContentStorage = function() {
     contentObjects = [];
     contentObjects.push(introduction);
     contentObjects.push(explanation);
-    contentObjects.push(demographic);
+    contentObjects.push(presurvey);
     contentObjects.push(szenario);
     contentObjects.push(task1);
     contentObjects.push(task2);

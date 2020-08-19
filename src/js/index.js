@@ -5,6 +5,7 @@ ChromeExtensionURUT.App = (function() {
 
   var that = {},
     navigationController,
+    presurveyController,
     taskController,
     currentState,
     taskRunning,
@@ -33,6 +34,7 @@ ChromeExtensionURUT.App = (function() {
       taskController = ChromeExtensionURUT.TaskController().init();
       taskController.addEventListener("onDataSaved", saveTaskData);
       taskController.addEventListener("onTaskRunning", updateTaskState);
+      presurveyController = ChromeExtensionURUT.PreSurveyController().init();
   }
 
   function initViews() {

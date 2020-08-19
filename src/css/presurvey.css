@@ -1,0 +1,49 @@
+#pre-survey {
+  margin: 8px;
+}
+
+#pre-survey h3, td{
+  color:white;
+  font-size: 13px;
+  text-align: center;
+}
+#pre-survey h3{
+}
+
+#pre-survey h2 {
+  border-top: 2px solid white;
+  color: #ccc;
+  margin-bottom: 8px;
+  font-size: 13px;
+  text-align: center;
+}
+
+#pre-survey input {
+width: 100%;
+}
+
+#sex-table, #likert-IT-knowledge{
+  width: 100%;
+  text-align: center;
+}
+
+#likert-IT-knowledge table {
+  text-align: center;
+  width: 100%;
+}
+
+#likert-IT-knowledge {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#gar-keine,#experte{
+  width: 20%;
+  color: white;
+}
+
+#checkboxes-knowledge-likert {
+  width: 60%;
+  text-align: center;
+}

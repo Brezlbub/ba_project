@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="src/css/main.css">
   <link rel="stylesheet" href="src/css/buttons.css">
+  <link rel="stylesheet" href="src/css/presurvey.css">
 </head>
 
 <body>
@@ -22,6 +23,230 @@
     </header>
 
     <div id="content"></div>
+  </div>
+
+  <div id="pre-survey" class="hidden">
+
+    <div id="demographic-section">
+    </br>
+    <h3>Geschlecht</h3>
+    <table>
+      <tr id="sex-table">
+        <td><input id="male" name="genderButton" class="genderButton" type="radio" value="männlich" /></td>
+        <td><input id="female" name="genderButton" class="genderButton" type="radio" value="weiblich" /></td>
+        <td><input id="diverse" name="genderButton" class="genderButton" type="radio" value="divers" /></td>
+      </tr>
+      <tr>
+        <td>Männlich</td>
+        <td>Weiblich</td>
+        <td>Divers</td>
+      </tr>
+    </table>
+
+    <div id="age-section">
+      <div><h3>Alter: </h3></div>
+      <div><input type="text" id="age-input" name="age-input"/></div>
+    </div>
+
+    <div id="education-section">
+      <div><h3>Höchster erreichter Bildungsabschluss: </h3></div>
+      <div><input type="text" id="education-input" name="education-input"/></div>
+    </div>
+
+    <div id="profession-section">
+      <div><h3>Berufliche Tätigkeit: </h3></div>
+      <div><input type="text" id="profession-input" name="profession-input"/></div>
+    </div>
+
+    </div>
+
+    <div id="device-usage">
+    </br>
+      <h2>Wie häufig nutzen Sie folgende Geräte? (Markieren Sie eine Antwort)</h2>
+
+      </br>
+      <h3>PC/Laptop beruflich</h3>
+      <table id="pc-laptop-work">
+        <tr>
+          <td><input type="radio" name="pc-laptop-work" class="pcLaptopWorkButtons" value="1" /></td>
+          <td><input type="radio" name="pc-laptop-work" class="pcLaptopWorkButtons" value="2" /></td>
+          <td><input type="radio" name="pc-laptop-work" class="pcLaptopWorkButtons" value="3" /></td>
+          <td><input type="radio" name="pc-laptop-work" class="pcLaptopWorkButtons" value="4" /></td>
+        </tr>
+        <tr>
+          <td>Niemals</td>
+          <td>Höchstens einmal </br>pro Woche</td>
+          <td>Mehrmals wöchentlich</td>
+          <td>Täglich</td>
+        </tr>
+      </table>
+
+      </br>
+      <h3>PC/Laptop privat</h3>
+      <table id="pc-laptop-private">
+        <tr>
+          <td><input type="radio" name="pc-laptop-private" class="pcLaptopPrivateButtons" value="1" /></td>
+          <td><input type="radio" name="pc-laptop-private" class="pcLaptopPrivateButtons" value="2" /></td>
+          <td><input type="radio" name="pc-laptop-private" class="pcLaptopPrivateButtons" value="3" /></td>
+          <td><input type="radio" name="pc-laptop-private" class="pcLaptopPrivateButtons" value="4" /></td>
+        </tr>
+        <tr>
+          <td>Niemals</td>
+          <td>Höchstens einmal </br>pro Woche</td>
+          <td>Mehrmals wöchentlich</td>
+          <td>Täglich</td>
+        </tr>
+      </table>
+
+      </br>
+      <h3>Smartphone beruflich</h3>
+      <table id="smartphone-work">
+        <tr>
+          <td><input type="radio" name="smartphone-work" class="smartphoneWorkButtons" value="1" /></td>
+          <td><input type="radio" name="smartphone-work" class="smartphoneWorkButtons" value="2" /></td>
+          <td><input type="radio" name="smartphone-work" class="smartphoneWorkButtons" value="3" /></td>
+          <td><input type="radio" name="smartphone-work" class="smartphoneWorkButtons" value="4" /></td>
+        </tr>
+        <tr>
+          <td>Niemals</td>
+          <td>Höchstens einmal </br>pro Woche</td>
+          <td>Mehrmals wöchentlich</td>
+          <td>Täglich</td>
+        </tr>
+      </table>
+
+      </br>
+      <h3>Smartphone privat</h3>
+      <table id="smartphone-private">
+        <tr>
+          <td><input type="radio" name="smartphone-private" class="smartphonePrivateButtons" value="1" /></td>
+          <td><input type="radio" name="smartphone-private" class="smartphonePrivateButtons" value="2" /></td>
+          <td><input type="radio" name="smartphone-private" class="smartphonePrivateButtons" value="3" /></td>
+          <td><input type="radio" name="smartphone-private" class="smartphonePrivateButtons" value="4" /></td>
+        </tr>
+        <tr>
+          <td>Niemals</td>
+          <td>Höchstens einmal </br>pro Woche</td>
+          <td>Mehrmals wöchentlich</td>
+          <td>Täglich</td>
+        </tr>
+      </table>
+    </div>
+
+    </br>
+    <h2>Wie würden Sie auf einer Skala von 1 (Keine) bis 7 (Experte) Ihre IT-Kenntnisse einschätzen?</h2>
+    <div id="likert-IT-knowledge">
+      <div id="gar-keine"><p>Keine</p></div>
+      <div id="radio-knowledge-likert">
+      <table>
+        <tr>
+            <td><input type="radio" name="radio-knowledge" class="radioKnowledgeButtons" value="1" /></td>
+            <td><input type="radio" name="radio-knowledge" class="radioKnowledgeButtons" value="2" /></td>
+            <td><input type="radio" name="radio-knowledge" class="radioKnowledgeButtons" value="3" /></td>
+            <td><input type="radio" name="radio-knowledge" class="radioKnowledgeButtons" value="4" /></td>
+            <td><input type="radio" name="radio-knowledge" class="radioKnowledgeButtons" value="5" /></td>
+            <td><input type="radio" name="radio-knowledge" class="radioKnowledgeButtons" value="6" /></td>
+            <td><input type="radio" name="radio-knowledge" class="radioKnowledgeButtons" value="7" /></td>
+        </tr>
+      </table>
+    </div>
+      <div id="experte"><p>Experte</p></div>
+    </div>
+
+    <div id="service-usage">
+    </br>
+      <h2>Wie häufig nutzen Sie folgende Dienste? (Markieren Sie eine Antwort)</h2>
+
+      </br>
+      <h3>Internet</h3>
+      <table id="internet-usage">
+        <tr>
+          <td><input type="radio" name="radio-internet-usage" class="radioInternetUsageButtons" value="1" /></td>
+          <td><input type="radio" name="radio-internet-usage" class="radioInternetUsageButtons" value="2" /></td>
+          <td><input type="radio" name="radio-internet-usage" class="radioInternetUsageButtons" value="3" /></td>
+          <td><input type="radio" name="radio-internet-usage" class="radioInternetUsageButtons" value="4" /></td>
+        </tr>
+        <tr>
+          <td>Niemals</td>
+          <td>Höchstens einmal </br>pro Woche</td>
+          <td>Mehrmals wöchentlich</td>
+          <td>Täglich</td>
+        </tr>
+      </table>
+
+      </br>
+      </br>
+      <h3>Veranstaltungsportale</h3>
+      <table id="veranstaltungsportale-usage">
+        <tr>
+          <td><input type="radio" name="radio-veranstaltungsportale" class="radioVeranstaltungsportaleButtons" value="1" /></td>
+          <td><input type="radio" name="radio-veranstaltungsportale" class="radioVeranstaltungsportaleButtons" value="2" /></td>
+          <td><input type="radio" name="radio-veranstaltungsportale" class="radioVeranstaltungsportaleButtons" value="3" /></td>
+          <td><input type="radio" name="radio-veranstaltungsportale" class="radioVeranstaltungsportaleButtons" value="4" /></td>
+        </tr>
+        <tr>
+          <td>Niemals</td>
+          <td>Höchstens einmal </br>pro Woche</td>
+          <td>Mehrmals wöchentlich</td>
+          <td>Täglich</td>
+        </tr>
+      </table>
+
+      </br>
+      <h3>Webseiten einzelner Veranstaltungsportale</h3>
+      <table id="single-veranstaltungsportale-usage">
+        <tr>
+          <td><input type="radio" name="radio-single-veranstaltungsportale" class="radioSingleVeranstaltungsportaleButtons" value="1" /></td>
+          <td><input type="radio" name="radio-single-veranstaltungsportale" class="radioSingleVeranstaltungsportaleButtons" value="2" /></td>
+          <td><input type="radio" name="radio-single-veranstaltungsportale" class="radioSingleVeranstaltungsportaleButtons" value="3" /></td>
+          <td><input type="radio" name="radio-single-veranstaltungsportale" class="radioSingleVeranstaltungsportaleButtons" value="4" /></td>
+        </tr>
+        <tr>
+          <td>Niemals</td>
+          <td>Höchstens einmal </br>pro Woche</td>
+          <td>Mehrmals wöchentlich</td>
+          <td>Täglich</td>
+        </tr>
+      </table>
+    </div>
+
+    <br />
+    <br />
+    <div id="final-pre-survey-questions">
+
+      <div id="question-1">
+      </br>
+      <div><h2>Wie viele kulturelle Veranstaltungen (Konzerte, Theater, Lesungen...) haben Sie in den letzten 12 Monaten besucht?</h2></div></br>
+
+        <div><input type="text" id="question-1" name="question-1"/></div>
+      </div>
+      <br />
+
+      <div id="question-2">
+      </br>
+      <div><h2>Wie informieren Sie sich über bzw. finden Veranstaltungen, die Sie besuchen wollen?</h2></div></br>
+
+        <div><input type="text" id="question-2" name="question-2"/></div>
+      </div>
+      <br />
+
+      <div id="question-3">
+      </br>
+      <div><h2>Waren Sie schon mal im 'Statt Theater' in Regensburg? Wenn ja, warum?</h2></div></br>
+
+        <div><input type="text" id="question-3" name="question-3"/></div>
+      </div>
+      <br />
+
+      <div id="question-4">
+      </br>
+      <div><h2>Wie gut kennen Sie die Webseite des 'Statt Theaters' Regensburg?</h2></div></br>
+
+        <div><input type="text" id="question-4" name="question-4"/></div>
+      </div>
+    </div>
+    <br />
+
   </div>
 
   <div id="interactive-section">
@@ -71,6 +296,7 @@
 </body>
 <script type="application/javascript" src="src/js/NavigationController.js"></script>
 <script type="application/javascript" src="src/js/TaskController.js"></script>
+<script type="application/javascript" src="src/js/PreSurveyController.js"></script>
 <script type="application/javascript" src="src/js/Config.js"></script>
 <script type="application/javascript" src="src/js/Views.js"></script>
 <script type="application/javascript" src="src/js/ContentStorage.js"></script>

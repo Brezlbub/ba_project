@@ -16,6 +16,7 @@ ChromeExtensionURUT.Views = function() {
     timerSection,
     startStopText,
     headline,
+    preSurvey,
     content,
     interactiveSection,
     commentSection,
@@ -29,6 +30,7 @@ ChromeExtensionURUT.Views = function() {
     stepNextButton = document.getElementById("step-next");
     startTaskButton = document.getElementById("start-task");
     stopTaskButton = document.getElementById("stop-task");
+    preSurvey = document.getElementById("pre-survey");
     headline = document.getElementById("headline");
     content = document.getElementById("content");
     countText = document.getElementById("countText");
@@ -75,11 +77,12 @@ ChromeExtensionURUT.Views = function() {
   //shows, hides, enables oder disables or sets contents of elements according to
   // current state of taskIsRunning
   function manageTaskRunning(taskState, currentState){
+    managePreSurveyView(currentState);
     if(taskState == ChromeExtensionURUT.Config.taskNotStarted){
       resetViews();
       if(contentObjects[currentState].isTask == 1){
         disableElement(stepNextButton);
-      }else{
+      }else if (contentObjects[currentState].id != 3){
         enableElement(stepNextButton);
       }
       console.log("task state: " + taskState);
@@ -149,6 +152,7 @@ ChromeExtensionURUT.Views = function() {
 
   /*************************** private functions ******************************/
   function fillElements(currentState){
+    managePreSurveyView(currentState);
     countText.innerHTML = currentState + "/" + contentObjects.length;
     headline.innerHTML = contentObjects[currentState].title;
     content.innerHTML = contentObjects[currentState].content;
@@ -157,6 +161,19 @@ ChromeExtensionURUT.Views = function() {
       hideElement(interactiveSection);
     }else{
       showElement(interactiveSection);
+    }
+  }
+
+  function managePreSurveyView(currentState){
+    if(contentObjects[currentState].id == 3){
+      showElement(preSurvey);
+      if(contentObjects[currentState].stepNext == 0){
+        disableElement(stepNextButton);
+      }else{
+        enableElement(stepNextButton);
+      }
+    }else{
+      hideElement(preSurvey);
     }
   }
 
