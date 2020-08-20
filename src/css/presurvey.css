@@ -7,8 +7,6 @@
   font-size: 13px;
   text-align: center;
 }
-#pre-survey h3{
-}
 
 #pre-survey h2 {
   border-top: 2px solid white;
@@ -22,28 +20,29 @@
 width: 100%;
 }
 
-#sex-table, #likert-IT-knowledge{
-  width: 100%;
-  text-align: center;
-}
-
-#likert-IT-knowledge table {
-  text-align: center;
+#sex-section {
   width: 100%;
 }
 
-#likert-IT-knowledge {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+#radio-knowledge-likert table {
+  flex-grow: 6;
+  font-size: 20px;
 }
 
-#gar-keine,#experte{
-  width: 20%;
+#radio-knowledge-likert {
+  width: 100%;
+  height: 60px;
+  justify-content: center;
+}
+
+#gar-keine, #experte{
   color: white;
+  flex-grow: 2;
+  text-align: center;
 }
 
-#checkboxes-knowledge-likert {
-  width: 60%;
-  text-align: center;
+input[type=radio] {
+    border: 0px;
+    width: 80%;
+    height: 1.2em;
 }

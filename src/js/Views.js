@@ -23,6 +23,7 @@ ChromeExtensionURUT.Views = function() {
     timerSection,
     describeSection,
     pleaseInsertText,
+    pleaseInsertTextSUS,
     proceedText,
     countText,
     contentObjects = [];
@@ -42,6 +43,7 @@ ChromeExtensionURUT.Views = function() {
     startStopText = document.getElementById("start-stop-text");
     taskRunningText = document.getElementById("task-running-text");
     pleaseInsertText = document.getElementById("please-insert-text");
+    pleaseInsertTextSUS = document.getElementById("please-insert-text-sus");
     timerSection = document.getElementById("timer-section");
     commentSection = document.getElementById("comment-section");
     describeSection = document.getElementById("describe-section");
@@ -86,15 +88,17 @@ ChromeExtensionURUT.Views = function() {
   function manageTaskRunning(taskState, currentState){
 
     manageContentObjectsByState(currentState);
-
-    if(taskState == ChromeExtensionURUT.Config.taskNotStarted){
+    if(currentState == ChromeExtensionURUT.Config.abschluss){
+      hideElement(susSurvey);
+      hideElement(stepNextButton);
+      disableElement(stepNextButton);
+    }else if(taskState == ChromeExtensionURUT.Config.taskNotStarted){
       resetViews();
       if(contentObjects[currentState].isTask == 1){
         disableElement(stepNextButton);
       }else if (contentObjects[currentState].id != 3){
         enableElement(stepNextButton);
       }
-      console.log("task state: " + taskState);
       startStopText.innerHTML = ChromeExtensionURUT.Config.startTaskText;
     }else if(taskState == ChromeExtensionURUT.Config.taskIsRunning){
       startStopText.innerHTML = ChromeExtensionURUT.Config.stopTaskText;
@@ -104,22 +108,18 @@ ChromeExtensionURUT.Views = function() {
       hideElement(startTaskButton);
       enableElement(stopTaskButton);
       disableElement(startTaskButton);
-      console.log("task state: " + taskState);
     }else if(taskState == ChromeExtensionURUT.Config.taskIsFinished){
       showElement(taskFinishedSection);
       hideElement(interactiveSection);
-      console.log("task state: " + taskState);
     }else if(taskState == ChromeExtensionURUT.Config.taskSuccess){
       enableElement(stepNextButton);
       blinkElement(stepNextButton);
       hideElement(taskFinishedBox);
       showElement(proceedText);
-      console.log("task state: " + taskState);
     }else if(taskState == ChromeExtensionURUT.Config.taskFailed){
       hideElement(taskFinishedBox);
       showElement(taskFailureSection);
       showElement(taskFinishedSection);
-      console.log("task state: " + taskState);
     }else if(taskState == ChromeExtensionURUT.Config.taskFailureCommentSubmitted){
       showElement(proceedText);
       hideElement(taskRunningText);
@@ -127,7 +127,6 @@ ChromeExtensionURUT.Views = function() {
       enableElement(stepNextButton);
       hideElement(taskFailureSection);
       hideElement(taskFinishedSection);
-      console.log("task state: " + taskState);
     }
   }
 
@@ -147,7 +146,6 @@ ChromeExtensionURUT.Views = function() {
   }
 
   function manageContentObjectsByState(currentState){
-    console.log("co currentState " + contentObjects[currentState].id + " sus "+ ChromeExtensionURUT.Config.sus);
     if(currentState == ChromeExtensionURUT.Config.preSurvey){
       managePreSurveyView(currentState);
     }
@@ -159,6 +157,15 @@ ChromeExtensionURUT.Views = function() {
     if(contentObjects[currentState].id == ChromeExtensionURUT.Config.sus){
       hideElement(describeSection);
       showElement(susSurvey);
+      disableElement(stepNextButton);
+      hideElement(stepNextButton);
+    }
+
+    if(contentObjects[currentState].id == ChromeExtensionURUT.Config.abschluss){
+      hideElement(describeSection);
+      hideElement(susSurvey);
+      disableElement(stepNextButton);
+      hideElement(stepNextButton);
     }
 
   }
@@ -174,6 +181,7 @@ ChromeExtensionURUT.Views = function() {
     }else{
       stepNextButton.disabled = false;
     }
+    deBlinkElement(stepNextButton);
   }
 
   /*************************** private functions ******************************/
@@ -192,17 +200,17 @@ ChromeExtensionURUT.Views = function() {
 
   function managePreSurveyView(currentState){
     chrome.storage.sync.get(['surveyFinished'], function(result){
-      if((result.surveyFinished == 1) && (contentObjects[currentState].id == 3)){
+      if((result.surveyFinished == ChromeExtensionURUT.Config.surveyFinished) && (contentObjects[currentState].id == ChromeExtensionURUT.Config.preSurvey)){
         enableElement(stepNextButton);
         showElement(stepNextButton);
-        pleaseInsertText.innerHTML = "Klicke oben rechts auf Weiter.";
+        pleaseInsertText.innerHTML = ChromeExtensionURUT.Config.clickNextText;
       }else{
-        pleaseInsertText.innerHTML = "Bitte füllen Sie alle Felder aus.";
+        pleaseInsertText.innerHTML = ChromeExtensionURUT.Config.pleaseFillInputsText;
       }
     });
-    if(contentObjects[currentState].id == 3){
+    if(contentObjects[currentState].id == ChromeExtensionURUT.Config.preSurvey){
       showElement(preSurvey);
-      if(contentObjects[currentState].stepNext == 0){
+      if(contentObjects[currentState].stepNext == ChromeExtensionURUT.Config.false){
         disableElement(stepNextButton);
       }else{
         enableElement(stepNextButton);
@@ -214,34 +222,47 @@ ChromeExtensionURUT.Views = function() {
 
   function manageSUSsurveyViews(){
     chrome.storage.sync.get(['surveyFinished'], function(result){
-      if((result.surveyFinished == 1) && (contentObjects[currentState].id == 3)){
+      if((result.surveyFinished == ChromeExtensionURUT.Config.surveyFinished) && (contentObjects[currentState].id == ChromeExtensionURUT.Config.sus)){
         enableElement(stepNextButton);
         showElement(stepNextButton);
-        pleaseInsertText.innerHTML = "Klicke oben rechts auf Weiter.";
+        blinking(stepNextButton);
+        pleaseInsertText.innerHTML = ChromeExtensionURUT.Config.clickNextText;
       }else{
-        pleaseInsertText.innerHTML = "Bitte füllen Sie alle Felder aus.";
+        pleaseInsertText.innerHTML = ChromeExtensionURUT.Config.pleaseFillInputsText;
+        disableElement(stepNextButton);
       }
     });
-    if(contentObjects[currentState].id == 3){
-      showElement(preSurvey);
-      if(contentObjects[currentState].stepNext == 0){
+    if(contentObjects[currentState].id == ChromeExtensionURUT.Config.sus){
+      showElement(susSurvey);
+      if(contentObjects[currentState].stepNext == ChromeExtensionURUT.Config.false){
         disableElement(stepNextButton);
       }else{
         enableElement(stepNextButton);
       }
     }else{
-      hideElement(preSurvey);
+      hideElement(susSurvey);
     }
   }
 
   function updatePreSurveyViews(event){
     if(event.isCorrect == true){
-      chrome.storage.sync.set({surveyFinished: 1});
+      chrome.storage.sync.set({surveyFinished: ChromeExtensionURUT.Config.surveyFinished});
       enableElement(stepNextButton);
       showElement(stepNextButton);
-      pleaseInsertText.innerHTML = "Klicke oben rechts auf Weiter.";
+      pleaseInsertText.innerHTML = ChromeExtensionURUT.Config.clickNextText;
     }else{
-      pleaseInsertText.innerHTML = "Bitte füllen Sie alle Felder aus.";
+      pleaseInsertText.innerHTML = ChromeExtensionURUT.Config.pleaseFillInputsText;
+    }
+  }
+
+  function updateSUSSurveyViews(event){
+    if(event.isCorrect == true){
+      chrome.storage.sync.set({surveyFinished: ChromeExtensionURUT.Config.surveyFinished});
+      enableElement(stepNextButton);
+      showElement(stepNextButton);
+      pleaseInsertTextSUS.innerHTML = ChromeExtensionURUT.Config.clickNextText;
+    }else{
+      pleaseInsertTextSUS.innerHTML = ChromeExtensionURUT.Config.pleaseFillInputsText;
     }
   }
 
@@ -265,9 +286,14 @@ ChromeExtensionURUT.Views = function() {
     el.classList.add("blinking");
   }
 
+  function deBlinkElement(el){
+    el.classList.remove("blinking");
+  }
+
   that.init = init;
   that.loadSavedViews = loadSavedViews;
   that.updatePreSurveyViews = updatePreSurveyViews;
+  that.updateSUSSurveyViews = updateSUSSurveyViews;
   that.loadSavedTaskState = loadSavedTaskState;
   that.updateTaskState = updateTaskState;
   that.updateViews = updateViews;

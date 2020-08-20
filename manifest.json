@@ -30,6 +30,7 @@
     "tabs",
     "storage",
     "identity",
-    "activeTab"
+    "activeTab",
+    "downloads"
   ]
 }

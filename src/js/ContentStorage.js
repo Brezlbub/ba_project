@@ -14,7 +14,7 @@ ChromeExtensionURUT.ContentStorage = function() {
   //fill variables contentObjects
   function init() {
 
-    introduction = {id: 1, stepBack: 0, stepNext: 1, isTask: 0, title: "Einführung", content: "Guten Tag, mein Name ist (Name) und ich werde Sie heute durch den Usability-Test führen. </br> Herzlichen Dank, dass Sie sich Zeit für diesen Test nehmen. Sie helfen uns damit sehr. Bevor wir beginnen, habe ich ein paar Informationen für Sie, die ich Ihnen vorlese, damit ich nichts vergesse. Lassen Sie mich kurz den Zweck des Tests erklären: Im Rahmen einer Seminararbeit der Universität Regensburg bitten wir Personen eine Website zu benutzen, die wir gerade verbessern wollen, damit wir Stärken und Schwächen erkennen können."};
+    introduction = {id: 1, stepBack: 0, stepNext: 1, isTask: 0, title: "Einführung", content: "Hallo, mein Name ist Julian Sänze. Dieser Test wurde im Rahmen meiner Bachelorarbeit der Universität Regensburg entwickelt. </br> Herzlichen Dank, dass Sie sich Zeit für diesen Test nehmen. Sie helfen mir sehr damit. Bevor wir beginnen, habe ich ein paar Informationen für Sie, die ich Ihnen vorlese, damit ich nichts vergesse. Lassen Sie mich kurz den Zweck des Tests erklären: Im Rahmen einer Seminararbeit der Universität Regensburg bitten wir Personen eine Website zu benutzen, die wir gerade verbessern wollen, damit wir Stärken und Schwächen erkennen können."};
 
     explanation = {id: 2, stepBack: 1, stepNext: 1, isTask: 0, title: "Erklärung", content: "Hier wird die Anwendung erklärt"};
     presurvey = {id: 3, stepBack: 0, stepNext: 0, isTask: 0, title: "Vorabfragebogen", content: ""};
@@ -32,7 +32,7 @@ ChromeExtensionURUT.ContentStorage = function() {
     question2 = {id: 12, stepBack: 0, stepNext: 1, isTask: 0, title: "Beschreibung 2", content: "Beschreiben Sie kurz was Ihnen <b>nach</b> der Bearbeitung der Aufgaben besonders an der Seite aufgefallen ist. </br></br><b>Was fanden Sie gut?</b>"};
     question3 = {id: 13, stepBack: 0, stepNext: 1, isTask: 0, title: "Beschreibung 3", content: "Beschreiben Sie kurz was Ihnen <b>nach</b> der Bearbeitung der Aufgaben besonders an der Seite aufgefallen ist. </br></br><b>Was würden Sie verbessern?</b>"};
 
-    sus = {id: 14, stepBack: 0, stepNext: 1, isTask: 0, title: "Systembefragung (SUS)", content: "Bewerten Sie zum Abschluss die Anwendung, mit der Sie den Test durchgeführt haben."};
+    sus = {id: 14, stepBack: 0, stepNext: 0, isTask: 0, title: "Systembefragung (SUS)", content: "Bewerten Sie zum Abschluss die Anwendung, mit der Sie den Test durchgeführt haben."};
     abschluss = {id: 15, stepBack: 0, stepNext: 0, isTask: 0, title: "Abschluss", content: "Herzlichen Dank für die Teilnahme an meiner Studie!</br></br> Zum Schluss bitte noch auf den Button drücken.</br>Danach wird eine Datei runtergeladen. Diese bitte an folgende E-Mail als Anhang schicken: </br></br> Julian.Saenze@stud.uni-regensburg.de"};
 
     contentObjects = [];

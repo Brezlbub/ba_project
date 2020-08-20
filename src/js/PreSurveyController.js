@@ -15,8 +15,6 @@ ChromeExtensionURUT.PreSurveyController = function() {
     radioVeranstaltungsportaleButtons,
     radioSingleVeranstaltungsportaleButtons,
     ageInput,
-    educationInput,
-    professionInput,
     question1input,
     question2input,
     question3input,
@@ -36,8 +34,6 @@ ChromeExtensionURUT.PreSurveyController = function() {
     finishButton = document.getElementById("finish-vorabfragebogen-button");
 
     ageInput = document.getElementById("age-input");
-    educationInput = document.getElementById("education-input");
-    professionInput = document.getElementById("profession-input");
     question1input = document.getElementById("question-1");
     question2input = document.getElementById("question-2");
     question3input = document.getElementById("question-3");
@@ -55,12 +51,6 @@ ChromeExtensionURUT.PreSurveyController = function() {
   function getSavedInputs(){
     chrome.storage.sync.get(['ageInput'], function(result){
         ageInput.value = result.ageInput;
-      });
-    chrome.storage.sync.get(['educationInput'], function(result){
-        educationInput.value = result.educationInput;
-      });
-    chrome.storage.sync.get(['professionInput'], function(result){
-        professionInput.value = result.professionInput;
       });
     chrome.storage.sync.get(['question1input'], function(result){
         question1input.value = result.question1input;
@@ -125,8 +115,6 @@ ChromeExtensionURUT.PreSurveyController = function() {
 
   function setInputListeners(){
     ageInput.addEventListener('input', ageInputEntered);
-    educationInput.addEventListener('input', educationInputEntered);
-    professionInput.addEventListener('input', professionInputEntered);
     question1input.addEventListener('input', question1inputEntered);
     question2input.addEventListener('input', question2inputEntered);
     question3input.addEventListener('input', question3inputEntered);
@@ -165,7 +153,7 @@ ChromeExtensionURUT.PreSurveyController = function() {
   }
 
   function checkForCorrectInputs(){
-    if( wasInputEntered(ageInput) && wasInputEntered(educationInput) && wasInputEntered(professionInput) &&
+    if( wasInputEntered(ageInput) &&
         wasInputEntered(question1input) && wasInputEntered(question2input) && wasInputEntered(question3input) &&
         wasInputEntered(question4input) && wasButtonPressed(genderButtons) && wasButtonPressed(pcLaptopPrivateButtons) &&
           wasButtonPressed(pcLaptopWorkButtons) && (wasButtonPressed(smartphoneWorkButtons) && wasButtonPressed(smartphonePrivateButtons) &&
@@ -174,12 +162,6 @@ ChromeExtensionURUT.PreSurveyController = function() {
     }else{
       dispatchOnCorrectInputsEvent(false);
     }
-  }
-
-  function dispatchOnCorrectInputsEvent(isCorrect){
-    let onCorrectInputsEvent = new Event("onCorrectInputs");
-    onCorrectInputsEvent.isCorrect = isCorrect;
-    that.dispatchEvent(onCorrectInputsEvent);
   }
 
   function wasInputEntered(inputField){
@@ -259,14 +241,6 @@ ChromeExtensionURUT.PreSurveyController = function() {
     chrome.storage.sync.set({ageInput: ageInput.value});
   }
 
-  function educationInputEntered(){
-    chrome.storage.sync.set({educationInput: educationInput.value});
-  }
-
-  function professionInputEntered(){
-    chrome.storage.sync.set({professionInput: professionInput.value});
-  }
-
   function question1inputEntered(){
     chrome.storage.sync.set({question1input: question1input.value});
   }
@@ -281,6 +255,12 @@ ChromeExtensionURUT.PreSurveyController = function() {
 
   function question4inputEntered(){
     chrome.storage.sync.set({question4input: question4input.value});
+  }
+
+  function dispatchOnCorrectInputsEvent(isCorrect){
+    let onCorrectInputsEvent = new Event("onCorrectInputs");
+    onCorrectInputsEvent.isCorrect = isCorrect;
+    that.dispatchEvent(onCorrectInputsEvent);
   }
 
   that.init = init;

@@ -31,32 +31,27 @@
     <div id="demographic-section">
     </br>
     <h3>Geschlecht</h3>
-    <table>
-      <tr id="sex-table">
-        <td><input id="male" name="genderButton" class="genderButton" type="radio" value="männlich" /></td>
-        <td><input id="female" name="genderButton" class="genderButton" type="radio" value="weiblich" /></td>
-        <td><input id="diverse" name="genderButton" class="genderButton" type="radio" value="divers" /></td>
-      </tr>
-      <tr>
-        <td>Männlich</td>
-        <td>Weiblich</td>
-        <td>Divers</td>
-      </tr>
-    </table>
+    <div id="sex-section">
+      <center>
+      <table>
+
+        <tr id="sex-table">
+          <td><input id="male" name="genderButton" class="genderButton" type="radio" value="männlich" /></td>
+          <td><input id="female" name="genderButton" class="genderButton" type="radio" value="weiblich" /></td>
+          <td><input id="diverse" name="genderButton" class="genderButton" type="radio" value="divers" /></td>
+        </tr>
+        <tr>
+          <td>Männlich</td>
+          <td>Weiblich</td>
+          <td>Divers</td>
+        </tr>
+      </table>
+    </center>
+    </div>
 
     <div id="age-section">
       <div><h3>Alter: </h3></div>
       <div><input type="text" id="age-input" name="age-input"/></div>
-    </div>
-
-    <div id="education-section">
-      <div><h3>Höchster erreichter Bildungsabschluss: </h3></div>
-      <div><input type="text" id="education-input" name="education-input"/></div>
-    </div>
-
-    <div id="profession-section">
-      <div><h3>Berufliche Tätigkeit: </h3></div>
-      <div><input type="text" id="profession-input" name="profession-input"/></div>
     </div>
 
     </div>
@@ -137,8 +132,8 @@
     </br>
     <h2>Wie würden Sie auf einer Skala von 1 (Keine) bis 7 (Experte) Ihre IT-Kenntnisse einschätzen?</h2>
     <div id="likert-IT-knowledge">
+      <div id="radio-knowledge-likert" class="flex">
       <div id="gar-keine"><p>Keine</p></div>
-      <div id="radio-knowledge-likert">
       <table>
         <tr>
             <td><input type="radio" name="radio-knowledge" class="radioKnowledgeButtons" value="1" /></td>
@@ -150,8 +145,8 @@
             <td><input type="radio" name="radio-knowledge" class="radioKnowledgeButtons" value="7" /></td>
         </tr>
       </table>
+    <div id="experte"><p>Experte</p></div>
     </div>
-      <div id="experte"><p>Experte</p></div>
     </div>
 
     <div id="service-usage">
@@ -249,7 +244,7 @@
     <br />
 
     <div id="finish-vorabfragebogen-section" class="flex">
-      <button id="finish-vorabfragebogen-button" class="finish-button"><p>WEITER</p></button>
+      <button id="finish-vorabfragebogen-button" class="finish-button"><p>BESTÄTIGEN</p></button>
       <h3 id="please-insert-text"></h3>
     </div>
   </div>
@@ -276,7 +271,6 @@
   </div>
 
   <div id="task-finished-section" class="hidden">
-
     <div id="task-finished-box">
       <h3>Wurde die Task erfolgreich beendet?</h3>
       <div id="task-finished-answer-box" class="flex">
@@ -292,7 +286,6 @@
         <button id="submit-failure-comment-button" class="submitButton"><i class="fa fa-check"></i></button>
       </div>
     </div>
-
   </div>
 
   <div id="proceed-text" class="hidden"><center><p>Drücke oben rechts auf 'Weiter'.</p></center></div>
@@ -467,7 +460,7 @@
     </div>
     </br>
     <div id="finish-sus-section" class="flex">
-      <button id="finish-sus-button" class="finish-button"><p>WEITER</p></button>
+      <button id="finish-sus-button" class="finish-button"><p>BESTÄTIGEN</p></button>
       <h3 id="please-insert-text-sus"></h3>
     </div>
   </div>
@@ -479,6 +472,7 @@
 <script type="application/javascript" src="src/js/TaskController.js"></script>
 <script type="application/javascript" src="src/js/PreSurveyController.js"></script>
 <script type="application/javascript" src="src/js/SUSController.js"></script>
+<script type="application/javascript" src="src/js/JSONDownloader.js"></script>
 <script type="application/javascript" src="src/js/Config.js"></script>
 <script type="application/javascript" src="src/js/Views.js"></script>
 <script type="application/javascript" src="src/js/ContentStorage.js"></script>

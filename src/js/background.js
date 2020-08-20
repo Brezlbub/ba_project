@@ -9,15 +9,14 @@ chrome.storage.sync.set({timeDifference: 0});
 //Vorabfragebogen
 //0 = survey not finished, 1 = survey finished
 chrome.storage.sync.set({surveyFinished: 0});
+
+chrome.storage.sync.set({genderButton: ""});
 chrome.storage.sync.set({ageInput: ""});
-chrome.storage.sync.set({educationInput: ""});
-chrome.storage.sync.set({professionInput: ""});
 chrome.storage.sync.set({question1input: ""});
 chrome.storage.sync.set({question2input: ""});
 chrome.storage.sync.set({question3input: ""});
 chrome.storage.sync.set({question4input: ""});
 
-chrome.storage.sync.set({genderButton: ""});
 chrome.storage.sync.set({pcLaptopWorkButtons: ""});
 chrome.storage.sync.set({pcLaptopPrivateButtons: ""});
 chrome.storage.sync.set({smartphoneWorkButtons: ""});

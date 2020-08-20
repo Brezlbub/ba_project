@@ -137,12 +137,6 @@ ChromeExtensionURUT.SUSController = function() {
     }
   }
 
-  function dispatchOnCorrectInputsEvent(isCorrect){
-    let onCorrectInputsEvent = new Event("onCorrectInputs");
-    onCorrectInputsEvent.isCorrect = isCorrect;
-    that.dispatchEvent(onCorrectInputsEvent);
-  }
-
   function wasButtonPressed(array){
     var result = true;
     for(var i = 0; i < array.length; i++){
@@ -215,14 +209,10 @@ ChromeExtensionURUT.SUSController = function() {
         chrome.storage.sync.set({sus10: sus10Buttons[i].value});}}
   }
 
-
-  /*************************** event functions ********************************/
-
-  /*************************** private functions ******************************/
-  function dispatchSaveDataEvent() {
-    let saveDataEvent = new Event("onDataSaved");
-    saveDataEvent.taskTimeInSeconds = passedSeconds;
-    that.dispatchEvent(saveDataEvent);
+  function dispatchOnCorrectInputsEvent(isCorrect){
+    let onCorrectInputsEvent = new Event("onCorrectInputs");
+    onCorrectInputsEvent.isCorrect = isCorrect;
+    that.dispatchEvent(onCorrectInputsEvent);
   }
 
   that.init = init;
