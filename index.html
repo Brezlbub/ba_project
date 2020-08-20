@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="src/css/main.css">
   <link rel="stylesheet" href="src/css/buttons.css">
   <link rel="stylesheet" href="src/css/presurvey.css">
+  <link rel="stylesheet" href="src/css/susSurvey.css">
 </head>
 
 <body>
@@ -248,7 +249,7 @@
     <br />
 
     <div id="finish-vorabfragebogen-section" class="flex">
-      <button id="finish-vorabfragebogen-button"><p>WEITER</p></button>
+      <button id="finish-vorabfragebogen-button" class="finish-button"><p>WEITER</p></button>
       <h3 id="please-insert-text"></h3>
     </div>
   </div>
@@ -257,9 +258,9 @@
 
     <div id="comment-section" class="hidden">
       <h3>Kommentiere Probleme und Gedanken</h3>
-      <div id="comment-box" class="flex">
-        <textarea type="text" id="comment" name="commentBox"></textarea>
-        <button id="submit-comment-button"><i class="fa fa-check"></i></button>
+      <div id="comment-box" class="flex commentBox">
+        <textarea type="text" id="comment" name="comment" class="comment"></textarea>
+        <button id="submit-comment-button" class="submitButton"><i class="fa fa-check"></i></button>
       </div>
     </div>
 
@@ -286,9 +287,9 @@
 
     <div id="task-failure-section" class="hidden">
       <h3>Warum wurde die Task nicht erfolgreich beendet?</h3>
-      <div id="task-failure-box" class="flex">
-        <textarea type="text" id="failure-comment" name="commentBox"></textarea>
-        <button id="submit-failure-comment-button"><i class="fa fa-check"></i></button>
+      <div id="task-failure-box" class="flex commentBox">
+        <textarea type="text" id="failure-comment" name="comment" class="comment"></textarea>
+        <button id="submit-failure-comment-button" class="submitButton"><i class="fa fa-check"></i></button>
       </div>
     </div>
 
@@ -296,11 +297,188 @@
 
   <div id="proceed-text" class="hidden"><center><p>Drücke oben rechts auf 'Weiter'.</p></center></div>
 
+  <div id="describe-section" class="hidden">
+    <h3>Antwort</h3>
+    <div id="describe-box" class="flex commentBox">
+      <textarea type="text" id="describe-comment" name="describeBox" class="comment"></textarea>
+      <button id="describe-comment-button" class="submitButton"><i class="fa fa-check"></i></button>
+    </div>
+  </div>
+
+  </br>
+  <div id="sus-survey" class="hidden">
+    <h3>Ich kann mir sehr gut vorstellen, das System regelmäßig zu nutzen.</h3>
+    <div class="sus-section flex">
+      <div class="agree-text"><p>Stimme</br> zu</p></div>
+      <table class="sus-table">
+        <tr>
+          <td><input type="radio" name="sus-1" class="sus-1" value="1" /></td>
+          <td><input type="radio" name="sus-1" class="sus-1" value="2" /></td>
+          <td><input type="radio" name="sus-1" class="sus-1" value="3" /></td>
+          <td><input type="radio" name="sus-1" class="sus-1" value="4" /></td>
+          <td><input type="radio" name="sus-1" class="sus-1" value="5" /></td>
+        </tr>
+      </table>
+      <div class="disagree-text"><p>Stimme</br> nicht zu</p></div>
+    </div>
+    </br>
+
+    <h3>Ich empfinde das System als unnötig komplex.</h3>
+    <div class="sus-section flex">
+      <div class="agree-text"><p>Stimme</br> zu</p></div>
+      <table class="sus-table">
+        <tr>
+          <td><input type="radio" name="sus-2" class="sus-2" value="1" /></td>
+          <td><input type="radio" name="sus-2" class="sus-2" value="2" /></td>
+          <td><input type="radio" name="sus-2" class="sus-2" value="3" /></td>
+          <td><input type="radio" name="sus-2" class="sus-2" value="4" /></td>
+          <td><input type="radio" name="sus-2" class="sus-2" value="5" /></td>
+        </tr>
+      </table>
+      <div class="disagree-text"><p>Stimme</br> nicht zu</p></div>
+    </div>
+    </br>
+
+    <h3>Ich empfinde das System als einfach zu nutzen.</h3>
+    <div class="sus-section flex">
+      <div class="agree-text"><p>Stimme</br> zu</p></div>
+      <table class="sus-table">
+        <tr>
+          <td><input type="radio" name="sus-3" class="sus-3" value="1" /></td>
+          <td><input type="radio" name="sus-3" class="sus-3" value="2" /></td>
+          <td><input type="radio" name="sus-3" class="sus-3" value="3" /></td>
+          <td><input type="radio" name="sus-3" class="sus-3" value="4" /></td>
+          <td><input type="radio" name="sus-3" class="sus-3" value="5" /></td>
+        </tr>
+      </table>
+      <div class="disagree-text"><p>Stimme</br> nicht zu</p></div>
+    </div>
+    </br>
+
+    <h3>Ich denke, dass ich technischen Support brauchen würde, um das System zu nutzen.</h3>
+    <div class="sus-section flex">
+      <div class="agree-text"><p>Stimme</br> zu</p></div>
+      <table class="sus-table">
+        <tr>
+          <td><input type="radio" name="sus-4" class="sus-4" value="1" /></td>
+          <td><input type="radio" name="sus-4" class="sus-4" value="2" /></td>
+          <td><input type="radio" name="sus-4" class="sus-4" value="3" /></td>
+          <td><input type="radio" name="sus-4" class="sus-4" value="4" /></td>
+          <td><input type="radio" name="sus-4" class="sus-4" value="5" /></td>
+        </tr>
+      </table>
+      <div class="disagree-text"><p>Stimme</br> nicht zu</p></div>
+    </div>
+    </br>
+
+    <h3>Ich finde, dass die verschiedenen Funktionen des Systems gut integriert sind.</h3>
+    <div class="sus-section flex">
+      <div class="agree-text"><p>Stimme</br> zu</p></div>
+      <table class="sus-table">
+        <tr>
+          <td><input type="radio" name="sus-5" class="sus-5" value="1" /></td>
+          <td><input type="radio" name="sus-5" class="sus-5" value="2" /></td>
+          <td><input type="radio" name="sus-5" class="sus-5" value="3" /></td>
+          <td><input type="radio" name="sus-5" class="sus-5" value="4" /></td>
+          <td><input type="radio" name="sus-5" class="sus-5" value="5" /></td>
+        </tr>
+      </table>
+      <div class="disagree-text"><p>Stimme</br> nicht zu</p></div>
+    </div>
+    </br>
+
+    <h3>Ich finde, dass es im System zu viele Inkonsistenzen gibt.</h3>
+    <div class="sus-section flex">
+      <div class="agree-text"><p>Stimme</br> zu</p></div>
+      <table class="sus-table">
+        <tr>
+          <td><input type="radio" name="sus-6" class="sus-6" value="1" /></td>
+          <td><input type="radio" name="sus-6" class="sus-6" value="2" /></td>
+          <td><input type="radio" name="sus-6" class="sus-6" value="3" /></td>
+          <td><input type="radio" name="sus-6" class="sus-6" value="4" /></td>
+          <td><input type="radio" name="sus-6" class="sus-6" value="5" /></td>
+        </tr>
+      </table>
+      <div class="disagree-text"><p>Stimme</br> nicht zu</p></div>
+    </div>
+    </br>
+
+    <h3>Ich kann mir vorstellen, dass die meisten Leute das System schnell zu beherrschen lernen.</h3>
+    <div class="sus-section flex">
+      <div class="agree-text"><p>Stimme</br> zu</p></div>
+      <table class="sus-table">
+        <tr>
+          <td><input type="radio" name="sus-7" class="sus-7" value="1" /></td>
+          <td><input type="radio" name="sus-7" class="sus-7" value="2" /></td>
+          <td><input type="radio" name="sus-7" class="sus-7" value="3" /></td>
+          <td><input type="radio" name="sus-7" class="sus-7" value="4" /></td>
+          <td><input type="radio" name="sus-7" class="sus-7" value="5" /></td>
+        </tr>
+      </table>
+      <div class="disagree-text"><p>Stimme</br> nicht zu</p></div>
+    </div>
+    </br>
+
+    <h3>Ich empfinde die Bedienung als sehr umständlich.</h3>
+    <div class="sus-section flex">
+      <div class="agree-text"><p>Stimme</br> zu</p></div>
+      <table class="sus-table">
+        <tr>
+          <td><input type="radio" name="sus-8" class="sus-8" value="1" /></td>
+          <td><input type="radio" name="sus-8" class="sus-8" value="2" /></td>
+          <td><input type="radio" name="sus-8" class="sus-8" value="3" /></td>
+          <td><input type="radio" name="sus-8" class="sus-8" value="4" /></td>
+          <td><input type="radio" name="sus-8" class="sus-8" value="5" /></td>
+        </tr>
+      </table>
+      <div class="disagree-text"><p>Stimme</br> nicht zu</p></div>
+    </div>
+    </br>
+
+    <h3>Ich habe mich bei der Nutzung des Systems sehr sicher gefühlt.</h3>
+    <div class="sus-section flex">
+      <div class="agree-text"><p>Stimme</br> zu</p></div>
+      <table class="sus-table">
+        <tr>
+          <td><input type="radio" name="sus-9" class="sus-9" value="1" /></td>
+          <td><input type="radio" name="sus-9" class="sus-9" value="2" /></td>
+          <td><input type="radio" name="sus-9" class="sus-9" value="3" /></td>
+          <td><input type="radio" name="sus-9" class="sus-9" value="4" /></td>
+          <td><input type="radio" name="sus-9" class="sus-9" value="5" /></td>
+        </tr>
+      </table>
+      <div class="disagree-text"><p>Stimme</br> nicht zu</p></div>
+    </div>
+    </br>
+
+    <h3>Ich musste eine Menge Dinge lernen, bevor ich mit dem System arbeiten konnte.</h3>
+    <div class="sus-section flex">
+      <div class="agree-text"><p>Stimme</br> zu</p></div>
+      <table class="sus-table">
+        <tr>
+          <td><input type="radio" name="sus-10" class="sus-10" value="1" /></td>
+          <td><input type="radio" name="sus-10" class="sus-10" value="2" /></td>
+          <td><input type="radio" name="sus-10" class="sus-10" value="3" /></td>
+          <td><input type="radio" name="sus-10" class="sus-10" value="4" /></td>
+          <td><input type="radio" name="sus-10" class="sus-10" value="5" /></td>
+        </tr>
+      </table>
+      <div class="disagree-text"><p>Stimme</br> nicht zu</p></div>
+    </div>
+    </br>
+    <div id="finish-sus-section" class="flex">
+      <button id="finish-sus-button" class="finish-button"><p>WEITER</p></button>
+      <h3 id="please-insert-text-sus"></h3>
+    </div>
+  </div>
+
+
 
 </body>
 <script type="application/javascript" src="src/js/NavigationController.js"></script>
 <script type="application/javascript" src="src/js/TaskController.js"></script>
 <script type="application/javascript" src="src/js/PreSurveyController.js"></script>
+<script type="application/javascript" src="src/js/SUSController.js"></script>
 <script type="application/javascript" src="src/js/Config.js"></script>
 <script type="application/javascript" src="src/js/Views.js"></script>
 <script type="application/javascript" src="src/js/ContentStorage.js"></script>

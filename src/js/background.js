@@ -27,6 +27,17 @@ chrome.storage.sync.set({radioInternetUsageButtons: ""});
 chrome.storage.sync.set({radioVeranstaltungsportaleButtons: ""});
 chrome.storage.sync.set({radioSingleVeranstaltungsportaleButtons: ""});
 
+chrome.storage.sync.set({sus1: ""});
+chrome.storage.sync.set({sus2: ""});
+chrome.storage.sync.set({sus3: ""});
+chrome.storage.sync.set({sus4: ""});
+chrome.storage.sync.set({sus5: ""});
+chrome.storage.sync.set({sus6: ""});
+chrome.storage.sync.set({sus7: ""});
+chrome.storage.sync.set({sus8: ""});
+chrome.storage.sync.set({sus9: ""});
+chrome.storage.sync.set({sus10: ""});
+
 
 
 //sync

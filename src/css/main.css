@@ -37,7 +37,7 @@ h3 {
   height: 40px;
 }
 
-#interactive-section, #task-finished-section{
+#interactive-section, #task-finished-section, #describe-section{
   flex-shrink: 0;
   background-color: #aaa;
 }
@@ -78,12 +78,12 @@ h3 {
   text-align: center;
 }
 
-#comment-box, #task-failure-box{
+.commentBox{
   height: 50px;
   margin-bottom: 16px;
 }
 
-#comment, #failure-comment {
+.comment {
   width: 83%;
   height: 100%;
   margin: 8px 8px 0px;

@@ -6,6 +6,7 @@ ChromeExtensionURUT.App = (function() {
   var that = {},
     navigationController,
     presurveyController,
+    susController,
     taskController,
     currentState,
     taskRunning,
@@ -36,6 +37,9 @@ ChromeExtensionURUT.App = (function() {
       taskController.addEventListener("onTaskRunning", updateTaskState);
       presurveyController = ChromeExtensionURUT.PreSurveyController().init();
       presurveyController.addEventListener("onCorrectInputs", updatePreSurveyViews);
+      susController = ChromeExtensionURUT.SUSController().init();
+      susController.addEventListener("onCorrectInputs", updateSUSViews);
+
   }
 
   function initViews() {
@@ -46,6 +50,10 @@ ChromeExtensionURUT.App = (function() {
   /*************************** event functions ********************************/
   function updateViews(event) {
     views.updateViews(event);
+  }
+
+  function updateSUSViews(event){
+
   }
 
   function updatePreSurveyViews(event){

@@ -13,13 +13,15 @@ ChromeExtensionURUT.Views = function() {
     taskFailureSection,
     taskFinishedBox,
     contentStorage,
-    timerSection,
     startStopText,
     headline,
     preSurvey,
+    susSurvey,
     content,
     interactiveSection,
     commentSection,
+    timerSection,
+    describeSection,
     pleaseInsertText,
     proceedText,
     countText,
@@ -32,6 +34,7 @@ ChromeExtensionURUT.Views = function() {
     startTaskButton = document.getElementById("start-task");
     stopTaskButton = document.getElementById("stop-task");
     preSurvey = document.getElementById("pre-survey");
+    susSurvey = document.getElementById("sus-survey");
     headline = document.getElementById("headline");
     content = document.getElementById("content");
     countText = document.getElementById("countText");
@@ -41,6 +44,7 @@ ChromeExtensionURUT.Views = function() {
     pleaseInsertText = document.getElementById("please-insert-text");
     timerSection = document.getElementById("timer-section");
     commentSection = document.getElementById("comment-section");
+    describeSection = document.getElementById("describe-section");
     taskFinishedBox = document.getElementById("task-finished-box");
     interactiveSection = document.getElementById("interactive-section");
     taskFailureSection = document.getElementById("task-failure-section");
@@ -56,6 +60,7 @@ ChromeExtensionURUT.Views = function() {
 
   //updates views when buttons were clicked and state changed
   function updateViews(event) {
+    manageContentObjectsByState(event.currentState);
     fillElements(event.currentState);
     setNavigationButtonsDisabledState(event.currentState);
     resetViews();
@@ -79,7 +84,9 @@ ChromeExtensionURUT.Views = function() {
   //shows, hides, enables oder disables or sets contents of elements according to
   // current state of taskIsRunning
   function manageTaskRunning(taskState, currentState){
-    managePreSurveyView(currentState);
+
+    manageContentObjectsByState(currentState);
+
     if(taskState == ChromeExtensionURUT.Config.taskNotStarted){
       resetViews();
       if(contentObjects[currentState].isTask == 1){
@@ -139,6 +146,23 @@ ChromeExtensionURUT.Views = function() {
     startStopText.innerHTML = ChromeExtensionURUT.Config.startTaskText;
   }
 
+  function manageContentObjectsByState(currentState){
+    console.log("co currentState " + contentObjects[currentState].id + " sus "+ ChromeExtensionURUT.Config.sus);
+    if(currentState == ChromeExtensionURUT.Config.preSurvey){
+      managePreSurveyView(currentState);
+    }
+
+    if( (contentObjects[currentState].id == ChromeExtensionURUT.Config.question1) || (contentObjects[currentState].id == ChromeExtensionURUT.Config.question2) || (contentObjects[currentState].id == ChromeExtensionURUT.Config.question3)) {
+      showElement(describeSection);
+    }
+
+    if(contentObjects[currentState].id == ChromeExtensionURUT.Config.sus){
+      hideElement(describeSection);
+      showElement(susSurvey);
+    }
+
+  }
+
   function setNavigationButtonsDisabledState(currentState) {
     if (contentObjects[currentState].stepBack == 0){
       stepBackButton.disabled = true;
@@ -155,7 +179,7 @@ ChromeExtensionURUT.Views = function() {
   /*************************** private functions ******************************/
   function fillElements(currentState){
     managePreSurveyView(currentState);
-    countText.innerHTML = currentState + "/" + contentObjects.length;
+    countText.innerHTML = currentState + 1 + "/" + contentObjects.length;
     headline.innerHTML = contentObjects[currentState].title;
     content.innerHTML = contentObjects[currentState].content;
 
@@ -176,7 +200,28 @@ ChromeExtensionURUT.Views = function() {
         pleaseInsertText.innerHTML = "Bitte füllen Sie alle Felder aus.";
       }
     });
-    console.log("mange presurvey view: content object[i] " +contentObjects[currentState].id);
+    if(contentObjects[currentState].id == 3){
+      showElement(preSurvey);
+      if(contentObjects[currentState].stepNext == 0){
+        disableElement(stepNextButton);
+      }else{
+        enableElement(stepNextButton);
+      }
+    }else{
+      hideElement(preSurvey);
+    }
+  }
+
+  function manageSUSsurveyViews(){
+    chrome.storage.sync.get(['surveyFinished'], function(result){
+      if((result.surveyFinished == 1) && (contentObjects[currentState].id == 3)){
+        enableElement(stepNextButton);
+        showElement(stepNextButton);
+        pleaseInsertText.innerHTML = "Klicke oben rechts auf Weiter.";
+      }else{
+        pleaseInsertText.innerHTML = "Bitte füllen Sie alle Felder aus.";
+      }
+    });
     if(contentObjects[currentState].id == 3){
       showElement(preSurvey);
       if(contentObjects[currentState].stepNext == 0){

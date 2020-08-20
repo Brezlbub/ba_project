@@ -1,0 +1,19 @@
+#sus-survey h3 {
+  color: white;
+  text-align: center;
+}
+
+.agree-text, .disagree-text {
+  color: white;
+  flex-grow: 2;
+  text-align: center;
+}
+
+.sus-table {
+  flex-grow: 6;
+}
+
+.sus-section {
+  width: 100%;
+  justify-content: center;
+}

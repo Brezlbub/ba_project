@@ -13,6 +13,23 @@ button i{
   font-size: 20px;
 }
 
+.submitButton {
+  background-color: #2d862d;
+  width: 17%;
+  height: 100%;
+  margin-right: 8px;
+  margin-bottom: -8px;
+}
+
+.submitButton:hover {
+  background-color: #40bf40;
+}
+
+.submitButton:active {
+  background-color: #9fdf9f;
+  transition-duration: 0.1s;
+}
+
 #task-running-text p {
   font-size: 16px;
 }
@@ -52,11 +69,11 @@ button:disabled {
 }
 
 
-#start-task:hover, #stop-task:hover, #task-success:hover, #task-failed:hover, #finish-vorabfragebogen-button:hover {
+#start-task:hover, #stop-task:hover, #task-success:hover, #task-failed:hover, #finish-vorabfragebogen-button:hover, #finish-sus-button:hover {
   background-color: #ccc;
 }
 
-#start-task:active, #stop-task:active, #task-success:active, #task-failed:active, #finish-vorabfragebogen-button:active {
+#start-task:active, #stop-task:active, #task-success:active, #task-failed:active, #finish-vorabfragebogen-button:active, #finish-sus-button:active {
   background-color: #eee;
   transition-duration: 0.1s;
 }
@@ -74,22 +91,6 @@ button:disabled {
   transition-duration: 0.1s;
 }
 
-#submit-comment-button, #submit-failure-comment-button {
-  background-color: #2d862d;
-  width: 17%;
-  height: 100%;
-  margin-right: 8px;
-  margin-bottom: -8px;
-}
-
-#submit-comment-button:hover, #submit-failure-comment-button:hover {
-  background-color: #40bf40;
-}
-
-#submit-comment-button:active, #submit-failure-comment-button:active {
-  background-color: #9fdf9f;
-  transition-duration: 0.1s;
-}
 
 #task-running-text {
   width: 50%;
@@ -97,7 +98,7 @@ button:disabled {
   background-color: transparent;
 }
 
-#finish-vorabfragebogen-button p{
+.finish-button p{
   color: black;
 }
 

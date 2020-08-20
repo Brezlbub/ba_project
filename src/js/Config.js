@@ -10,6 +10,12 @@ ChromeExtensionURUT.Config = {
 
   startTaskText: "Starte die Task",
   stopTaskText: "Beende die Task",
+
+  preSurvey: 3,
+  question1: 11,
+  question2: 12,
+  question3: 13,
+  sus: 14,
 };
 
 Object.freeze(ChromeExtensionURUT.Config);

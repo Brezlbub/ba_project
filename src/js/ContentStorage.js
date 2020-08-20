@@ -7,7 +7,7 @@ ChromeExtensionURUT.ContentStorage = function() {
   var that = {},
   introduction, explanation, presurvey,
   szenario, task1, task2, task3, task4, task5, task6,
-  abschluss1, abschluss2, abschluss3,
+  question1, question2, question3, sus, abschluss,
   contentObjects;
 
 
@@ -28,12 +28,15 @@ ChromeExtensionURUT.ContentStorage = function() {
     task5 = {id: 9, stepBack: 0, stepNext: 0, isTask: 1, title: "Task 5", content: "Ihnen hat der Besuch im Statt Theater einfach sehr gut gefallen. Sie wissen das das Statt Theater ein kleiner Verein ist, weshalb Sie das Statt Theater Kollektiv gerne finanziell unterstützen wollen. </br></br>Verschaffen Sie sich einen Überblick, welche Möglichkeiten Sie hierbei haben."};
     task6 = {id: 10, stepBack: 0, stepNext: 0, isTask: 1, title: "Task 6", content: "Weil Sie als Unterstützer des Vereins gerne über alle News informiert sein wollen, entschließen Sie sich dazu den Newsletter zu abonnieren.</br></br>Finden Sie den Newsletter. Sie müssen das Abo nicht abschließen."};
 
-    abschluss1 = {id: 11, stepBack: 0, stepNext: 0, isTask: 0, title: "Beschreibung 1", content: "Beschreiben Sie kurz was Ihnen nach der Bearbeitung der Aufgaben besonders an der Seite aufgefallen ist. </br></br><b>Was… fanden Sie schlecht?</b>"};
-    abschluss2 = {id: 12, stepBack: 0, stepNext: 0, isTask: 0, title: "Beschreibung 2", content: "Beschreiben Sie kurz was Ihnen nach der Bearbeitung der Aufgaben besonders an der Seite aufgefallen ist. </br></br><b>Was… fanden Sie gut?</b>"};
-    abschluss3 = {id: 13, stepBack: 0, stepNext: 1, isTask: 0, title: "Beschreibung 3", content: "Beschreiben Sie kurz was Ihnen nach der Bearbeitung der Aufgaben besonders an der Seite aufgefallen ist. </br></br><b>Was… würden Sie verbessern?</b>"};
+    question1 = {id: 11, stepBack: 0, stepNext: 1, isTask: 0, title: "Beschreibung 1", content: "Beschreiben Sie kurz was Ihnen <b>nach</b> der Bearbeitung der Aufgaben besonders an der Seite aufgefallen ist. </br></br><b>Was fanden Sie schlecht?</b>"};
+    question2 = {id: 12, stepBack: 0, stepNext: 1, isTask: 0, title: "Beschreibung 2", content: "Beschreiben Sie kurz was Ihnen <b>nach</b> der Bearbeitung der Aufgaben besonders an der Seite aufgefallen ist. </br></br><b>Was fanden Sie gut?</b>"};
+    question3 = {id: 13, stepBack: 0, stepNext: 1, isTask: 0, title: "Beschreibung 3", content: "Beschreiben Sie kurz was Ihnen <b>nach</b> der Bearbeitung der Aufgaben besonders an der Seite aufgefallen ist. </br></br><b>Was würden Sie verbessern?</b>"};
+
+    sus = {id: 14, stepBack: 0, stepNext: 1, isTask: 0, title: "Systembefragung (SUS)", content: "Bewerten Sie zum Abschluss die Anwendung, mit der Sie den Test durchgeführt haben."};
+    abschluss = {id: 15, stepBack: 0, stepNext: 0, isTask: 0, title: "Abschluss", content: "Herzlichen Dank für die Teilnahme an meiner Studie!</br></br> Zum Schluss bitte noch auf den Button drücken.</br>Danach wird eine Datei runtergeladen. Diese bitte an folgende E-Mail als Anhang schicken: </br></br> Julian.Saenze@stud.uni-regensburg.de"};
 
     contentObjects = [];
-    /*contentObjects.push(introduction);
+    contentObjects.push(introduction);
     contentObjects.push(explanation);
     contentObjects.push(presurvey);
     contentObjects.push(szenario);
@@ -42,10 +45,12 @@ ChromeExtensionURUT.ContentStorage = function() {
     contentObjects.push(task3);
     contentObjects.push(task4);
     contentObjects.push(task5);
-    contentObjects.push(task6);*/
-    contentObjects.push(abschluss1);
-    contentObjects.push(abschluss2);
-    contentObjects.push(abschluss3);
+    contentObjects.push(task6);
+    contentObjects.push(question1);
+    contentObjects.push(question2);
+    contentObjects.push(question3);
+    contentObjects.push(sus);
+    contentObjects.push(abschluss);
 
     return that;
   }
