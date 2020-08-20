@@ -7,6 +7,8 @@ chrome.storage.sync.set({timeDifference: 0});
 
 
 //Vorabfragebogen
+//0 = survey not finished, 1 = survey finished
+chrome.storage.sync.set({surveyFinished: 0});
 chrome.storage.sync.set({ageInput: ""});
 chrome.storage.sync.set({educationInput: ""});
 chrome.storage.sync.set({professionInput: ""});
@@ -24,6 +26,7 @@ chrome.storage.sync.set({radioKnowledgeButtons: ""});
 chrome.storage.sync.set({radioInternetUsageButtons: ""});
 chrome.storage.sync.set({radioVeranstaltungsportaleButtons: ""});
 chrome.storage.sync.set({radioSingleVeranstaltungsportaleButtons: ""});
+
 
 
 //sync

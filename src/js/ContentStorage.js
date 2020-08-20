@@ -28,12 +28,12 @@ ChromeExtensionURUT.ContentStorage = function() {
     task5 = {id: 9, stepBack: 0, stepNext: 0, isTask: 1, title: "Task 5", content: "Ihnen hat der Besuch im Statt Theater einfach sehr gut gefallen. Sie wissen das das Statt Theater ein kleiner Verein ist, weshalb Sie das Statt Theater Kollektiv gerne finanziell unterstützen wollen. </br></br>Verschaffen Sie sich einen Überblick, welche Möglichkeiten Sie hierbei haben."};
     task6 = {id: 10, stepBack: 0, stepNext: 0, isTask: 1, title: "Task 6", content: "Weil Sie als Unterstützer des Vereins gerne über alle News informiert sein wollen, entschließen Sie sich dazu den Newsletter zu abonnieren.</br></br>Finden Sie den Newsletter. Sie müssen das Abo nicht abschließen."};
 
-    abschluss1 = {id: 11, stepBack: 0, stepNext: 0, isTask: 0, title: "Beschreibung 1", content: "Beschreiben Sie kurz was Ihnen nach der Bearbeitung der Aufgaben besonders an der Seite aufgefallen ist. Was… fanden Sie schlecht?"};
-    abschluss2 = {id: 12, stepBack: 0, stepNext: 0, isTask: 0, title: "Beschreibung 2", content: "Beschreiben Sie kurz was Ihnen nach der Bearbeitung der Aufgaben besonders an der Seite aufgefallen ist. Was… fanden Sie gut?"};
-    abschluss3 = {id: 13, stepBack: 0, stepNext: 1, isTask: 0, title: "Beschreibung 3", content: "Beschreiben Sie kurz was Ihnen nach der Bearbeitung der Aufgaben besonders an der Seite aufgefallen ist. Was… würden Sie verbessern?"};
+    abschluss1 = {id: 11, stepBack: 0, stepNext: 0, isTask: 0, title: "Beschreibung 1", content: "Beschreiben Sie kurz was Ihnen nach der Bearbeitung der Aufgaben besonders an der Seite aufgefallen ist. </br></br><b>Was… fanden Sie schlecht?</b>"};
+    abschluss2 = {id: 12, stepBack: 0, stepNext: 0, isTask: 0, title: "Beschreibung 2", content: "Beschreiben Sie kurz was Ihnen nach der Bearbeitung der Aufgaben besonders an der Seite aufgefallen ist. </br></br><b>Was… fanden Sie gut?</b>"};
+    abschluss3 = {id: 13, stepBack: 0, stepNext: 1, isTask: 0, title: "Beschreibung 3", content: "Beschreiben Sie kurz was Ihnen nach der Bearbeitung der Aufgaben besonders an der Seite aufgefallen ist. </br></br><b>Was… würden Sie verbessern?</b>"};
 
     contentObjects = [];
-    contentObjects.push(introduction);
+    /*contentObjects.push(introduction);
     contentObjects.push(explanation);
     contentObjects.push(presurvey);
     contentObjects.push(szenario);
@@ -42,7 +42,7 @@ ChromeExtensionURUT.ContentStorage = function() {
     contentObjects.push(task3);
     contentObjects.push(task4);
     contentObjects.push(task5);
-    contentObjects.push(task6);
+    contentObjects.push(task6);*/
     contentObjects.push(abschluss1);
     contentObjects.push(abschluss2);
     contentObjects.push(abschluss3);

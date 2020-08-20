@@ -53,7 +53,7 @@ ChromeExtensionURUT.App = (function() {
   }
 
   function updateTaskState(event){
-    views.updateTaskState(event);
+    views.updateTaskState(event, currentState);
   }
 
   function saveTaskData(event){

@@ -165,9 +165,9 @@ ChromeExtensionURUT.PreSurveyController = function() {
   }
 
   function checkForCorrectInputs(){
-    if( (ageInput.value != "") && (educationInput.value != "") && (professionInput.value != "") &&
-        (question1input.value != "") && (question2input.value != "") &&(question3input.value != "") &&
-        (question4input.value != "") && wasButtonPressed(genderButtons) && wasButtonPressed(pcLaptopPrivateButtons) &&
+    if( wasInputEntered(ageInput) && wasInputEntered(educationInput) && wasInputEntered(professionInput) &&
+        wasInputEntered(question1input) && wasInputEntered(question2input) && wasInputEntered(question3input) &&
+        wasInputEntered(question4input) && wasButtonPressed(genderButtons) && wasButtonPressed(pcLaptopPrivateButtons) &&
           wasButtonPressed(pcLaptopWorkButtons) && (wasButtonPressed(smartphoneWorkButtons) && wasButtonPressed(smartphonePrivateButtons) &&
           wasButtonPressed(radioKnowledgeButtons) && wasButtonPressed(radioVeranstaltungsportaleButtons) && wasButtonPressed(radioSingleVeranstaltungsportaleButtons))){
             dispatchOnCorrectInputsEvent(true);
@@ -182,14 +182,24 @@ ChromeExtensionURUT.PreSurveyController = function() {
     that.dispatchEvent(onCorrectInputsEvent);
   }
 
+  function wasInputEntered(inputField){
+    if(inputField.value != ""){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
   function wasButtonPressed(array){
+    var result = true;
     for(var i = 0; i < array.length; i++){
-      if(array[i].checked == true){
+      if(array[i].checked){
         return true;
       }else{
-        return false;
+        result = false;
     }
     }
+    return result;
   }
 
   function genderButtonClicked(){

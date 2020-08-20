@@ -72,8 +72,8 @@ ChromeExtensionURUT.Views = function() {
     manageTaskRunning(taskRunning, currentState);
   }
 
-  function updateTaskState(event){
-    manageTaskRunning(event.taskRunning);
+  function updateTaskState(event, state){
+    manageTaskRunning(event.taskRunning, state);
   }
 
   //shows, hides, enables oder disables or sets contents of elements according to
@@ -167,6 +167,16 @@ ChromeExtensionURUT.Views = function() {
   }
 
   function managePreSurveyView(currentState){
+    chrome.storage.sync.get(['surveyFinished'], function(result){
+      if((result.surveyFinished == 1) && (contentObjects[currentState].id == 3)){
+        enableElement(stepNextButton);
+        showElement(stepNextButton);
+        pleaseInsertText.innerHTML = "Klicke oben rechts auf Weiter.";
+      }else{
+        pleaseInsertText.innerHTML = "Bitte füllen Sie alle Felder aus.";
+      }
+    });
+    console.log("mange presurvey view: content object[i] " +contentObjects[currentState].id);
     if(contentObjects[currentState].id == 3){
       showElement(preSurvey);
       if(contentObjects[currentState].stepNext == 0){
@@ -181,10 +191,12 @@ ChromeExtensionURUT.Views = function() {
 
   function updatePreSurveyViews(event){
     if(event.isCorrect == true){
+      chrome.storage.sync.set({surveyFinished: 1});
       enableElement(stepNextButton);
       showElement(stepNextButton);
+      pleaseInsertText.innerHTML = "Klicke oben rechts auf Weiter.";
     }else{
-      showElement(pleaseInsertText);
+      pleaseInsertText.innerHTML = "Bitte füllen Sie alle Felder aus.";
     }
   }
 

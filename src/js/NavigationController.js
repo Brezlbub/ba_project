@@ -37,7 +37,7 @@ ChromeExtensionURUT.NavigationController = function() {
     chrome.storage.sync.set({state: currentState}, function() {
             dispatchStateChangeEvent();
           });
-    
+
     chrome.storage.sync.set({taskRunning: ChromeExtensionURUT.Config.taskNotStarted}, function() {
             console.log(ChromeExtensionURUT.Config.taskNotStarted);
           });
