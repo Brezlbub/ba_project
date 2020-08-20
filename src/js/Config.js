@@ -12,6 +12,12 @@ ChromeExtensionURUT.Config = {
   taskFailed: 4,
   taskFailureCommentSubmitted: 5,
 
+  task1: 4,
+  task2: 5,
+  task3: 6,
+  task4: 7,
+  task5: 8,
+  task6: 9,
 
   startTaskText: "Starte die Task",
   stopTaskText: "Beende die Task",

@@ -8,18 +8,20 @@ ChromeExtensionURUT.App = (function() {
     presurveyController,
     susController,
     taskController,
+    dataController,
     jsonDownloader,
     currentState,
     taskRunning,
     views;
-
+    
   function init() {
     initController();
     initViews();
     initJsonDownloader();
   }
 
-  /*************************** init functions *********************************/
+/*************************** init functions *********************************/
+
   function initSavedState(){
     chrome.storage.sync.get(['state'], function(result){
       currentState = result.state;
@@ -41,6 +43,8 @@ ChromeExtensionURUT.App = (function() {
       presurveyController.addEventListener("onCorrectInputs", updatePreSurveyViews);
       susController = ChromeExtensionURUT.SUSController().init();
       susController.addEventListener("onCorrectInputs", updateSUSSurveyViews);
+      dataController = ChromeExtensionURUT.DataController().init();
+      //dataController.addEventListener()
   }
 
   function initViews() {
