@@ -84,6 +84,7 @@ ChromeExtensionURUT.JSONDownloader = function() {
       });
     chrome.storage.sync.get(['taskFailureComment6'], function(result){
         task6failureComment = result.taskFailureComment6;
+        console.log(result.taskFailureComment6);
       });
 
     chrome.storage.sync.get(['beschreibung1'], function(result){
@@ -98,6 +99,7 @@ ChromeExtensionURUT.JSONDownloader = function() {
 
     chrome.storage.sync.get(['sus1'], function(result){
         sus1 = result.sus1;
+        console.log(result.sus1);
       });
     chrome.storage.sync.get(['sus2'], function(result){
         sus2 = result.sus2;
@@ -129,7 +131,9 @@ ChromeExtensionURUT.JSONDownloader = function() {
 
     chrome.storage.sync.get(['radioSingleVeranstaltungsportaleButtons'], function(result){
         webseiten = result.radioSingleVeranstaltungsportaleButtons;
+        console.log(result.radioSingleVeranstaltungsportaleButtons);
       });
+      console.log(webseiten);
     chrome.storage.sync.get(['radioVeranstaltungsportaleButtons'], function(result){
         veranstaltungsportale = result.radioVeranstaltungsportaleButtons;
       });
@@ -169,6 +173,7 @@ ChromeExtensionURUT.JSONDownloader = function() {
     chrome.storage.sync.get(['genderButton'], function(result){
         sex = result.genderButton;
       });
+      //jsonObject.vorabfragebogen.geschlecht = sex;
 
     jsonObject = {
       "vorabfragebogen": [{"geschlecht": sex, "alter": age, "pcLaptopWork": pcLaptopWork,
@@ -189,6 +194,9 @@ ChromeExtensionURUT.JSONDownloader = function() {
       "beschreibung": [{"beschreibung1": beschreibung1, "beschreibung2": beschreibung2, "beschreibung3": beschreibung3}]
     };
 
+    //var json = JSON.parse(jsonObject);
+
+    console.log(jsonObject["vorabfragebogen"]);
     console.log(jsonObject.vorabfragebogen);
   }
 

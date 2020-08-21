@@ -34,11 +34,13 @@ ChromeExtensionURUT.DataController = function() {
     jsonDownloader.initJSONObject();
   }
 
-  function storeFailureCommentData() {
+  function storeDescribeCommentData() {
     chrome.storage.sync.get(['state'], function(result){
       var currentState, describe1comment, describe2comment, describe3comment;
       currentState = result.state;
+      console.log("current state " + result.state + " describe1: " + ChromeExtensionURUT.Config.describe1);
       if(currentState == ChromeExtensionURUT.Config.describe1){
+        console.log("current state " + result.state + " describe1: " + ChromeExtensionURUT.Config.describe1);
         describe1comment = describeComment.value;
         describeComment.value = "";
         chrome.storage.sync.set({beschreibung1: describe1comment});
@@ -56,7 +58,7 @@ ChromeExtensionURUT.DataController = function() {
       });
   }
 
-  function storeDescribeCommentData() {
+  function storeFailureCommentData() {
     chrome.storage.sync.get(['state'], function(result){
       var currentState, task1FailureComment, task2FailureComment, task3FailureComment,
       task4FailureComment, task5FailureComment, task6FailureComment,
@@ -68,6 +70,7 @@ ChromeExtensionURUT.DataController = function() {
       }
       if(currentState == ChromeExtensionURUT.Config.task2){
         task2FailureComment = failureComment.value;
+        failureComment.value = "";
         chrome.storage.sync.set({task2FailureComment: task2FailureComment});
       }
       if(currentState == ChromeExtensionURUT.Config.task3){
