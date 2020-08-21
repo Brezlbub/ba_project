@@ -26,12 +26,12 @@ chrome.storage.sync.set({commentsTask4: []});
 chrome.storage.sync.set({commentsTask5: []});
 chrome.storage.sync.set({commentsTask6: []});
 
-chrome.storage.sync.set({taskFailureComment1: ""});
-chrome.storage.sync.set({taskFailureComment2: ""});
-chrome.storage.sync.set({taskFailureComment3: ""});
-chrome.storage.sync.set({taskFailureComment4: ""});
-chrome.storage.sync.set({taskFailureComment5: ""});
-chrome.storage.sync.set({taskFailureComment6: ""});
+chrome.storage.sync.set({task1FailureComment: ""});
+chrome.storage.sync.set({task2FailureComment: ""});
+chrome.storage.sync.set({task3FailureComment: ""});
+chrome.storage.sync.set({task4FailureComment: ""});
+chrome.storage.sync.set({task5FailureComment: ""});
+chrome.storage.sync.set({task6FailureComment: ""});
 
 chrome.storage.sync.set({beschreibung1: ""});
 chrome.storage.sync.set({beschreibung2: ""});

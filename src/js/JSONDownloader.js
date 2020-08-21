@@ -44,8 +44,6 @@ ChromeExtensionURUT.JSONDownloader = function() {
 
   /*************************** public functions *******************************/
   function init() {
-    initJSONObject();
-    console.log(jsonObject);
     return that;
   }
 
@@ -190,9 +188,12 @@ ChromeExtensionURUT.JSONDownloader = function() {
 
       "beschreibung": [{"beschreibung1": beschreibung1, "beschreibung2": beschreibung2, "beschreibung3": beschreibung3}]
     };
+
+    console.log(jsonObject.vorabfragebogen);
   }
 
 
   that.init = init;
+  that.initJSONObject = initJSONObject;
   return that;
 };

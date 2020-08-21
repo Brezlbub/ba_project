@@ -5,15 +5,92 @@ ChromeExtensionURUT.DataController = function() {
 
   var that = new EventTarget(),
     submitCommentButton,
-    comment;
+    submitFailureCommentButton,
+    describeCommentButton,
+    downloadButton,
+    describeComment,
+    failureComment,
+    comment,
+    jsonDownloader;
 
   /*************************** public functions *******************************/
   function init() {
+    jsonDownloader = ChromeExtensionURUT.JSONDownloader().init();
     submitCommentButton = document.getElementById("submit-comment-button");
     submitCommentButton.addEventListener('click', storeCommentData);
+    submitFailureCommentButton = document.getElementById("submit-failure-comment-button");
+    submitFailureCommentButton.addEventListener('click', storeFailureCommentData);
+    describeCommentButton = document.getElementById("describe-comment-button");
+    describeCommentButton.addEventListener('click', storeDescribeCommentData);
+    downloadButton = document.getElementById("download-button");
+    downloadButton.addEventListener('click', downloadJSON);
     comment = document.getElementById("comment");
-
+    describeComment = document.getElementById("describe-comment");
+    failureComment = document.getElementById("failure-comment");
     return that;
+  }
+
+  function downloadJSON() {
+    jsonDownloader.initJSONObject();
+  }
+
+  function storeFailureCommentData() {
+    chrome.storage.sync.get(['state'], function(result){
+      var currentState, describe1comment, describe2comment, describe3comment;
+      currentState = result.state;
+      if(currentState == ChromeExtensionURUT.Config.describe1){
+        describe1comment = describeComment.value;
+        describeComment.value = "";
+        chrome.storage.sync.set({beschreibung1: describe1comment});
+      }
+      if(currentState == ChromeExtensionURUT.Config.describe2){
+        describe2comment = describeComment.value;
+        describeComment.value = "";
+        chrome.storage.sync.set({beschreibung2: describe2comment});
+      }
+      if(currentState == ChromeExtensionURUT.Config.describe3){
+        describe3comment = describeComment.value;
+        describeComment.value = "";
+        chrome.storage.sync.set({beschreibung3: describe3comment});
+      }
+      });
+  }
+
+  function storeDescribeCommentData() {
+    chrome.storage.sync.get(['state'], function(result){
+      var currentState, task1FailureComment, task2FailureComment, task3FailureComment,
+      task4FailureComment, task5FailureComment, task6FailureComment,
+      currentState = result.state;
+      if(currentState == ChromeExtensionURUT.Config.task1){
+        task1FailureComment = failureComment.value;
+        failureComment.value = "";
+        chrome.storage.sync.set({task1FailureComment: task1FailureComment});
+      }
+      if(currentState == ChromeExtensionURUT.Config.task2){
+        task2FailureComment = failureComment.value;
+        chrome.storage.sync.set({task2FailureComment: task2FailureComment});
+      }
+      if(currentState == ChromeExtensionURUT.Config.task3){
+        task3FailureComment = failureComment.value;
+        failureComment.value = "";
+        chrome.storage.sync.set({task3FailureComment: task3FailureComment});
+      }
+      if(currentState == ChromeExtensionURUT.Config.task4){
+        task4FailureComment = failureComment.value;
+        failureComment.value = "";
+        chrome.storage.sync.set({task4FailureComment: task4FailureComment});
+      }
+      if(currentState == ChromeExtensionURUT.Config.task5){
+        task5FailureComment = failureComment.value;
+        failureComment.value = "";
+        chrome.storage.sync.set({task5FailureComment: task5FailureComment});
+      }
+      if(currentState == ChromeExtensionURUT.Config.task6){
+        task6FailureComment = failureComment.value;
+        failureComment.value = "";
+        chrome.storage.sync.set({task6FailureComment: task6FailureComment});
+      }
+      });
   }
 
   function storeCommentData(){
