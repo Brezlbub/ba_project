@@ -11,18 +11,28 @@ chrome.storage.sync.set({urlsTask3: []});
 chrome.storage.sync.set({urlsTask4: []});
 chrome.storage.sync.set({urlsTask5: []});
 chrome.storage.sync.set({urlsTask6: []});
+
+chrome.storage.sync.set({timeTask1:""});
+chrome.storage.sync.set({timeTask2:""});
+chrome.storage.sync.set({timeTask3:""});
+chrome.storage.sync.set({timeTask4:""});
+chrome.storage.sync.set({timeTask5:""});
+chrome.storage.sync.set({timeTask6:""});
+
 chrome.storage.sync.set({commentsTask1: []});
 chrome.storage.sync.set({commentsTask2: []});
 chrome.storage.sync.set({commentsTask3: []});
 chrome.storage.sync.set({commentsTask4: []});
 chrome.storage.sync.set({commentsTask5: []});
 chrome.storage.sync.set({commentsTask6: []});
+
 chrome.storage.sync.set({taskFailureComment1: ""});
 chrome.storage.sync.set({taskFailureComment2: ""});
 chrome.storage.sync.set({taskFailureComment3: ""});
 chrome.storage.sync.set({taskFailureComment4: ""});
 chrome.storage.sync.set({taskFailureComment5: ""});
 chrome.storage.sync.set({taskFailureComment6: ""});
+
 chrome.storage.sync.set({beschreibung1: ""});
 chrome.storage.sync.set({beschreibung2: ""});
 chrome.storage.sync.set({beschreibung3: ""});
