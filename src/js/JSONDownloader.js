@@ -55,12 +55,12 @@ ChromeExtensionURUT.JSONDownloader = function() {
       "internet": "", "veranstaltungsportale": "",
       "webseiten": "", "frage1": "", "frage2": "", "frage3": "", "frage4": ""},
 
-      "tasks": {"zeitTask1": "", "commentsTask1": "", "failedTaskComment": "",
-      "zeitTask2": "", "commentsTask2": "", "failedTaskComment": "",
-      "zeitTask3": "", "commentsTask3": "", "failedTaskComment": "",
-      "zeitTask4": "", "commentsTask4": "", "failedTaskComment": "",
-      "zeitTask5": "", "commentsTask5": "", "failedTaskComment": "",
-      "zeitTask6": "", "commentsTask6": "", "failedTaskComment": ""},
+      "tasks": {"zeitTask1": "", "commentsTask1": "", "task1failureComment": "", "urlsTask1": "",
+      "zeitTask2": "", "commentsTask2": "", "task2failureComment": "", "urlsTask2": "",
+      "zeitTask3": "", "commentsTask3": "", "task3failureComment": "", "urlsTask3": "",
+      "zeitTask4": "", "commentsTask4": "", "task4failureComment": "", "urlsTask4": "",
+      "zeitTask5": "", "commentsTask5": "", "task5failureComment": "", "urlsTask5": "",
+      "zeitTask6": "", "commentsTask6": "", "task6failureComment": "", "urlsTask6": ""},
 
       "susFragebogen": {"sus1": "", "sus2": "", "sus3": "", "sus4": "", "sus5": "",
       "sus6": "", "sus7": "", "sus8": "", "sus9": "", "sus10": "",},
@@ -87,23 +87,42 @@ ChromeExtensionURUT.JSONDownloader = function() {
         jsonObject.tasks.zeitTask6 = result.timeTask6;
       });
 
+    chrome.storage.sync.get(['urlsTask1'], function(result){
+        jsonObject.tasks.urlsTask1 = result.urlsTask1;
+      });
+    chrome.storage.sync.get(['urlsTask2'], function(result){
+        jsonObject.tasks.urlsTask2 = result.urlsTask2;
+      });
+    chrome.storage.sync.get(['urlsTask3'], function(result){
+        jsonObject.tasks.urlsTask3 = result.urlsTask3;
+      });
+    chrome.storage.sync.get(['urlsTask4'], function(result){
+        jsonObject.tasks.urlsTask4 = result.urlsTask4;
+      });
+    chrome.storage.sync.get(['urlsTask5'], function(result){
+        jsonObject.tasks.urlsTask5 = result.urlsTask5;
+      });
+    chrome.storage.sync.get(['urlsTask6'], function(result){
+        jsonObject.tasks.urlsTask6 = result.urlsTask6;
+      });
+
     chrome.storage.sync.get(['commentsTask1'], function(result){
-        jsonObject.tasks.task1Array = result.commentsTask1;
+        jsonObject.tasks.commentsTask1 = result.commentsTask1;
       });
     chrome.storage.sync.get(['commentsTask2'], function(result){
-        jsonObject.tasks.task2Array = result.commentsTask2;
+        jsonObject.tasks.commentsTask2 = result.commentsTask2;
       });
     chrome.storage.sync.get(['commentsTask3'], function(result){
-        jsonObject.tasks.task3Array = result.commentsTask3;
+        jsonObject.tasks.commentsTask3 = result.commentsTask3;
       });
     chrome.storage.sync.get(['commentsTask4'], function(result){
-        jsonObject.tasks.task4Array = result.commentsTask4;
+        jsonObject.tasks.commentsTask4 = result.commentsTask4;
       });
     chrome.storage.sync.get(['commentsTask5'], function(result){
-        jsonObject.tasks.task5Array = result.commentsTask5;
+        jsonObject.tasks.commentsTask5 = result.commentsTask5;
       });
     chrome.storage.sync.get(['commentsTask6'], function(result){
-        jsonObject.tasks.task6Array = result.commentsTask6;
+        jsonObject.tasks.commentsTask6 = result.commentsTask6;
       });
 
     chrome.storage.sync.get(['taskFailureComment1'], function(result){
@@ -123,7 +142,6 @@ ChromeExtensionURUT.JSONDownloader = function() {
       });
     chrome.storage.sync.get(['taskFailureComment6'], function(result){
         jsonObject.tasks.task6failureComment = result.taskFailureComment6;
-        console.log(result.taskFailureComment6);
       });
 
     chrome.storage.sync.get(['beschreibung1'], function(result){

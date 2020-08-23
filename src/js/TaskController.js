@@ -35,7 +35,6 @@ ChromeExtensionURUT.TaskController = function() {
     chrome.storage.sync.set({taskRunning: ChromeExtensionURUT.Config.taskIsRunning}, function(){
       taskRunning = ChromeExtensionURUT.Config.taskIsRunning;
       dispatchTaskRunningEvent();
-      console.log("taskRunning");
     });
   }
 
@@ -46,8 +45,7 @@ ChromeExtensionURUT.TaskController = function() {
       startTime = result.startTime;
       passedSeconds = currentTimeSeconds - startTime;
       chrome.storage.sync.set({timeDifference: passedSeconds}, function(){
-        dispatchSaveDataEvent();
-        console.log("passedSeconds" + passedSeconds);
+        saveTimeForTaskData();
       });
       chrome.storage.sync.set({taskRunning: ChromeExtensionURUT.Config.taskIsFinished}, function(){
         taskRunning = ChromeExtensionURUT.Config.taskIsFinished;
@@ -78,10 +76,32 @@ ChromeExtensionURUT.TaskController = function() {
   }
 
   /*************************** private functions ******************************/
-  function dispatchSaveDataEvent() {
-    let saveDataEvent = new Event("onDataSaved");
-    saveDataEvent.taskTimeInSeconds = passedSeconds;
-    that.dispatchEvent(saveDataEvent);
+  function saveTimeForTaskData(){
+    chrome.storage.sync.get(['state'], function(result){
+        console.log("Currentstate after stop button pressed:" + result.state);
+        console.log(passedSeconds);
+
+        switch(result.state){
+          case ChromeExtensionURUT.Config.task1:
+          chrome.storage.sync.set({timeTask1: passedSeconds});
+          break;
+          case ChromeExtensionURUT.Config.task2:
+          chrome.storage.sync.set({timeTask2: passedSeconds});
+          break;
+          case ChromeExtensionURUT.Config.task3:
+          chrome.storage.sync.set({timeTask3: passedSeconds});
+          break;
+          case ChromeExtensionURUT.Config.task4:
+          chrome.storage.sync.set({timeTask4: passedSeconds});
+          break;
+          case ChromeExtensionURUT.Config.task5:
+          chrome.storage.sync.set({timeTask5: passedSeconds});
+          break;
+          case ChromeExtensionURUT.Config.task6:
+          chrome.storage.sync.set({timeTask6: passedSeconds});
+          break;
+        }
+      });
   }
 
   function dispatchTaskRunningEvent() {

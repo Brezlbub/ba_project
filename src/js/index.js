@@ -13,7 +13,7 @@ ChromeExtensionURUT.App = (function() {
     currentState,
     taskRunning,
     views;
-    
+
   function init() {
     initController();
     initViews();
@@ -37,7 +37,6 @@ ChromeExtensionURUT.App = (function() {
       navigationController = ChromeExtensionURUT.NavigationController().init();
       navigationController.addEventListener("onStateChanged", updateViews);
       taskController = ChromeExtensionURUT.TaskController().init();
-      taskController.addEventListener("onDataSaved", saveTaskData);
       taskController.addEventListener("onTaskRunning", updateTaskState);
       presurveyController = ChromeExtensionURUT.PreSurveyController().init();
       presurveyController.addEventListener("onCorrectInputs", updatePreSurveyViews);
@@ -71,11 +70,6 @@ ChromeExtensionURUT.App = (function() {
 
   function updateTaskState(event){
     views.updateTaskState(event, currentState);
-  }
-
-  function saveTaskData(event){
-    let passedSeconds = event.taskTimeInSeconds;
-    console.log(passedSeconds);
   }
 
   that.init = init;
