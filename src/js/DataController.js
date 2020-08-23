@@ -64,6 +64,7 @@ ChromeExtensionURUT.DataController = function() {
       task4FailureComment, task5FailureComment, task6FailureComment,
       currentState = result.state;
       if(currentState == ChromeExtensionURUT.Config.task1){
+        console.log("currentState: "+ currentState + "config.task1: " + ChromeExtensionURUT.Config.task1);
         task1FailureComment = failureComment.value;
         failureComment.value = "";
         chrome.storage.sync.set({task1FailureComment: task1FailureComment});
@@ -259,15 +260,6 @@ ChromeExtensionURUT.DataController = function() {
       }
       });
   }
-
-
-  /*************************** event functions ********************************/
-
-  /*function dispatchSaveDataEvent() {
-    let saveDataEvent = new Event("onDataSaved");
-    saveDataEvent.taskTimeInSeconds = passedSeconds;
-    that.dispatchEvent(saveDataEvent);
-  }*/
 
   that.init = init;
   return that;

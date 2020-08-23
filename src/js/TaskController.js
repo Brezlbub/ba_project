@@ -11,6 +11,7 @@ ChromeExtensionURUT.TaskController = function() {
     submitFailureCommentButton,
     passedSeconds,
     taskRunning,
+    failureComment,
     startTime;
 
   /*************************** public functions *******************************/
@@ -20,6 +21,7 @@ ChromeExtensionURUT.TaskController = function() {
     taskSuccessButton = document.getElementById("task-success");
     taskFailedButton = document.getElementById("task-failed");
     submitFailureCommentButton = document.getElementById("submit-failure-comment-button");
+    failureComment = document.getElementById("failure-comment");
     startTaskButton.addEventListener("click", startTaskCounter);
     stopTaskButton.addEventListener("click", stopTaskCounter);
     taskSuccessButton.addEventListener("click", taskSucceeded);

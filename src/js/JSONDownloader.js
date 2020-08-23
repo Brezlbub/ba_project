@@ -55,12 +55,12 @@ ChromeExtensionURUT.JSONDownloader = function() {
       "internet": "", "veranstaltungsportale": "",
       "webseiten": "", "frage1": "", "frage2": "", "frage3": "", "frage4": ""},
 
-      "tasks": {"zeitTask1": "", "commentsTask1": "", "task1failureComment": "", "urlsTask1": "",
-      "zeitTask2": "", "commentsTask2": "", "task2failureComment": "", "urlsTask2": "",
-      "zeitTask3": "", "commentsTask3": "", "task3failureComment": "", "urlsTask3": "",
-      "zeitTask4": "", "commentsTask4": "", "task4failureComment": "", "urlsTask4": "",
-      "zeitTask5": "", "commentsTask5": "", "task5failureComment": "", "urlsTask5": "",
-      "zeitTask6": "", "commentsTask6": "", "task6failureComment": "", "urlsTask6": ""},
+      "tasks": {"zeitTask1": "", "commentsTask1": "", "task1FailureComment": "", "urlsTask1": "",
+      "zeitTask2": "", "commentsTask2": "", "task2FailureComment": "", "urlsTask2": "",
+      "zeitTask3": "", "commentsTask3": "", "task3FailureComment": "", "urlsTask3": "",
+      "zeitTask4": "", "commentsTask4": "", "task4FailureComment": "", "urlsTask4": "",
+      "zeitTask5": "", "commentsTask5": "", "task5FailureComment": "", "urlsTask5": "",
+      "zeitTask6": "", "commentsTask6": "", "task6FailureComment": "", "urlsTask6": ""},
 
       "susFragebogen": {"sus1": "", "sus2": "", "sus3": "", "sus4": "", "sus5": "",
       "sus6": "", "sus7": "", "sus8": "", "sus9": "", "sus10": "",},
@@ -125,23 +125,23 @@ ChromeExtensionURUT.JSONDownloader = function() {
         jsonObject.tasks.commentsTask6 = result.commentsTask6;
       });
 
-    chrome.storage.sync.get(['taskFailureComment1'], function(result){
-        jsonObject.tasks.task1failureComment = result.taskFailureComment1;
+    chrome.storage.sync.get(['task1FailureComment'], function(result){
+        jsonObject.tasks.task1FailureComment = result.task1FailureComment;
       });
-    chrome.storage.sync.get(['taskFailureComment2'], function(result){
-        jsonObject.tasks.task2failureComment = result.taskFailureComment2;
+    chrome.storage.sync.get(['task2FailureComment'], function(result){
+        jsonObject.tasks.task2FailureComment = result.task2FailureComment;
       });
-    chrome.storage.sync.get(['taskFailureComment3'], function(result){
-        jsonObject.tasks.task3failureComment = result.taskFailureComment3;
+    chrome.storage.sync.get(['task3FailureComment'], function(result){
+        jsonObject.tasks.task3FailureComment = result.task3FailureComment;
       });
-    chrome.storage.sync.get(['taskFailureComment4'], function(result){
-        jsonObject.tasks.task4failureComment = result.taskFailureComment4;
+    chrome.storage.sync.get(['task4FailureComment'], function(result){
+        jsonObject.tasks.task4FailureComment = result.task4FailureComment;
       });
-    chrome.storage.sync.get(['taskFailureComment5'], function(result){
-        jsonObject.tasks.task5failureComment = result.taskFailureComment5;
+    chrome.storage.sync.get(['task5FailureComment'], function(result){
+        jsonObject.tasks.task5FailureComment = result.task5FailureComment;
       });
-    chrome.storage.sync.get(['taskFailureComment6'], function(result){
-        jsonObject.tasks.task6failureComment = result.taskFailureComment6;
+    chrome.storage.sync.get(['task6FailureComment'], function(result){
+        jsonObject.tasks.task6FailureComment = result.task6FailureComment;
       });
 
     chrome.storage.sync.get(['beschreibung1'], function(result){
