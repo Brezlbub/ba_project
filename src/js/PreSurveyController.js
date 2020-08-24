@@ -49,65 +49,65 @@ ChromeExtensionURUT.PreSurveyController = function() {
 
 
   function getSavedInputs(){
-    chrome.storage.sync.get(['ageInput'], function(result){
+    chrome.storage.local.get(['ageInput'], function(result){
         ageInput.value = result.ageInput;
       });
-    chrome.storage.sync.get(['question1input'], function(result){
+    chrome.storage.local.get(['question1input'], function(result){
         question1input.value = result.question1input;
       });
-    chrome.storage.sync.get(['question2input'], function(result){
+    chrome.storage.local.get(['question2input'], function(result){
         question2input.value = result.question2input;
       });
-    chrome.storage.sync.get(['question3input'], function(result){
+    chrome.storage.local.get(['question3input'], function(result){
         question3input.value = result.question3input;
       });
-    chrome.storage.sync.get(['question4input'], function(result){
+    chrome.storage.local.get(['question4input'], function(result){
         question4input.value = result.question4input;
       });
   }
 
   function loadSavedPreSurveyStates(){
-    chrome.storage.sync.get(['genderButton'], function(result){
+    chrome.storage.local.get(['genderButton'], function(result){
       for(var i = 0; i < genderButtons.length; i++){
       if(genderButtons[i].value == result.genderButton){
         genderButtons[i].checked = true;}}});
 
-    chrome.storage.sync.get(['pcLaptopWorkButtons'], function(result){
+    chrome.storage.local.get(['pcLaptopWorkButtons'], function(result){
       for(var i = 0; i < pcLaptopWorkButtons.length; i++){
       if(pcLaptopWorkButtons[i].value == result.pcLaptopWorkButtons){
         pcLaptopWorkButtons[i].checked = true;}}});
 
-    chrome.storage.sync.get(['pcLaptopPrivateButtons'], function(result){
+    chrome.storage.local.get(['pcLaptopPrivateButtons'], function(result){
       for(var i = 0; i < pcLaptopPrivateButtons.length; i++){
       if(pcLaptopPrivateButtons[i].value == result.pcLaptopPrivateButtons){
         pcLaptopPrivateButtons[i].checked = true;}}});
 
-    chrome.storage.sync.get(['smartphoneWorkButtons'], function(result){
+    chrome.storage.local.get(['smartphoneWorkButtons'], function(result){
       for(var i = 0; i < smartphoneWorkButtons.length; i++){
       if(smartphoneWorkButtons[i].value == result.smartphoneWorkButtons){
         smartphoneWorkButtons[i].checked = true;}}});
 
-    chrome.storage.sync.get(['smartphonePrivateButtons'], function(result){
+    chrome.storage.local.get(['smartphonePrivateButtons'], function(result){
       for(var i = 0; i < smartphonePrivateButtons.length; i++){
       if(smartphonePrivateButtons[i].value == result.smartphonePrivateButtons){
         smartphonePrivateButtons[i].checked = true;}}});
 
-    chrome.storage.sync.get(['radioKnowledgeButtons'], function(result){
+    chrome.storage.local.get(['radioKnowledgeButtons'], function(result){
       for(var i = 0; i < radioKnowledgeButtons.length; i++){
       if(radioKnowledgeButtons[i].value == result.radioKnowledgeButtons){
         radioKnowledgeButtons[i].checked = true;}}});
 
-    chrome.storage.sync.get(['radioInternetUsageButtons'], function(result){
+    chrome.storage.local.get(['radioInternetUsageButtons'], function(result){
       for(var i = 0; i < radioInternetUsageButtons.length; i++){
       if(radioInternetUsageButtons[i].value == result.radioInternetUsageButtons){
         radioInternetUsageButtons[i].checked = true;}}});
 
-    chrome.storage.sync.get(['radioVeranstaltungsportaleButtons'], function(result){
+    chrome.storage.local.get(['radioVeranstaltungsportaleButtons'], function(result){
       for(var i = 0; i < radioVeranstaltungsportaleButtons.length; i++){
       if(radioVeranstaltungsportaleButtons[i].value == result.radioVeranstaltungsportaleButtons){
         radioVeranstaltungsportaleButtons[i].checked = true;}}});
 
-    chrome.storage.sync.get(['radioSingleVeranstaltungsportaleButtons'], function(result){
+    chrome.storage.local.get(['radioSingleVeranstaltungsportaleButtons'], function(result){
       for(var i = 0; i < radioSingleVeranstaltungsportaleButtons.length; i++){
       if(radioSingleVeranstaltungsportaleButtons[i].value == result.radioSingleVeranstaltungsportaleButtons){
         radioSingleVeranstaltungsportaleButtons[i].checked = true;}}});
@@ -187,74 +187,74 @@ ChromeExtensionURUT.PreSurveyController = function() {
   function genderButtonClicked(){
     for(var i = 0; i < genderButtons.length; i++){
       if(genderButtons[i].checked == true){
-        chrome.storage.sync.set({genderButton: genderButtons[i].value});}}
+        chrome.storage.local.set({genderButton: genderButtons[i].value});}}
   }
 
   function pcLaptopWorkButtonsClicked(){
     for(var i = 0; i < pcLaptopWorkButtons.length; i++){
       if(pcLaptopWorkButtons[i].checked == true){
-        chrome.storage.sync.set({pcLaptopWorkButtons: pcLaptopWorkButtons[i].value});}}
+        chrome.storage.local.set({pcLaptopWorkButtons: pcLaptopWorkButtons[i].value});}}
   }
 
   function pcLaptopPrivateButtonsClicked(){
     for(var i = 0; i < pcLaptopPrivateButtons.length; i++){
       if(pcLaptopPrivateButtons[i].checked == true){
-        chrome.storage.sync.set({pcLaptopPrivateButtons: pcLaptopPrivateButtons[i].value});}}
+        chrome.storage.local.set({pcLaptopPrivateButtons: pcLaptopPrivateButtons[i].value});}}
   }
 
   function smartphoneWorkButtonsClicked(){
     for(var i = 0; i < smartphoneWorkButtons.length; i++){
       if(smartphoneWorkButtons[i].checked == true){
-        chrome.storage.sync.set({smartphoneWorkButtons: smartphoneWorkButtons[i].value});}}
+        chrome.storage.local.set({smartphoneWorkButtons: smartphoneWorkButtons[i].value});}}
   }
   function smartphonePrivateButtonsClicked(){
     for(var i = 0; i < smartphonePrivateButtons.length; i++){
       if(smartphonePrivateButtons[i].checked == true){
-        chrome.storage.sync.set({smartphonePrivateButtons: smartphonePrivateButtons[i].value});}}
+        chrome.storage.local.set({smartphonePrivateButtons: smartphonePrivateButtons[i].value});}}
   }
 
   function radioKnowledgeButtonsClicked(){
     for(var i = 0; i < radioKnowledgeButtons.length; i++){
       if(radioKnowledgeButtons[i].checked == true){
-        chrome.storage.sync.set({radioKnowledgeButtons: radioKnowledgeButtons[i].value});}}
+        chrome.storage.local.set({radioKnowledgeButtons: radioKnowledgeButtons[i].value});}}
   }
 
   function radioInternetUsageButtonsClicked(){
     for(var i = 0; i < radioInternetUsageButtons.length; i++){
       if(radioInternetUsageButtons[i].checked == true){
-        chrome.storage.sync.set({radioInternetUsageButtons: radioInternetUsageButtons[i].value});}}
+        chrome.storage.local.set({radioInternetUsageButtons: radioInternetUsageButtons[i].value});}}
   }
 
   function radioVeranstaltungsportaleButtonsClicked(){
     for(var i = 0; i < radioVeranstaltungsportaleButtons.length; i++){
       if(radioVeranstaltungsportaleButtons[i].checked == true){
-        chrome.storage.sync.set({radioVeranstaltungsportaleButtons: radioVeranstaltungsportaleButtons[i].value});}}
+        chrome.storage.local.set({radioVeranstaltungsportaleButtons: radioVeranstaltungsportaleButtons[i].value});}}
   }
 
   function radioSingleVeranstaltungsportaleButtonsClicked(){
     for(var i = 0; i < radioSingleVeranstaltungsportaleButtons.length; i++){
       if(radioSingleVeranstaltungsportaleButtons[i].checked == true){
-        chrome.storage.sync.set({radioSingleVeranstaltungsportaleButtons: radioSingleVeranstaltungsportaleButtons[i].value});}}
+        chrome.storage.local.set({radioSingleVeranstaltungsportaleButtons: radioSingleVeranstaltungsportaleButtons[i].value});}}
   }
 
   function ageInputEntered(){
-    chrome.storage.sync.set({ageInput: ageInput.value});
+    chrome.storage.local.set({ageInput: ageInput.value});
   }
 
   function question1inputEntered(){
-    chrome.storage.sync.set({question1input: question1input.value});
+    chrome.storage.local.set({question1input: question1input.value});
   }
 
   function question2inputEntered(){
-    chrome.storage.sync.set({question2input: question2input.value});
+    chrome.storage.local.set({question2input: question2input.value});
   }
 
   function question3inputEntered(){
-    chrome.storage.sync.set({question3input: question3input.value});
+    chrome.storage.local.set({question3input: question3input.value});
   }
 
   function question4inputEntered(){
-    chrome.storage.sync.set({question4input: question4input.value});
+    chrome.storage.local.set({question4input: question4input.value});
   }
 
   function dispatchOnCorrectInputsEvent(isCorrect){

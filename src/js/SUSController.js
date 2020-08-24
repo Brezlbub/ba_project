@@ -35,52 +35,52 @@ ChromeExtensionURUT.SUSController = function() {
   }
 
   function loadSavedSUSStates(){
-    chrome.storage.sync.get(['sus1'], function(result){
+    chrome.storage.local.get(['sus1'], function(result){
       for(var i = 0; i < sus1Buttons.length; i++){
       if(sus1Buttons[i].value == result.sus1){
         sus1Buttons[i].checked = true;}}});
 
-    chrome.storage.sync.get(['sus2'], function(result){
+    chrome.storage.local.get(['sus2'], function(result){
       for(var i = 0; i < sus2Buttons.length; i++){
       if(sus2Buttons[i].value == result.sus2){
         sus2Buttons[i].checked = true;}}});
 
-    chrome.storage.sync.get(['sus3'], function(result){
+    chrome.storage.local.get(['sus3'], function(result){
       for(var i = 0; i < sus3Buttons.length; i++){
       if(sus3Buttons[i].value == result.sus3){
         sus3Buttons[i].checked = true;}}});
 
-    chrome.storage.sync.get(['sus4'], function(result){
+    chrome.storage.local.get(['sus4'], function(result){
       for(var i = 0; i < sus4Buttons.length; i++){
       if(sus4Buttons[i].value == result.sus4){
         sus4Buttons[i].checked = true;}}});
 
-    chrome.storage.sync.get(['sus5'], function(result){
+    chrome.storage.local.get(['sus5'], function(result){
       for(var i = 0; i < sus5Buttons.length; i++){
       if(sus5Buttons[i].value == result.sus5){
         sus5Buttons[i].checked = true;}}});
 
-    chrome.storage.sync.get(['sus6'], function(result){
+    chrome.storage.local.get(['sus6'], function(result){
       for(var i = 0; i < sus6Buttons.length; i++){
       if(sus6Buttons[i].value == result.sus6){
         sus6Buttons[i].checked = true;}}});
 
-    chrome.storage.sync.get(['sus7'], function(result){
+    chrome.storage.local.get(['sus7'], function(result){
       for(var i = 0; i < sus7Buttons.length; i++){
       if(sus7Buttons[i].value == result.sus7){
         sus7Buttons[i].checked = true;}}});
 
-    chrome.storage.sync.get(['sus8'], function(result){
+    chrome.storage.local.get(['sus8'], function(result){
       for(var i = 0; i < sus8Buttons.length; i++){
       if(sus8Buttons[i].value == result.sus8){
         sus8Buttons[i].checked = true;}}});
 
-    chrome.storage.sync.get(['sus9'], function(result){
+    chrome.storage.local.get(['sus9'], function(result){
       for(var i = 0; i < sus9Buttons.length; i++){
       if(sus9Buttons[i].value == result.sus9){
         sus9Buttons[i].checked = true;}}});
 
-    chrome.storage.sync.get(['sus10'], function(result){
+    chrome.storage.local.get(['sus10'], function(result){
       for(var i = 0; i < sus10Buttons.length; i++){
       if(sus10Buttons[i].value == result.sus10){
         sus10Buttons[i].checked = true;}}});
@@ -152,61 +152,61 @@ ChromeExtensionURUT.SUSController = function() {
   function sus1ButtonsClicked(){
     for(var i = 0; i < sus1Buttons.length; i++){
       if(sus1Buttons[i].checked == true){
-        chrome.storage.sync.set({sus1: sus1Buttons[i].value});}}
+        chrome.storage.local.set({sus1: sus1Buttons[i].value});}}
   }
 
   function sus2ButtonsClicked(){
     for(var i = 0; i < sus2Buttons.length; i++){
       if(sus2Buttons[i].checked == true){
-        chrome.storage.sync.set({sus2: sus2Buttons[i].value});}}
+        chrome.storage.local.set({sus2: sus2Buttons[i].value});}}
   }
 
   function sus3ButtonsClicked(){
     for(var i = 0; i < sus3Buttons.length; i++){
       if(sus3Buttons[i].checked == true){
-        chrome.storage.sync.set({sus3: sus3Buttons[i].value});}}
+        chrome.storage.local.set({sus3: sus3Buttons[i].value});}}
   }
 
   function sus4ButtonsClicked(){
     for(var i = 0; i < sus4Buttons.length; i++){
       if(sus4Buttons[i].checked == true){
-        chrome.storage.sync.set({sus4: sus4Buttons[i].value});}}
+        chrome.storage.local.set({sus4: sus4Buttons[i].value});}}
   }
 
   function sus5ButtonsClicked(){
     for(var i = 0; i < sus5Buttons.length; i++){
       if(sus5Buttons[i].checked == true){
-        chrome.storage.sync.set({sus5: sus5Buttons[i].value});}}
+        chrome.storage.local.set({sus5: sus5Buttons[i].value});}}
   }
 
   function sus6ButtonsClicked(){
     for(var i = 0; i < sus6Buttons.length; i++){
       if(sus6Buttons[i].checked == true){
-        chrome.storage.sync.set({sus6: sus6Buttons[i].value});}}
+        chrome.storage.local.set({sus6: sus6Buttons[i].value});}}
   }
 
   function sus7ButtonsClicked(){
     for(var i = 0; i < sus7Buttons.length; i++){
       if(sus7Buttons[i].checked == true){
-        chrome.storage.sync.set({sus7: sus7Buttons[i].value});}}
+        chrome.storage.local.set({sus7: sus7Buttons[i].value});}}
   }
 
   function sus8ButtonsClicked(){
     for(var i = 0; i < sus8Buttons.length; i++){
       if(sus8Buttons[i].checked == true){
-        chrome.storage.sync.set({sus8: sus8Buttons[i].value});}}
+        chrome.storage.local.set({sus8: sus8Buttons[i].value});}}
   }
 
   function sus9ButtonsClicked(){
     for(var i = 0; i < sus9Buttons.length; i++){
       if(sus9Buttons[i].checked == true){
-        chrome.storage.sync.set({sus9: sus9Buttons[i].value});}}
+        chrome.storage.local.set({sus9: sus9Buttons[i].value});}}
   }
 
   function sus10ButtonsClicked(){
     for(var i = 0; i < sus10Buttons.length; i++){
       if(sus10Buttons[i].checked == true){
-        chrome.storage.sync.set({sus10: sus10Buttons[i].value});}}
+        chrome.storage.local.set({sus10: sus10Buttons[i].value});}}
   }
 
   function dispatchOnCorrectInputsEvent(isCorrect){

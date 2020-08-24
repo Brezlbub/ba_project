@@ -22,10 +22,10 @@ ChromeExtensionURUT.App = (function() {
 /*************************** init functions *********************************/
 
   function initSavedState(){
-    chrome.storage.sync.get(['state'], function(result){
+    chrome.storage.local.get(['state'], function(result){
       currentState = result.state;
       views.loadSavedViews(currentState);
-      chrome.storage.sync.get(['taskRunning'], function(result){
+      chrome.storage.local.get(['taskRunning'], function(result){
         taskRunning = result.taskRunning;
         views.loadSavedTaskState(taskRunning, currentState);
       });

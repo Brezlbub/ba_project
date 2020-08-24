@@ -204,7 +204,7 @@ ChromeExtensionURUT.Views = function() {
   }
 
   function managePreSurveyView(currentState){
-    chrome.storage.sync.get(['surveyFinished'], function(result){
+    chrome.storage.local.get(['surveyFinished'], function(result){
       if((result.surveyFinished == ChromeExtensionURUT.Config.surveyFinished) && (contentObjects[currentState].id == ChromeExtensionURUT.Config.preSurvey)){
         enableElement(stepNextButton);
         showElement(stepNextButton);
@@ -226,7 +226,7 @@ ChromeExtensionURUT.Views = function() {
   }
 
   function manageSUSsurveyViews(){
-    chrome.storage.sync.get(['surveyFinished'], function(result){
+    chrome.storage.local.get(['surveyFinished'], function(result){
       if((result.surveyFinished == ChromeExtensionURUT.Config.surveyFinished) && (contentObjects[currentState].id == ChromeExtensionURUT.Config.sus)){
         enableElement(stepNextButton);
         showElement(stepNextButton);
@@ -251,7 +251,7 @@ ChromeExtensionURUT.Views = function() {
 
   function updatePreSurveyViews(event){
     if(event.isCorrect == true){
-      chrome.storage.sync.set({surveyFinished: ChromeExtensionURUT.Config.surveyFinished});
+      chrome.storage.local.set({surveyFinished: ChromeExtensionURUT.Config.surveyFinished});
       enableElement(stepNextButton);
       showElement(stepNextButton);
       pleaseInsertText.innerHTML = ChromeExtensionURUT.Config.clickNextText;
@@ -262,7 +262,7 @@ ChromeExtensionURUT.Views = function() {
 
   function updateSUSSurveyViews(event){
     if(event.isCorrect == true){
-      chrome.storage.sync.set({surveyFinished: ChromeExtensionURUT.Config.surveyFinished});
+      chrome.storage.local.set({surveyFinished: ChromeExtensionURUT.Config.surveyFinished});
       enableElement(stepNextButton);
       showElement(stepNextButton);
       pleaseInsertTextSUS.innerHTML = ChromeExtensionURUT.Config.clickNextText;
