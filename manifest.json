@@ -28,9 +28,6 @@
   },
   "permissions": [
     "tabs",
-    "storage",
-    "identity",
-    "activeTab",
-    "downloads"
+    "storage"
   ]
 }
