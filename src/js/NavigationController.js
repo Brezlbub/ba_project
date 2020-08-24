@@ -17,7 +17,7 @@ ChromeExtensionURUT.NavigationController = function() {
     stepNextButton = document.getElementById("step-next");
     stepBackButton.addEventListener("click", stepBack);
     stepNextButton.addEventListener("click", stepNext);
-    chrome.storage.sync.get(['state'], function(result){
+    chrome.storage.local.get(['state'], function(result){
       currentState = result.state;
     });
     return that;
@@ -29,14 +29,14 @@ ChromeExtensionURUT.NavigationController = function() {
 /*************************** event functions ********************************/
   function stepBack () {
     currentState--;
-    chrome.storage.sync.set({state: currentState}, function() {
+    chrome.storage.local.set({state: currentState}, function() {
             dispatchStateChangeEvent();
           });
   }
 
   function stepNext () {
     currentState++;
-    chrome.storage.sync.set({state: currentState}, function() {
+    chrome.storage.local.set({state: currentState}, function() {
             dispatchStateChangeEvent();
             console.log(currentState);
             if(currentState == 14){
@@ -44,7 +44,7 @@ ChromeExtensionURUT.NavigationController = function() {
             }
           });
 
-    chrome.storage.sync.set({taskRunning: ChromeExtensionURUT.Config.taskNotStarted});
+    chrome.storage.local.set({taskRunning: ChromeExtensionURUT.Config.taskNotStarted});
   }
 
   /*************************** private functions ******************************/

@@ -41,67 +41,67 @@ ChromeExtensionURUT.DataController = function() {
   }*/
 
   function storeDescribeCommentData() {
-    chrome.storage.sync.get(['state'], function(result){
+    chrome.storage.local.get(['state'], function(result){
       var currentState, describe1comment, describe2comment, describe3comment;
       currentState = result.state;
       if(currentState == ChromeExtensionURUT.Config.describe1){
         describe1comment = describeComment.value;
         describeComment.value = "";
-        chrome.storage.sync.set({beschreibung1: describe1comment});
+        chrome.storage.local.set({beschreibung1: describe1comment});
       }
       if(currentState == ChromeExtensionURUT.Config.describe2){
         describe2comment = describeComment.value;
         describeComment.value = "";
-        chrome.storage.sync.set({beschreibung2: describe2comment});
+        chrome.storage.local.set({beschreibung2: describe2comment});
       }
       if(currentState == ChromeExtensionURUT.Config.describe3){
         describe3comment = describeComment.value;
         describeComment.value = "";
-        chrome.storage.sync.set({beschreibung3: describe3comment});
+        chrome.storage.local.set({beschreibung3: describe3comment});
       }
       });
   }
 
   function storeFailureCommentData() {
-    chrome.storage.sync.get(['state'], function(result){
+    chrome.storage.local.get(['state'], function(result){
       var currentState, task1FailureComment, task2FailureComment, task3FailureComment,
       task4FailureComment, task5FailureComment, task6FailureComment,
       currentState = result.state;
       if(currentState == ChromeExtensionURUT.Config.task1){
         task1FailureComment = failureComment.value;
         failureComment.value = "";
-        chrome.storage.sync.set({task1FailureComment: task1FailureComment});
+        chrome.storage.local.set({task1FailureComment: task1FailureComment});
       }
       if(currentState == ChromeExtensionURUT.Config.task2){
         task2FailureComment = failureComment.value;
         failureComment.value = "";
-        chrome.storage.sync.set({task2FailureComment: task2FailureComment});
+        chrome.storage.local.set({task2FailureComment: task2FailureComment});
       }
       if(currentState == ChromeExtensionURUT.Config.task3){
         task3FailureComment = failureComment.value;
         failureComment.value = "";
-        chrome.storage.sync.set({task3FailureComment: task3FailureComment});
+        chrome.storage.local.set({task3FailureComment: task3FailureComment});
       }
       if(currentState == ChromeExtensionURUT.Config.task4){
         task4FailureComment = failureComment.value;
         failureComment.value = "";
-        chrome.storage.sync.set({task4FailureComment: task4FailureComment});
+        chrome.storage.local.set({task4FailureComment: task4FailureComment});
       }
       if(currentState == ChromeExtensionURUT.Config.task5){
         task5FailureComment = failureComment.value;
         failureComment.value = "";
-        chrome.storage.sync.set({task5FailureComment: task5FailureComment});
+        chrome.storage.local.set({task5FailureComment: task5FailureComment});
       }
       if(currentState == ChromeExtensionURUT.Config.task6){
         task6FailureComment = failureComment.value;
         failureComment.value = "";
-        chrome.storage.sync.set({task6FailureComment: task6FailureComment});
+        chrome.storage.local.set({task6FailureComment: task6FailureComment});
       }
       });
   }
 
   function storeCommentData(){
-    chrome.storage.sync.get(['state'], function(result){
+    chrome.storage.local.get(['state'], function(result){
       var currentState, task1commentValue,
       task1url, task2commentValue, task2url, task3commentValue,
       task3url, task4commentValue, task4url, task5commentValue, task5url,
@@ -111,151 +111,151 @@ ChromeExtensionURUT.DataController = function() {
       currentState = result.state;
 
       if(currentState == ChromeExtensionURUT.Config.task1){
-        chrome.storage.sync.get(['commentsTask1'], function(result){
+        chrome.storage.local.get(['commentsTask1'], function(result){
           var task1commentArray = result.commentsTask1;
           var task1commentValue = comment.value;
           comment.value = "";
           task1commentArray.push(task1commentValue);
-          chrome.storage.sync.set({commentsTask1: task1commentArray});
-          chrome.storage.sync.get(['commentsTask1'], function(result){
+          chrome.storage.local.set({commentsTask1: task1commentArray});
+          chrome.storage.local.get(['commentsTask1'], function(result){
             console.log(result.commentsTask1);
           });
 
         });
-        chrome.storage.sync.get(['urlsTask1'], function(result){
+        chrome.storage.local.get(['urlsTask1'], function(result){
           var task1urlArray = result.urlsTask1;
           var query = {active: true, currentWindow: true};
           chrome.tabs.query(query, function(tabs){
             var currentTab = tabs[0];
             var task1url = currentTab.url;
             task1urlArray.push(task1url);
-            chrome.storage.sync.set({urlsTask1: task1urlArray});
-            chrome.storage.sync.get(['urlsTask1'], function(result){
+            chrome.storage.local.set({urlsTask1: task1urlArray});
+            chrome.storage.local.get(['urlsTask1'], function(result){
               console.log(result.urlsTask1);
             });
           });
         });
       }
       if(currentState == ChromeExtensionURUT.Config.task2){
-        chrome.storage.sync.get(['commentsTask2'], function(result){
+        chrome.storage.local.get(['commentsTask2'], function(result){
           var task2commentArray = result.commentsTask2;
           var task2commentValue = comment.value;
           comment.value = "";
           task2commentArray.push(task2commentValue);
-          chrome.storage.sync.set({commentsTask2: task2commentArray});
-          chrome.storage.sync.get(['commentsTask2'], function(result){
+          chrome.storage.local.set({commentsTask2: task2commentArray});
+          chrome.storage.local.get(['commentsTask2'], function(result){
             console.log(result.commentsTask2);
           });
         });
-        chrome.storage.sync.get(['urlsTask2'], function(result){
+        chrome.storage.local.get(['urlsTask2'], function(result){
           var task2urlArray = result.urlsTask2;
           var query = {active: true, currentWindow: true};
           chrome.tabs.query(query, function(tabs){
             var currentTab = tabs[0];
             var task2url = currentTab.url;
             task2urlArray.push(task2url);
-            chrome.storage.sync.set({urlsTask2: task2urlArray});
-            chrome.storage.sync.get(['urlsTask2'], function(result){
+            chrome.storage.local.set({urlsTask2: task2urlArray});
+            chrome.storage.local.get(['urlsTask2'], function(result){
               console.log(result.urlsTask2);
             });
           });
         });
       }
       if(currentState == ChromeExtensionURUT.Config.task3){
-        chrome.storage.sync.get(['commentsTask3'], function(result){
+        chrome.storage.local.get(['commentsTask3'], function(result){
           var task3commentArray = result.commentsTask3;
           var task3commentValue = comment.value;
           comment.value = "";
           task3commentArray.push(task3commentValue);
-          chrome.storage.sync.set({commentsTask3: task3commentArray});
-          chrome.storage.sync.get(['commentsTask3'], function(result){
+          chrome.storage.local.set({commentsTask3: task3commentArray});
+          chrome.storage.local.get(['commentsTask3'], function(result){
             console.log(result.commentsTask3);
           });
         });
-        chrome.storage.sync.get(['urlsTask3'], function(result){
+        chrome.storage.local.get(['urlsTask3'], function(result){
           var task3urlArray = result.urlsTask3;
           var query = {active: true, currentWindow: true};
           chrome.tabs.query(query, function(tabs){
             var currentTab = tabs[0];
             var task3url = currentTab.url;
             task3urlArray.push(task3url);
-            chrome.storage.sync.set({urlsTask3: task3urlArray});
-            chrome.storage.sync.get(['urlsTask3'], function(result){
+            chrome.storage.local.set({urlsTask3: task3urlArray});
+            chrome.storage.local.get(['urlsTask3'], function(result){
               console.log(result.urlsTask3);
             });
           });
         });
       }
       if(currentState == ChromeExtensionURUT.Config.task4){
-        chrome.storage.sync.get(['commentsTask4'], function(result){
+        chrome.storage.local.get(['commentsTask4'], function(result){
           var task4commentArray = result.commentsTask4;
           var task4commentValue = comment.value;
           comment.value = "";
           task4commentArray.push(task4commentValue);
-          chrome.storage.sync.set({commentsTask4: task4commentArray});
-          chrome.storage.sync.get(['commentsTask4'], function(result){
+          chrome.storage.local.set({commentsTask4: task4commentArray});
+          chrome.storage.local.get(['commentsTask4'], function(result){
             console.log(result.commentsTask4);
           });
         });
-        chrome.storage.sync.get(['urlsTask4'], function(result){
+        chrome.storage.local.get(['urlsTask4'], function(result){
           var task4urlArray = result.urlsTask4;
           var query = {active: true, currentWindow: true};
           chrome.tabs.query(query, function(tabs){
             var currentTab = tabs[0];
             var task4url = currentTab.url;
             task4urlArray.push(task4url);
-            chrome.storage.sync.set({urlsTask4: task4urlArray});
-            chrome.storage.sync.get(['urlsTask4'], function(result){
+            chrome.storage.local.set({urlsTask4: task4urlArray});
+            chrome.storage.local.get(['urlsTask4'], function(result){
               console.log(result.urlsTask4);
             });
           });
         });
       }
       if(currentState == ChromeExtensionURUT.Config.task5){
-        chrome.storage.sync.get(['commentsTask5'], function(result){
+        chrome.storage.local.get(['commentsTask5'], function(result){
           var task5commentArray = result.commentsTask5;
           var task5commentValue = comment.value;
           comment.value = "";
           task5commentArray.push(task5commentValue);
-          chrome.storage.sync.set({commentsTask5: task5commentArray});
-          chrome.storage.sync.get(['commentsTask5'], function(result){
+          chrome.storage.local.set({commentsTask5: task5commentArray});
+          chrome.storage.local.get(['commentsTask5'], function(result){
             console.log(result.commentsTask5);
           });
         });
-        chrome.storage.sync.get(['urlsTask5'], function(result){
+        chrome.storage.local.get(['urlsTask5'], function(result){
           var task5urlArray = result.urlsTask5;
           var query = {active: true, currentWindow: true};
           chrome.tabs.query(query, function(tabs){
             var currentTab = tabs[0];
             var task5url = currentTab.url;
             task5urlArray.push(task5url);
-            chrome.storage.sync.set({urlsTask5: task5urlArray});
-            chrome.storage.sync.get(['urlsTask5'], function(result){
+            chrome.storage.local.set({urlsTask5: task5urlArray});
+            chrome.storage.local.get(['urlsTask5'], function(result){
               console.log(result.urlsTask5);
             });
           });
         });
       }
       if(currentState == ChromeExtensionURUT.Config.task6){
-        chrome.storage.sync.get(['commentsTask6'], function(result){
+        chrome.storage.local.get(['commentsTask6'], function(result){
           var task6commentArray = result.commentsTask6;
           var task6commentValue = comment.value;
           comment.value = "";
           task6commentArray.push(task6commentValue);
-          chrome.storage.sync.set({commentsTask6: task6commentArray});
-          chrome.storage.sync.get(['commentsTask6'], function(result){
+          chrome.storage.local.set({commentsTask6: task6commentArray});
+          chrome.storage.local.get(['commentsTask6'], function(result){
             console.log(result.commentsTask6);
           });
         });
-        chrome.storage.sync.get(['urlsTask6'], function(result){
+        chrome.storage.local.get(['urlsTask6'], function(result){
           var task6urlArray = result.urlsTask6;
           var query = {active: true, currentWindow: true};
           chrome.tabs.query(query, function(tabs){
             var currentTab = tabs[0];
             var task6url = currentTab.url;
             task6urlArray.push(task6url);
-            chrome.storage.sync.set({urlsTask6: task6urlArray});
-            chrome.storage.sync.get(['urlsTask6'], function(result){
+            chrome.storage.local.set({urlsTask6: task6urlArray});
+            chrome.storage.local.get(['urlsTask6'], function(result){
               console.log(result.urlsTask6);
             });
           });

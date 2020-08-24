@@ -33,8 +33,8 @@ ChromeExtensionURUT.TaskController = function() {
 
   function startTaskCounter(){
     let currentTimeSeconds = Math.floor(Date.now() / 1000);
-    chrome.storage.sync.set({startTime: currentTimeSeconds});
-    chrome.storage.sync.set({taskRunning: ChromeExtensionURUT.Config.taskIsRunning}, function(){
+    chrome.storage.local.set({startTime: currentTimeSeconds});
+    chrome.storage.local.set({taskRunning: ChromeExtensionURUT.Config.taskIsRunning}, function(){
       taskRunning = ChromeExtensionURUT.Config.taskIsRunning;
       dispatchTaskRunningEvent();
     });
@@ -43,13 +43,13 @@ ChromeExtensionURUT.TaskController = function() {
   function stopTaskCounter(){
     let currentTimeSeconds;
     currentTimeSeconds = Math.floor(Date.now() / 1000);
-    chrome.storage.sync.get(['startTime'], function(result){
+    chrome.storage.local.get(['startTime'], function(result){
       startTime = result.startTime;
       passedSeconds = currentTimeSeconds - startTime;
-      chrome.storage.sync.set({timeDifference: passedSeconds}, function(){
+      chrome.storage.local.set({timeDifference: passedSeconds}, function(){
         saveTimeForTaskData();
       });
-      chrome.storage.sync.set({taskRunning: ChromeExtensionURUT.Config.taskIsFinished}, function(){
+      chrome.storage.local.set({taskRunning: ChromeExtensionURUT.Config.taskIsFinished}, function(){
         taskRunning = ChromeExtensionURUT.Config.taskIsFinished;
         dispatchTaskRunningEvent();
       });
@@ -57,21 +57,21 @@ ChromeExtensionURUT.TaskController = function() {
   }
 
   function taskSucceeded() {
-    chrome.storage.sync.set({taskRunning: ChromeExtensionURUT.Config.taskSuccess}, function(){
+    chrome.storage.local.set({taskRunning: ChromeExtensionURUT.Config.taskSuccess}, function(){
       taskRunning = ChromeExtensionURUT.Config.taskSuccess;
       dispatchTaskRunningEvent();
     });
   }
 
   function taskFailed(){
-    chrome.storage.sync.set({taskRunning: ChromeExtensionURUT.Config.taskFailed}, function(){
+    chrome.storage.local.set({taskRunning: ChromeExtensionURUT.Config.taskFailed}, function(){
       taskRunning = ChromeExtensionURUT.Config.taskFailed;
       dispatchTaskRunningEvent();
     });
   }
 
   function submitFailureComment(){
-    chrome.storage.sync.set({taskRunning: ChromeExtensionURUT.Config.taskFailureCommentSubmitted}, function(){
+    chrome.storage.local.set({taskRunning: ChromeExtensionURUT.Config.taskFailureCommentSubmitted}, function(){
       taskRunning = ChromeExtensionURUT.Config.taskFailureCommentSubmitted;
       dispatchTaskRunningEvent();
     });
@@ -79,26 +79,26 @@ ChromeExtensionURUT.TaskController = function() {
 
   /*************************** private functions ******************************/
   function saveTimeForTaskData(){
-    chrome.storage.sync.get(['state'], function(result){
+    chrome.storage.local.get(['state'], function(result){
 
         switch(result.state){
           case ChromeExtensionURUT.Config.task1:
-          chrome.storage.sync.set({timeTask1: passedSeconds});
+          chrome.storage.local.set({timeTask1: passedSeconds});
           break;
           case ChromeExtensionURUT.Config.task2:
-          chrome.storage.sync.set({timeTask2: passedSeconds});
+          chrome.storage.local.set({timeTask2: passedSeconds});
           break;
           case ChromeExtensionURUT.Config.task3:
-          chrome.storage.sync.set({timeTask3: passedSeconds});
+          chrome.storage.local.set({timeTask3: passedSeconds});
           break;
           case ChromeExtensionURUT.Config.task4:
-          chrome.storage.sync.set({timeTask4: passedSeconds});
+          chrome.storage.local.set({timeTask4: passedSeconds});
           break;
           case ChromeExtensionURUT.Config.task5:
-          chrome.storage.sync.set({timeTask5: passedSeconds});
+          chrome.storage.local.set({timeTask5: passedSeconds});
           break;
           case ChromeExtensionURUT.Config.task6:
-          chrome.storage.sync.set({timeTask6: passedSeconds});
+          chrome.storage.local.set({timeTask6: passedSeconds});
           break;
         }
       });
