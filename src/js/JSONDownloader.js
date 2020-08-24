@@ -188,7 +188,6 @@ ChromeExtensionURUT.JSONDownloader = function() {
     chrome.storage.sync.get(['radioSingleVeranstaltungsportaleButtons'], function(result){
         jsonObject.vorabfragebogen.webseiten = result.radioSingleVeranstaltungsportaleButtons;
       });
-      console.log(webseiten);
     chrome.storage.sync.get(['radioVeranstaltungsportaleButtons'], function(result){
         jsonObject.vorabfragebogen.veranstaltungsportale = result.radioVeranstaltungsportaleButtons;
       });
@@ -229,7 +228,7 @@ ChromeExtensionURUT.JSONDownloader = function() {
         jsonObject.vorabfragebogen.geschlecht = result.genderButton;
       });
 
-      console.log(jsonObject);
+      return jsonObject;
   }
 
 

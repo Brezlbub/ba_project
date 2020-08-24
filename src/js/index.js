@@ -36,12 +36,16 @@ ChromeExtensionURUT.App = (function() {
   function initController() {
       navigationController = ChromeExtensionURUT.NavigationController().init();
       navigationController.addEventListener("onStateChanged", updateViews);
+
       taskController = ChromeExtensionURUT.TaskController().init();
       taskController.addEventListener("onTaskRunning", updateTaskState);
+
       presurveyController = ChromeExtensionURUT.PreSurveyController().init();
       presurveyController.addEventListener("onCorrectInputs", updatePreSurveyViews);
+
       susController = ChromeExtensionURUT.SUSController().init();
       susController.addEventListener("onCorrectInputs", updateSUSSurveyViews);
+      
       dataController = ChromeExtensionURUT.DataController().init();
       //dataController.addEventListener()
   }

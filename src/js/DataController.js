@@ -16,31 +16,41 @@ ChromeExtensionURUT.DataController = function() {
   /*************************** public functions *******************************/
   function init() {
     jsonDownloader = ChromeExtensionURUT.JSONDownloader().init();
-    submitCommentButton = document.getElementById("submit-comment-button");
-    submitCommentButton.addEventListener('click', storeCommentData);
-    submitFailureCommentButton = document.getElementById("submit-failure-comment-button");
-    submitFailureCommentButton.addEventListener('click', storeFailureCommentData);
-    describeCommentButton = document.getElementById("describe-comment-button");
-    describeCommentButton.addEventListener('click', storeDescribeCommentData);
-    downloadButton = document.getElementById("download-button");
-    downloadButton.addEventListener('click', downloadJSON);
     comment = document.getElementById("comment");
-    describeComment = document.getElementById("describe-comment");
     failureComment = document.getElementById("failure-comment");
+    downloadButton = document.getElementById("download-button");
+    describeComment = document.getElementById("describe-comment");
+    submitCommentButton = document.getElementById("submit-comment-button");
+    describeCommentButton = document.getElementById("describe-comment-button");
+    submitFailureCommentButton = document.getElementById("submit-failure-comment-button");
+
+    //downloadButton.addEventListener('click', downloadJSON);
+    setOnClickListenerDownloadButton();
+    submitCommentButton.addEventListener('click', storeCommentData);
+    describeCommentButton.addEventListener('click', storeDescribeCommentData);
+    submitFailureCommentButton.addEventListener('click', storeFailureCommentData);
     return that;
   }
 
+  function setOnClickListenerDownloadButton(){
+    //https://stackoverflow.com/questions/19721439/download-json-object-as-a-file-from-browser
+    var jsonObject, data;
+    jsonObject = jsonDownloader.initJSONObject();
+    data = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(jsonObject));
+    downloadButton.setAttribute("href", data);
+    downloadButton.setAttribute("download", "testergebnisse.json");
+    downloadButton.click();
+  }
+
   function downloadJSON() {
-    jsonDownloader.initJSONObject();
+
   }
 
   function storeDescribeCommentData() {
     chrome.storage.sync.get(['state'], function(result){
       var currentState, describe1comment, describe2comment, describe3comment;
       currentState = result.state;
-      console.log("current state " + result.state + " describe1: " + ChromeExtensionURUT.Config.describe1);
       if(currentState == ChromeExtensionURUT.Config.describe1){
-        console.log("current state " + result.state + " describe1: " + ChromeExtensionURUT.Config.describe1);
         describe1comment = describeComment.value;
         describeComment.value = "";
         chrome.storage.sync.set({beschreibung1: describe1comment});
@@ -64,7 +74,6 @@ ChromeExtensionURUT.DataController = function() {
       task4FailureComment, task5FailureComment, task6FailureComment,
       currentState = result.state;
       if(currentState == ChromeExtensionURUT.Config.task1){
-        console.log("currentState: "+ currentState + "config.task1: " + ChromeExtensionURUT.Config.task1);
         task1FailureComment = failureComment.value;
         failureComment.value = "";
         chrome.storage.sync.set({task1FailureComment: task1FailureComment});

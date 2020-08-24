@@ -16,21 +16,21 @@ ChromeExtensionURUT.TaskController = function() {
 
   /*************************** public functions *******************************/
   function init() {
-    startTaskButton = document.getElementById("start-task");
     stopTaskButton = document.getElementById("stop-task");
-    taskSuccessButton = document.getElementById("task-success");
+    startTaskButton = document.getElementById("start-task");
     taskFailedButton = document.getElementById("task-failed");
-    submitFailureCommentButton = document.getElementById("submit-failure-comment-button");
     failureComment = document.getElementById("failure-comment");
-    startTaskButton.addEventListener("click", startTaskCounter);
+    taskSuccessButton = document.getElementById("task-success");
+    submitFailureCommentButton = document.getElementById("submit-failure-comment-button");
+
     stopTaskButton.addEventListener("click", stopTaskCounter);
-    taskSuccessButton.addEventListener("click", taskSucceeded);
+    startTaskButton.addEventListener("click", startTaskCounter);
     taskFailedButton.addEventListener("click", taskFailed);
+    taskSuccessButton.addEventListener("click", taskSucceeded);
     submitFailureCommentButton.addEventListener("click", submitFailureComment);
     return that;
   }
 
-  /*************************** event functions ********************************/
   function startTaskCounter(){
     let currentTimeSeconds = Math.floor(Date.now() / 1000);
     chrome.storage.sync.set({startTime: currentTimeSeconds});
@@ -80,8 +80,6 @@ ChromeExtensionURUT.TaskController = function() {
   /*************************** private functions ******************************/
   function saveTimeForTaskData(){
     chrome.storage.sync.get(['state'], function(result){
-        console.log("Currentstate after stop button pressed:" + result.state);
-        console.log(passedSeconds);
 
         switch(result.state){
           case ChromeExtensionURUT.Config.task1:
