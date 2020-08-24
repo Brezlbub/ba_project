@@ -8,6 +8,7 @@ ChromeExtensionURUT.Views = function() {
     stepNextButton,
     startTaskButton,
     stopTaskButton,
+    downloadButton,
     taskRunningText,
     taskFinishedSection,
     taskFailureSection,
@@ -34,6 +35,7 @@ ChromeExtensionURUT.Views = function() {
     stepNextButton = document.getElementById("step-next");
     startTaskButton = document.getElementById("start-task");
     stopTaskButton = document.getElementById("stop-task");
+    downloadButton = document.getElementById("download-button");
     preSurvey = document.getElementById("pre-survey");
     susSurvey = document.getElementById("sus-survey");
     headline = document.getElementById("headline");
@@ -92,6 +94,7 @@ ChromeExtensionURUT.Views = function() {
       hideElement(susSurvey);
       hideElement(stepNextButton);
       disableElement(stepNextButton);
+      showElement(downloadButton);
     }else if(taskState == ChromeExtensionURUT.Config.taskNotStarted){
       resetViews();
       if(contentObjects[currentState].isTask == 1){

@@ -97,6 +97,14 @@ button:disabled {
   background-color: transparent;
 }
 
+#download-button p{
+  color: black;
+}
+
+#download-button {
+
+}
+
 .finish-button p{
   color: black;
 }

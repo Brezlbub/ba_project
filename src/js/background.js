@@ -5,6 +5,38 @@ chrome.storage.sync.set({taskRunning: 0});
 chrome.storage.sync.set({startTime: 0});
 chrome.storage.sync.set({timeDifference: 0});
 
+chrome.storage.sync.set({urlsTask1: []});
+chrome.storage.sync.set({urlsTask2: []});
+chrome.storage.sync.set({urlsTask3: []});
+chrome.storage.sync.set({urlsTask4: []});
+chrome.storage.sync.set({urlsTask5: []});
+chrome.storage.sync.set({urlsTask6: []});
+
+chrome.storage.sync.set({timeTask1:""});
+chrome.storage.sync.set({timeTask2:""});
+chrome.storage.sync.set({timeTask3:""});
+chrome.storage.sync.set({timeTask4:""});
+chrome.storage.sync.set({timeTask5:""});
+chrome.storage.sync.set({timeTask6:""});
+
+chrome.storage.sync.set({commentsTask1: []});
+chrome.storage.sync.set({commentsTask2: []});
+chrome.storage.sync.set({commentsTask3: []});
+chrome.storage.sync.set({commentsTask4: []});
+chrome.storage.sync.set({commentsTask5: []});
+chrome.storage.sync.set({commentsTask6: []});
+
+chrome.storage.sync.set({task1FailureComment: ""});
+chrome.storage.sync.set({task2FailureComment: ""});
+chrome.storage.sync.set({task3FailureComment: ""});
+chrome.storage.sync.set({task4FailureComment: ""});
+chrome.storage.sync.set({task5FailureComment: ""});
+chrome.storage.sync.set({task6FailureComment: ""});
+
+chrome.storage.sync.set({beschreibung1: ""});
+chrome.storage.sync.set({beschreibung2: ""});
+chrome.storage.sync.set({beschreibung3: ""});
+
 
 //Vorabfragebogen
 //0 = survey not finished, 1 = survey finished
@@ -36,26 +68,3 @@ chrome.storage.sync.set({sus7: ""});
 chrome.storage.sync.set({sus8: ""});
 chrome.storage.sync.set({sus9: ""});
 chrome.storage.sync.set({sus10: ""});
-
-
-
-//sync
-/*chrome.tabs.query({
-    active: true,
-    lastFocusedWindow: true
-}, function(tabs) {
-    // and use that tab to fill in out title and url
-    var tab = tabs[0];
-    console.log(tab.url);
-    alert(tab.url);
-});
-/*chrome.browserAction.onClicked.addListener(buttonClicked);
-
-function buttonClicked(tab) {
-  //send msg as object
-  let msg = {
-    txt: "hello"
-  }
-  chrome.tabs.sendMessage(tab.id, msg);
-}*/
-//set the state of the test: 0 = start
