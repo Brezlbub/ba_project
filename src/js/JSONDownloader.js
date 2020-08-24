@@ -5,45 +5,19 @@ ChromeExtensionURUT.JSONDownloader = function() {
 
   var that = new EventTarget(),
   jsonObject,
-  sex,
-  age,
-  pcLaptopWork,
-  pcLaptopPrivate,
-  smartphoneWork,
-  smartphonePrivate,
-  itKnowledge,
-  internet,
-  veranstaltungsportale,
-  webseiten,
-  frage1,
-  frage2,
-  frage3,
-  frage4,
-  task1Time,
-  task1Array = [],
-  task2Time,
-  task2Array = [],
-  task3Time,
-  task3Array = [],
-  task4Time,
-  task4Array = [],
-  task5Time,
-  task5Array = [],
-  task6Time,
-  task6Array = [],
-  task1failureComment,
-  task2failureComment,
-  task3failureComment,
-  task4failureComment,
-  task5failureComment,
-  task6failureComment,
-  beschreibung1,
-  beschreibung2,
-  beschreibung3,
-  sus1, sus2, sus3, sus4, sus5, sus6, sus7, sus8, sus9, sus10;
+  jsonStringData,
+  data,
+  bg,
+  downloadButton;
+  //initJSONButton;
 
   /*************************** public functions *******************************/
   function init() {
+    bg = chrome.extension.getBackgroundPage();
+    //initJSONButton = document.getElementById("init-json-button");
+    downloadButton = document.getElementById("download-button");
+    downloadButton.addEventListener('click', downloadJSONFile);
+    //initJSONButton.addEventListener('click', initJSONObject);
     return that;
   }
 
@@ -63,7 +37,7 @@ ChromeExtensionURUT.JSONDownloader = function() {
       "zeitTask6": "", "commentsTask6": "", "task6FailureComment": "", "urlsTask6": ""},
 
       "susFragebogen": {"sus1": "", "sus2": "", "sus3": "", "sus4": "", "sus5": "",
-      "sus6": "", "sus7": "", "sus8": "", "sus9": "", "sus10": "",},
+      "sus6": "", "sus7": "", "sus8": "", "sus9": "", "sus10": ""},
 
       "beschreibung": {"beschreibung1": "", "beschreibung2": "", "beschreibung3": ""}
     };
@@ -226,11 +200,18 @@ ChromeExtensionURUT.JSONDownloader = function() {
       });
     chrome.storage.sync.get(['genderButton'], function(result){
         jsonObject.vorabfragebogen.geschlecht = result.genderButton;
+        bg.data = jsonObject;
       });
-
-      return jsonObject;
   }
 
+  function downloadJSONFile(){
+    //https://stackoverflow.com/questions/19721439/download-json-object-as-a-file-from-browser
+    var newJSONobject;
+    newJSONobject = bg.data;
+    data = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(newJSONobject));
+    downloadButton.setAttribute("href", data);
+    downloadButton.setAttribute("download", "testergebnisse.json");
+  }
 
   that.init = init;
   that.initJSONObject = initJSONObject;

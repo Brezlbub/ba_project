@@ -7,10 +7,12 @@ ChromeExtensionURUT.NavigationController = function() {
     stepBackButton,
     stepNextButton,
     currentState,
-    stepBackDisableArray;
+    stepBackDisableArray,
+    jsonDownloader;
 
   /*************************** public functions *******************************/
   function init() {
+    jsonDownloader = ChromeExtensionURUT.JSONDownloader().init();
     stepBackButton = document.getElementById("step-back");
     stepNextButton = document.getElementById("step-next");
     stepBackButton.addEventListener("click", stepBack);
@@ -36,6 +38,10 @@ ChromeExtensionURUT.NavigationController = function() {
     currentState++;
     chrome.storage.sync.set({state: currentState}, function() {
             dispatchStateChangeEvent();
+            console.log(currentState);
+            if(currentState == 14){
+              jsonDownloader.initJSONObject();
+            }
           });
 
     chrome.storage.sync.set({taskRunning: ChromeExtensionURUT.Config.taskNotStarted});

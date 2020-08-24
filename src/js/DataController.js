@@ -7,7 +7,7 @@ ChromeExtensionURUT.DataController = function() {
     submitCommentButton,
     submitFailureCommentButton,
     describeCommentButton,
-    downloadButton,
+    //downloadButton,
     describeComment,
     failureComment,
     comment,
@@ -15,36 +15,30 @@ ChromeExtensionURUT.DataController = function() {
 
   /*************************** public functions *******************************/
   function init() {
-    jsonDownloader = ChromeExtensionURUT.JSONDownloader().init();
     comment = document.getElementById("comment");
     failureComment = document.getElementById("failure-comment");
-    downloadButton = document.getElementById("download-button");
+    //downloadButton = document.getElementById("download-button");
     describeComment = document.getElementById("describe-comment");
     submitCommentButton = document.getElementById("submit-comment-button");
     describeCommentButton = document.getElementById("describe-comment-button");
     submitFailureCommentButton = document.getElementById("submit-failure-comment-button");
 
-    //downloadButton.addEventListener('click', downloadJSON);
-    setOnClickListenerDownloadButton();
+    //downloadButton.addEventListener('click', downloadJSONFile);
     submitCommentButton.addEventListener('click', storeCommentData);
     describeCommentButton.addEventListener('click', storeDescribeCommentData);
     submitFailureCommentButton.addEventListener('click', storeFailureCommentData);
     return that;
   }
 
-  function setOnClickListenerDownloadButton(){
+  /*function downloadJSONFile(){
     //https://stackoverflow.com/questions/19721439/download-json-object-as-a-file-from-browser
+    jsonDownloader = ChromeExtensionURUT.JSONDownloader().init();
     var jsonObject, data;
     jsonObject = jsonDownloader.initJSONObject();
     data = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(jsonObject));
     downloadButton.setAttribute("href", data);
     downloadButton.setAttribute("download", "testergebnisse.json");
-    downloadButton.click();
-  }
-
-  function downloadJSON() {
-
-  }
+  }*/
 
   function storeDescribeCommentData() {
     chrome.storage.sync.get(['state'], function(result){

@@ -149,6 +149,7 @@ ChromeExtensionURUT.Views = function() {
   }
 
   function manageContentObjectsByState(currentState){
+
     if(currentState == ChromeExtensionURUT.Config.preSurvey){
       managePreSurveyView(currentState);
     }
@@ -169,6 +170,7 @@ ChromeExtensionURUT.Views = function() {
       hideElement(susSurvey);
       disableElement(stepNextButton);
       hideElement(stepNextButton);
+      showElement(downloadButton);
     }
 
   }

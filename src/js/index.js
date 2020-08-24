@@ -9,7 +9,6 @@ ChromeExtensionURUT.App = (function() {
     susController,
     taskController,
     dataController,
-    jsonDownloader,
     currentState,
     taskRunning,
     views;
@@ -17,7 +16,7 @@ ChromeExtensionURUT.App = (function() {
   function init() {
     initController();
     initViews();
-    initJsonDownloader();
+    //initJsonDownloader();
   }
 
 /*************************** init functions *********************************/
@@ -45,7 +44,7 @@ ChromeExtensionURUT.App = (function() {
 
       susController = ChromeExtensionURUT.SUSController().init();
       susController.addEventListener("onCorrectInputs", updateSUSSurveyViews);
-      
+
       dataController = ChromeExtensionURUT.DataController().init();
       //dataController.addEventListener()
   }
