@@ -8,12 +8,9 @@ ChromeExtensionURUT.PreSurveyController = function() {
     genderButtons,
     pcLaptopWorkButtons,
     pcLaptopPrivateButtons,
-    smartphoneWorkButtons,
-    smartphonePrivateButtons,
     radioKnowledgeButtons,
     radioInternetUsageButtons,
     radioVeranstaltungsportaleButtons,
-    radioSingleVeranstaltungsportaleButtons,
     ageInput,
     question1input,
     question2input,
@@ -25,12 +22,9 @@ ChromeExtensionURUT.PreSurveyController = function() {
     genderButtons = document.getElementsByClassName("genderButton");
     pcLaptopWorkButtons = document.getElementsByClassName("pcLaptopWorkButtons");
     pcLaptopPrivateButtons = document.getElementsByClassName("pcLaptopPrivateButtons");
-    smartphoneWorkButtons = document.getElementsByClassName("smartphoneWorkButtons");
-    smartphonePrivateButtons = document.getElementsByClassName("smartphonePrivateButtons");
     radioKnowledgeButtons = document.getElementsByClassName("radioKnowledgeButtons");
     radioInternetUsageButtons = document.getElementsByClassName("radioInternetUsageButtons");
     radioVeranstaltungsportaleButtons = document.getElementsByClassName("radioVeranstaltungsportaleButtons");
-    radioSingleVeranstaltungsportaleButtons = document.getElementsByClassName("radioSingleVeranstaltungsportaleButtons");
     finishButton = document.getElementById("finish-vorabfragebogen-button");
 
     ageInput = document.getElementById("age-input");
@@ -82,16 +76,6 @@ ChromeExtensionURUT.PreSurveyController = function() {
       if(pcLaptopPrivateButtons[i].value == result.pcLaptopPrivateButtons){
         pcLaptopPrivateButtons[i].checked = true;}}});
 
-    chrome.storage.local.get(['smartphoneWorkButtons'], function(result){
-      for(var i = 0; i < smartphoneWorkButtons.length; i++){
-      if(smartphoneWorkButtons[i].value == result.smartphoneWorkButtons){
-        smartphoneWorkButtons[i].checked = true;}}});
-
-    chrome.storage.local.get(['smartphonePrivateButtons'], function(result){
-      for(var i = 0; i < smartphonePrivateButtons.length; i++){
-      if(smartphonePrivateButtons[i].value == result.smartphonePrivateButtons){
-        smartphonePrivateButtons[i].checked = true;}}});
-
     chrome.storage.local.get(['radioKnowledgeButtons'], function(result){
       for(var i = 0; i < radioKnowledgeButtons.length; i++){
       if(radioKnowledgeButtons[i].value == result.radioKnowledgeButtons){
@@ -107,10 +91,6 @@ ChromeExtensionURUT.PreSurveyController = function() {
       if(radioVeranstaltungsportaleButtons[i].value == result.radioVeranstaltungsportaleButtons){
         radioVeranstaltungsportaleButtons[i].checked = true;}}});
 
-    chrome.storage.local.get(['radioSingleVeranstaltungsportaleButtons'], function(result){
-      for(var i = 0; i < radioSingleVeranstaltungsportaleButtons.length; i++){
-      if(radioSingleVeranstaltungsportaleButtons[i].value == result.radioSingleVeranstaltungsportaleButtons){
-        radioSingleVeranstaltungsportaleButtons[i].checked = true;}}});
   }
 
   function setInputListeners(){
@@ -132,12 +112,6 @@ ChromeExtensionURUT.PreSurveyController = function() {
     for(var i = 0; i < pcLaptopPrivateButtons.length; i++){
       pcLaptopPrivateButtons[i].addEventListener('click', pcLaptopPrivateButtonsClicked);
     }
-    for(var i = 0; i < smartphoneWorkButtons.length; i++){
-      smartphoneWorkButtons[i].addEventListener('click', smartphoneWorkButtonsClicked);
-    }
-    for(var i = 0; i < smartphonePrivateButtons.length; i++){
-      smartphonePrivateButtons[i].addEventListener('click', smartphonePrivateButtonsClicked);
-    }
     for(var i = 0; i < radioKnowledgeButtons.length; i++){
       radioKnowledgeButtons[i].addEventListener('click', radioKnowledgeButtonsClicked);
     }
@@ -147,17 +121,13 @@ ChromeExtensionURUT.PreSurveyController = function() {
     for(var i = 0; i < radioVeranstaltungsportaleButtons.length; i++){
       radioVeranstaltungsportaleButtons[i].addEventListener('click', radioVeranstaltungsportaleButtonsClicked);
     }
-    for(var i = 0; i < radioSingleVeranstaltungsportaleButtons.length; i++){
-      radioSingleVeranstaltungsportaleButtons[i].addEventListener('click', radioSingleVeranstaltungsportaleButtonsClicked);
-    }
   }
 
   function checkForCorrectInputs(){
     if( wasInputEntered(ageInput) &&
         wasInputEntered(question1input) && wasInputEntered(question2input) && wasInputEntered(question3input) &&
         wasInputEntered(question4input) && wasButtonPressed(genderButtons) && wasButtonPressed(pcLaptopPrivateButtons) &&
-          wasButtonPressed(pcLaptopWorkButtons) && (wasButtonPressed(smartphoneWorkButtons) && wasButtonPressed(smartphonePrivateButtons) &&
-          wasButtonPressed(radioKnowledgeButtons) && wasButtonPressed(radioVeranstaltungsportaleButtons) && wasButtonPressed(radioSingleVeranstaltungsportaleButtons))){
+          wasButtonPressed(pcLaptopWorkButtons) && wasButtonPressed(radioKnowledgeButtons) && wasButtonPressed(radioVeranstaltungsportaleButtons)){
             dispatchOnCorrectInputsEvent(true);
     }else{
       dispatchOnCorrectInputsEvent(false);
@@ -202,17 +172,6 @@ ChromeExtensionURUT.PreSurveyController = function() {
         chrome.storage.local.set({pcLaptopPrivateButtons: pcLaptopPrivateButtons[i].value});}}
   }
 
-  function smartphoneWorkButtonsClicked(){
-    for(var i = 0; i < smartphoneWorkButtons.length; i++){
-      if(smartphoneWorkButtons[i].checked == true){
-        chrome.storage.local.set({smartphoneWorkButtons: smartphoneWorkButtons[i].value});}}
-  }
-  function smartphonePrivateButtonsClicked(){
-    for(var i = 0; i < smartphonePrivateButtons.length; i++){
-      if(smartphonePrivateButtons[i].checked == true){
-        chrome.storage.local.set({smartphonePrivateButtons: smartphonePrivateButtons[i].value});}}
-  }
-
   function radioKnowledgeButtonsClicked(){
     for(var i = 0; i < radioKnowledgeButtons.length; i++){
       if(radioKnowledgeButtons[i].checked == true){
@@ -231,11 +190,6 @@ ChromeExtensionURUT.PreSurveyController = function() {
         chrome.storage.local.set({radioVeranstaltungsportaleButtons: radioVeranstaltungsportaleButtons[i].value});}}
   }
 
-  function radioSingleVeranstaltungsportaleButtonsClicked(){
-    for(var i = 0; i < radioSingleVeranstaltungsportaleButtons.length; i++){
-      if(radioSingleVeranstaltungsportaleButtons[i].checked == true){
-        chrome.storage.local.set({radioSingleVeranstaltungsportaleButtons: radioSingleVeranstaltungsportaleButtons[i].value});}}
-  }
 
   function ageInputEntered(){
     chrome.storage.local.set({ageInput: ageInput.value});

@@ -16,6 +16,7 @@ ChromeExtensionURUT.Views = function() {
     contentStorage,
     startStopText,
     headline,
+    hinweis,
     preSurvey,
     susSurvey,
     content,
@@ -27,6 +28,9 @@ ChromeExtensionURUT.Views = function() {
     pleaseInsertTextSUS,
     proceedText,
     countText,
+    comment,
+    failureComment,
+    describeComment,
     contentObjects = [];
 
   /*************************** public functions *******************************/
@@ -36,6 +40,10 @@ ChromeExtensionURUT.Views = function() {
     startTaskButton = document.getElementById("start-task");
     stopTaskButton = document.getElementById("stop-task");
     downloadButton = document.getElementById("download-button");
+    hinweis = document.getElementById("hinweis");
+    comment = document.getElementById("comment");
+    failureComment = document.getElementById("failure-comment");
+    describeComment = document.getElementById("describe-comment");
     preSurvey = document.getElementById("pre-survey");
     susSurvey = document.getElementById("sus-survey");
     headline = document.getElementById("headline");
@@ -90,6 +98,11 @@ ChromeExtensionURUT.Views = function() {
   function manageTaskRunning(taskState, currentState){
 
     manageContentObjectsByState(currentState);
+    if(currentState == ChromeExtensionURUT.Config.szenario){
+      showElement(hinweis);
+    }else{
+      hideElement(hinweis);
+    }
     if(currentState == ChromeExtensionURUT.Config.abschluss){
       hideElement(susSurvey);
       hideElement(stepNextButton);
@@ -149,6 +162,29 @@ ChromeExtensionURUT.Views = function() {
   }
 
   function manageContentObjectsByState(currentState){
+
+    chrome.storage.local.get(['currentComment'], function(result){
+      var currentComment = result.currentComment;
+      if(currentState == ChromeExtensionURUT.Config.describe1 || currentState == ChromeExtensionURUT.Config.describe2 || currentState == ChromeExtensionURUT.Config.describe3){
+        describeComment.value = currentComment;
+      }
+
+      if(currentState == ChromeExtensionURUT.Config.task1 || currentState == ChromeExtensionURUT.Config.task2 || currentState == ChromeExtensionURUT.Config.task3 || currentState == ChromeExtensionURUT.Config.task4 || currentState == ChromeExtensionURUT.Config.task5 || currentState == ChromeExtensionURUT.Config.task6){
+        chrome.storage.local.get(['taskRunning'], function(result){
+          if(result.taskRunning == ChromeExtensionURUT.Config.taskIsRunning){
+            comment.value = currentComment;
+          }else if(result.taskRunning == ChromeExtensionURUT.Config.taskFailed){
+            failureComment.value = currentComment;
+          }
+          });
+        }
+      });
+
+    if(currentState == ChromeExtensionURUT.Config.szenario){
+      showElement(hinweis);
+    }else{
+      hideElement(hinweis);
+    }
 
     if(currentState == ChromeExtensionURUT.Config.preSurvey){
       managePreSurveyView(currentState);

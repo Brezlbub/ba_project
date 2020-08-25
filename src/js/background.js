@@ -7,6 +7,8 @@ chrome.storage.local.set({taskRunning: 0});
 chrome.storage.local.set({startTime: 0});
 chrome.storage.local.set({timeDifference: 0});
 
+chrome.storage.local.set({currentComment: ""});
+
 chrome.storage.local.set({urlsTask1: []});
 chrome.storage.local.set({urlsTask2: []});
 chrome.storage.local.set({urlsTask3: []});
@@ -35,9 +37,9 @@ chrome.storage.local.set({task4FailureComment: ""});
 chrome.storage.local.set({task5FailureComment: ""});
 chrome.storage.local.set({task6FailureComment: ""});
 
-chrome.storage.local.set({beschreibung1: ""});
-chrome.storage.local.set({beschreibung2: ""});
-chrome.storage.local.set({beschreibung3: ""});
+chrome.storage.local.set({beschreibung1: []});
+chrome.storage.local.set({beschreibung2: []});
+chrome.storage.local.set({beschreibung3: []});
 
 //Vorabfragebogen
 //0 = survey not finished, 1 = survey finished
@@ -49,15 +51,11 @@ chrome.storage.local.set({question1input: ""});
 chrome.storage.local.set({question2input: ""});
 chrome.storage.local.set({question3input: ""});
 chrome.storage.local.set({question4input: ""});
-
 chrome.storage.local.set({pcLaptopWorkButtons: ""});
 chrome.storage.local.set({pcLaptopPrivateButtons: ""});
-chrome.storage.local.set({smartphoneWorkButtons: ""});
-chrome.storage.local.set({smartphonePrivateButtons: ""});
 chrome.storage.local.set({radioKnowledgeButtons: ""});
 chrome.storage.local.set({radioInternetUsageButtons: ""});
 chrome.storage.local.set({radioVeranstaltungsportaleButtons: ""});
-chrome.storage.local.set({radioSingleVeranstaltungsportaleButtons: ""});
 
 //System Usability Sacle Questionnaire
 chrome.storage.local.set({sus1: ""});

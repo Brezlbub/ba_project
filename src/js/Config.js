@@ -12,6 +12,7 @@ ChromeExtensionURUT.Config = {
   taskFailed: 4,
   taskFailureCommentSubmitted: 5,
 
+  szenario: 3,
   task1: 4,
   task2: 5,
   task3: 6,

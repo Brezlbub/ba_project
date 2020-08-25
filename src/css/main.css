@@ -42,7 +42,7 @@ b {
   height: 40px;
 }
 
-#interactive-section, #task-finished-section, #describe-section{
+#interactive-section, #task-finished-section, #describe-section, #hinweis{
   flex-shrink: 0;
   background-color: #aaa;
 }

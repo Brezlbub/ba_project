@@ -7,7 +7,6 @@ ChromeExtensionURUT.DataController = function() {
     submitCommentButton,
     submitFailureCommentButton,
     describeCommentButton,
-    //downloadButton,
     describeComment,
     failureComment,
     comment,
@@ -17,28 +16,41 @@ ChromeExtensionURUT.DataController = function() {
   function init() {
     comment = document.getElementById("comment");
     failureComment = document.getElementById("failure-comment");
-    //downloadButton = document.getElementById("download-button");
     describeComment = document.getElementById("describe-comment");
     submitCommentButton = document.getElementById("submit-comment-button");
     describeCommentButton = document.getElementById("describe-comment-button");
     submitFailureCommentButton = document.getElementById("submit-failure-comment-button");
 
-    //downloadButton.addEventListener('click', downloadJSONFile);
+    comment.addEventListener('keydown', storeCurrentComment);
+    failureComment.addEventListener('keydown', storeCurrentComment);
+    describeComment.addEventListener('keydown', storeCurrentComment);
     submitCommentButton.addEventListener('click', storeCommentData);
     describeCommentButton.addEventListener('click', storeDescribeCommentData);
     submitFailureCommentButton.addEventListener('click', storeFailureCommentData);
     return that;
   }
 
-  /*function downloadJSONFile(){
-    //https://stackoverflow.com/questions/19721439/download-json-object-as-a-file-from-browser
-    jsonDownloader = ChromeExtensionURUT.JSONDownloader().init();
-    var jsonObject, data;
-    jsonObject = jsonDownloader.initJSONObject();
-    data = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(jsonObject));
-    downloadButton.setAttribute("href", data);
-    downloadButton.setAttribute("download", "testergebnisse.json");
-  }*/
+  function storeCurrentComment(){
+    chrome.storage.local.get(['state'], function(result){
+      var currentState;
+      currentState = result.state;
+      if(currentState == ChromeExtensionURUT.Config.describe1 || currentState == ChromeExtensionURUT.Config.describe2 || currentState == ChromeExtensionURUT.Config.describe3){
+        chrome.storage.local.set({currentComment: describeComment.value});
+      }
+      if(currentState == ChromeExtensionURUT.Config.task1 || currentState == ChromeExtensionURUT.Config.task2 || currentState == ChromeExtensionURUT.Config.task3 || currentState == ChromeExtensionURUT.Config.task4 || currentState == ChromeExtensionURUT.Config.task5 || currentState == ChromeExtensionURUT.Config.task6){
+        chrome.storage.local.get(['taskRunning'], function(result){
+          if(result.taskRunning == ChromeExtensionURUT.Config.taskIsRunning){
+            chrome.storage.local.set({currentComment: comment.value});
+          }else if(result.taskRunning == ChromeExtensionURUT.Config.taskFailed){
+            chrome.storage.local.set({currentComment: failureComment.value});
+          }
+          });
+      }
+      });
+      chrome.storage.local.get(['currentComment'], function(result){
+        console.log(result.currentComment);
+        });
+  }
 
   function storeDescribeCommentData() {
     chrome.storage.local.get(['state'], function(result){
@@ -60,6 +72,7 @@ ChromeExtensionURUT.DataController = function() {
         chrome.storage.local.set({beschreibung3: describe3comment});
       }
       });
+      chrome.storage.local.set({currentComment: ""});
   }
 
   function storeFailureCommentData() {
@@ -98,6 +111,7 @@ ChromeExtensionURUT.DataController = function() {
         chrome.storage.local.set({task6FailureComment: task6FailureComment});
       }
       });
+      chrome.storage.local.set({currentComment: ""});
   }
 
   function storeCommentData(){
@@ -262,6 +276,7 @@ ChromeExtensionURUT.DataController = function() {
         });
       }
       });
+      chrome.storage.local.set({currentComment: ""});
   }
 
   that.init = init;

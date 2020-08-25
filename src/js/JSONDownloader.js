@@ -9,15 +9,12 @@ ChromeExtensionURUT.JSONDownloader = function() {
   data,
   bg,
   downloadButton;
-  //initJSONButton;
 
   /*************************** public functions *******************************/
   function init() {
     bg = chrome.extension.getBackgroundPage();
-    //initJSONButton = document.getElementById("init-json-button");
     downloadButton = document.getElementById("download-button");
     downloadButton.addEventListener('click', downloadJSONFile);
-    //initJSONButton.addEventListener('click', initJSONObject);
     return that;
   }
 
@@ -26,8 +23,7 @@ ChromeExtensionURUT.JSONDownloader = function() {
     jsonObject = {
       "vorabfragebogen": {"geschlecht": "", "alter": "", "pcLaptopWork": "",
       "pcLaptopPrivate": "", "ITKnowledge": "",
-      "internet": "", "veranstaltungsportale": "",
-      "webseiten": "", "frage1": "", "frage2": "", "frage3": "", "frage4": ""},
+      "internet": "", "veranstaltungsportale": "", "frage1": "", "frage2": "", "frage3": "", "frage4": ""},
 
       "tasks": {"zeitTask1": "", "commentsTask1": "", "task1FailureComment": "", "urlsTask1": "",
       "zeitTask2": "", "commentsTask2": "", "task2FailureComment": "", "urlsTask2": "",
@@ -159,9 +155,6 @@ ChromeExtensionURUT.JSONDownloader = function() {
         jsonObject.susFragebogen.sus10 = result.sus10;
       });
 
-    chrome.storage.local.get(['radioSingleVeranstaltungsportaleButtons'], function(result){
-        jsonObject.vorabfragebogen.webseiten = result.radioSingleVeranstaltungsportaleButtons;
-      });
     chrome.storage.local.get(['radioVeranstaltungsportaleButtons'], function(result){
         jsonObject.vorabfragebogen.veranstaltungsportale = result.radioVeranstaltungsportaleButtons;
       });
@@ -170,12 +163,6 @@ ChromeExtensionURUT.JSONDownloader = function() {
       });
     chrome.storage.local.get(['radioKnowledgeButtons'], function(result){
         jsonObject.vorabfragebogen.ITKnowledge = result.radioKnowledgeButtons;
-      });
-    chrome.storage.local.get(['smartphonePrivateButtons'], function(result){
-        jsonObject.vorabfragebogen.smartphonePrivate = result.smartphonePrivateButtons;
-      });
-    chrome.storage.local.get(['smartphoneWorkButtons'], function(result){
-        jsonObject.vorabfragebogen.smartphoneWork = result.smartphoneWorkButtons;
       });
     chrome.storage.local.get(['pcLaptopPrivateButtons'], function(result){
         jsonObject.vorabfragebogen.pcLaptopPrivate = result.pcLaptopPrivateButtons;
