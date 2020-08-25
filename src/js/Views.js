@@ -163,6 +163,7 @@ ChromeExtensionURUT.Views = function() {
 
   function manageContentObjectsByState(currentState){
 
+    //when popup got closed and reopened and text data in comments was entered, it gets restored and refilled
     chrome.storage.local.get(['currentComment'], function(result){
       var currentComment = result.currentComment;
       if(currentState == ChromeExtensionURUT.Config.describe1 || currentState == ChromeExtensionURUT.Config.describe2 || currentState == ChromeExtensionURUT.Config.describe3){

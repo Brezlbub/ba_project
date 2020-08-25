@@ -56,12 +56,41 @@ ChromeExtensionURUT.DataController = function() {
     chrome.storage.local.get(['state'], function(result){
       var currentState, describe1comment, describe2comment, describe3comment;
       currentState = result.state;
+
       if(currentState == ChromeExtensionURUT.Config.describe1){
-        describe1comment = describeComment.value;
-        describeComment.value = "";
-        chrome.storage.local.set({beschreibung1: describe1comment});
+        chrome.storage.local.get(['beschreibung1'], function(result){
+          var describe1array = result.beschreibung1;
+          describe1comment = describeComment.value;
+          describeComment.value = "";
+          describe1array.push(describe1comment);
+          chrome.storage.local.set({beschreibung1: describe1array});
+        });
       }
+
       if(currentState == ChromeExtensionURUT.Config.describe2){
+        chrome.storage.local.get(['beschreibung2'], function(result){
+          var describe2array = result.beschreibung2;
+          describe2comment = describeComment.value;
+          describeComment.value = "";
+          describe2array.push(describe2comment);
+          chrome.storage.local.set({beschreibung2: describe2array});
+        });
+      }
+
+      if(currentState == ChromeExtensionURUT.Config.describe3){
+        chrome.storage.local.get(['beschreibung3'], function(result){
+          var describe3array = result.beschreibung3;
+          describe3comment = describeComment.value;
+          describeComment.value = "";
+          describe3array.push(describe3comment);
+          chrome.storage.local.set({beschreibung3: describe3array});
+        });
+      }
+      });
+      chrome.storage.local.set({currentComment: ""});
+    }
+
+      /*if(currentState == ChromeExtensionURUT.Config.describe2){
         describe2comment = describeComment.value;
         describeComment.value = "";
         chrome.storage.local.set({beschreibung2: describe2comment});
@@ -71,9 +100,7 @@ ChromeExtensionURUT.DataController = function() {
         describeComment.value = "";
         chrome.storage.local.set({beschreibung3: describe3comment});
       }
-      });
-      chrome.storage.local.set({currentComment: ""});
-  }
+    });*/
 
   function storeFailureCommentData() {
     chrome.storage.local.get(['state'], function(result){

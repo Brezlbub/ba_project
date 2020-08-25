@@ -38,9 +38,9 @@ ChromeExtensionURUT.ContentStorage = function() {
 
     question1 = {id: 11, stepBack: 0, stepNext: 1, isTask: 0, title: "Beschreibung 1",
     content: "Beschreiben Sie kurz was Ihnen <b>nach</b> der Bearbeitung der Aufgaben besonders an der Seite aufgefallen ist. </br></br><b>Was fanden Sie <b>schlecht</b>?</b>"};
-    question2 = {id: 12, stepBack: 0, stepNext: 1, isTask: 0, title: "Beschreibung 2",
+    question2 = {id: 12, stepBack: 1, stepNext: 1, isTask: 0, title: "Beschreibung 2",
     content: "Beschreiben Sie kurz was Ihnen <b>nach</b> der Bearbeitung der Aufgaben besonders an der Seite aufgefallen ist. </br></br><b>Was fanden Sie <b>gut</b>?</b>"};
-    question3 = {id: 13, stepBack: 0, stepNext: 1, isTask: 0, title: "Beschreibung 3",
+    question3 = {id: 13, stepBack: 1, stepNext: 1, isTask: 0, title: "Beschreibung 3",
     content: "Beschreiben Sie kurz was Ihnen <b>nach</b> der Bearbeitung der Aufgaben besonders an der Seite aufgefallen ist. </br></br><b>Was würden Sie <b>verbessern</b>?</b>"};
 
     sus = {id: 14, stepBack: 0, stepNext: 0, isTask: 0, title: "Systembefragung (SUS)",

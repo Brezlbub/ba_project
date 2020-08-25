@@ -32,10 +32,11 @@ ChromeExtensionURUT.JSONDownloader = function() {
       "zeitTask5": "", "commentsTask5": "", "task5FailureComment": "", "urlsTask5": "",
       "zeitTask6": "", "commentsTask6": "", "task6FailureComment": "", "urlsTask6": ""},
 
-      "susFragebogen": {"sus1": "", "sus2": "", "sus3": "", "sus4": "", "sus5": "",
-      "sus6": "", "sus7": "", "sus8": "", "sus9": "", "sus10": ""},
+      "beschreibung": {"beschreibung1": "", "beschreibung2": "", "beschreibung3": ""},
 
-      "beschreibung": {"beschreibung1": "", "beschreibung2": "", "beschreibung3": ""}
+      "susFragebogen": {"sus1": "", "sus2": "", "sus3": "", "sus4": "", "sus5": "",
+      "sus6": "", "sus7": "", "sus8": "", "sus9": "", "sus10": ""}
+
     };
 
     chrome.storage.local.get(['timeTask1'], function(result){
