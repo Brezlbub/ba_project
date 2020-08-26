@@ -1,6 +1,6 @@
 {
-  "name": "BA Julian Sänze Evaluation URUT",
-  "description": "Prototyp unmoderierter Remote Usability-Test",
+  "name": "URU-Test BA",
+  "description": "Prototyp unmoderierter Remote Usability-Test einer Webseite",
   "version": "1.0",
   "manifest_version": 2,
   "content_scripts": [{
