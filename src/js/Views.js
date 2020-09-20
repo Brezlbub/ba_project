@@ -33,7 +33,6 @@ ChromeExtensionURUT.Views = function() {
     describeComment,
     contentObjects = [];
 
-  /*************************** public functions *******************************/
   function init() {
     stepBackButton = document.getElementById("step-back");
     stepNextButton = document.getElementById("step-next");
@@ -226,7 +225,6 @@ ChromeExtensionURUT.Views = function() {
     deBlinkElement(stepNextButton);
   }
 
-  /*************************** private functions ******************************/
   function fillElements(currentState){
     managePreSurveyView(currentState);
     countText.innerHTML = currentState + 1 + "/" + contentObjects.length;

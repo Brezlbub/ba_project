@@ -14,7 +14,6 @@ ChromeExtensionURUT.TaskController = function() {
     failureComment,
     startTime;
 
-  /*************************** public functions *******************************/
   function init() {
     stopTaskButton = document.getElementById("stop-task");
     startTaskButton = document.getElementById("start-task");
@@ -31,6 +30,7 @@ ChromeExtensionURUT.TaskController = function() {
     return that;
   }
 
+  //calculates current time when start button was clicked, saves current time variable in background script
   function startTaskCounter(){
     let currentTimeSeconds = Math.floor(Date.now() / 1000);
     chrome.storage.local.set({startTime: currentTimeSeconds});
@@ -40,6 +40,7 @@ ChromeExtensionURUT.TaskController = function() {
     });
   }
 
+  //stops current task, calculates passed time of task and stores it in background script
   function stopTaskCounter(){
     let currentTimeSeconds;
     currentTimeSeconds = Math.floor(Date.now() / 1000);
@@ -77,7 +78,7 @@ ChromeExtensionURUT.TaskController = function() {
     });
   }
 
-  /*************************** private functions ******************************/
+  //set time variables in background script
   function saveTimeForTaskData(){
     chrome.storage.local.get(['state'], function(result){
 
@@ -104,6 +105,8 @@ ChromeExtensionURUT.TaskController = function() {
       });
   }
 
+  //event fires when any button in a task window was clicked to change "onTaskRunning"-state
+  //needed to remember wich part of the test was opened when popup was closed and reopened
   function dispatchTaskRunningEvent() {
     let taskRunningEvent = new Event("onTaskRunning");
     taskRunningEvent.taskRunning = taskRunning;

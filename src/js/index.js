@@ -16,11 +16,11 @@ ChromeExtensionURUT.App = (function() {
   function init() {
     initController();
     initViews();
-    //initJsonDownloader();
   }
 
 /*************************** init functions *********************************/
 
+  //restores last reached state of the application when popup was closed and reopened
   function initSavedState(){
     chrome.storage.local.get(['state'], function(result){
       currentState = result.state;
@@ -46,7 +46,6 @@ ChromeExtensionURUT.App = (function() {
       susController.addEventListener("onCorrectInputs", updateSUSSurveyViews);
 
       dataController = ChromeExtensionURUT.DataController().init();
-      //dataController.addEventListener()
   }
 
   function initViews() {

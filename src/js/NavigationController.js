@@ -10,7 +10,6 @@ ChromeExtensionURUT.NavigationController = function() {
     stepBackDisableArray,
     jsonDownloader;
 
-  /*************************** public functions *******************************/
   function init() {
     jsonDownloader = ChromeExtensionURUT.JSONDownloader().init();
     stepBackButton = document.getElementById("step-back");
@@ -23,10 +22,7 @@ ChromeExtensionURUT.NavigationController = function() {
     return that;
   }
 
-  //gets state saved in local storage and sets the current state
-
-
-/*************************** event functions ********************************/
+  //navigates step back in application
   function stepBack () {
     currentState--;
     chrome.storage.local.set({state: currentState}, function() {
@@ -34,6 +30,7 @@ ChromeExtensionURUT.NavigationController = function() {
           });
   }
 
+  //naviagtes step forward in application
   function stepNext () {
     currentState++;
     chrome.storage.local.set({state: currentState}, function() {
@@ -47,7 +44,7 @@ ChromeExtensionURUT.NavigationController = function() {
     chrome.storage.local.set({taskRunning: ChromeExtensionURUT.Config.taskNotStarted});
   }
 
-  /*************************** private functions ******************************/
+  //fired when a navigation button was clicked
   function dispatchStateChangeEvent() {
     let changeStateEvent = new Event("onStateChanged");
     changeStateEvent.currentState = currentState;

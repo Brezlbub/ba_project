@@ -10,7 +10,6 @@ ChromeExtensionURUT.JSONDownloader = function() {
   bg,
   downloadButton;
 
-  /*************************** public functions *******************************/
   function init() {
     bg = chrome.extension.getBackgroundPage();
     downloadButton = document.getElementById("download-button");
@@ -39,6 +38,7 @@ ChromeExtensionURUT.JSONDownloader = function() {
 
     };
 
+    //fill data from background script
     chrome.storage.local.get(['timeTask1'], function(result){
         jsonObject.tasks.zeitTask1 = result.timeTask1;
       });

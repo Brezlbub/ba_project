@@ -16,7 +16,6 @@ ChromeExtensionURUT.SUSController = function() {
     sus10Buttons,
     finishSUSbutton;
 
-  /*************************** public functions *******************************/
   function init() {
     finishSUSbutton = document.getElementById("finish-sus-button");
     sus1Buttons = document.getElementsByClassName("sus-1");
@@ -34,6 +33,7 @@ ChromeExtensionURUT.SUSController = function() {
     return that;
   }
 
+  //variables stored in background script to remember which radio buttons were clicked when popup was closed and reopened
   function loadSavedSUSStates(){
     chrome.storage.local.get(['sus1'], function(result){
       for(var i = 0; i < sus1Buttons.length; i++){
@@ -86,6 +86,7 @@ ChromeExtensionURUT.SUSController = function() {
         sus10Buttons[i].checked = true;}}});
   }
 
+
   function setOnClickListeners(){
     finishSUSbutton.addEventListener('click', checkForCorrectInputs);
     for(var i = 0; i < sus1Buttons.length; i++){
@@ -120,6 +121,7 @@ ChromeExtensionURUT.SUSController = function() {
     }
   }
 
+  //to check if for every answer a radio button was clicked. Needed because the user should not skip without submitting answers
   function checkForCorrectInputs(){
     if(wasButtonPressed(sus1Buttons) &&
       wasButtonPressed(sus1Buttons) &&

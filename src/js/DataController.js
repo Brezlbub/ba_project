@@ -12,7 +12,6 @@ ChromeExtensionURUT.DataController = function() {
     comment,
     jsonDownloader;
 
-  /*************************** public functions *******************************/
   function init() {
     comment = document.getElementById("comment");
     failureComment = document.getElementById("failure-comment");
@@ -30,6 +29,7 @@ ChromeExtensionURUT.DataController = function() {
     return that;
   }
 
+  //stores current text in commentary box, to remember and set text to last submitted comment when popup was closed
   function storeCurrentComment(){
     chrome.storage.local.get(['state'], function(result){
       var currentState;
@@ -52,6 +52,7 @@ ChromeExtensionURUT.DataController = function() {
         });
   }
 
+  //stores description task comments in background script regarding to current state
   function storeDescribeCommentData() {
     chrome.storage.local.get(['state'], function(result){
       var currentState, describe1comment, describe2comment, describe3comment;
@@ -90,18 +91,7 @@ ChromeExtensionURUT.DataController = function() {
       chrome.storage.local.set({currentComment: ""});
     }
 
-      /*if(currentState == ChromeExtensionURUT.Config.describe2){
-        describe2comment = describeComment.value;
-        describeComment.value = "";
-        chrome.storage.local.set({beschreibung2: describe2comment});
-      }
-      if(currentState == ChromeExtensionURUT.Config.describe3){
-        describe3comment = describeComment.value;
-        describeComment.value = "";
-        chrome.storage.local.set({beschreibung3: describe3comment});
-      }
-    });*/
-
+  //stores failure comments when task could not successfully be completed in background script regarding to current state
   function storeFailureCommentData() {
     chrome.storage.local.get(['state'], function(result){
       var currentState, task1FailureComment, task2FailureComment, task3FailureComment,
@@ -141,6 +131,7 @@ ChromeExtensionURUT.DataController = function() {
       chrome.storage.local.set({currentComment: ""});
   }
 
+  //stores general task comments in background script regarding to current state
   function storeCommentData(){
     chrome.storage.local.get(['state'], function(result){
       var currentState, task1commentValue,
